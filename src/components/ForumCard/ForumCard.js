@@ -21,9 +21,7 @@ class ForumCard extends React.Component {
                     </RkText>
                 </View>
                 <View rkCardFooter>
-                    <RkButton
-                        rkType='small outline'
-                        >
+                    <RkButton rkType='small outline'>
                         Подробнее
                     </RkButton>
                     <RkButton rkType='small'>Button</RkButton>
