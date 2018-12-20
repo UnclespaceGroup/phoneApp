@@ -6,8 +6,6 @@ import {SocialIcon} from 'react-native-elements';
 import {Actions} from "react-native-router-flux";
 
 export default class AuthorizationScreen extends React.Component {
-
-
     render() {
         return (
             <View>

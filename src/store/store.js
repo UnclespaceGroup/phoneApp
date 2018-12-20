@@ -1,24 +1,9 @@
-export const store ={
-    forum: [
-        {
-            title: 'Title',
-            description: 'description'
-        },
-        {
-            title: 'Title',
-            description: 'description'
-        },
-        {
-            title: 'Title',
-            description: 'description'
-        },
-    ],
-    posts: [
-        {
-            title: 'title',
-            description: 'title',
-            date: 'title',
-            likes: 'title'
-        }
-    ]
-}
+import { createStore, applyMiddleware } from 'redux'
+import reducer from '../reducers/index'
+import thunk from 'redux-thunk'
+
+const store = createStore(
+  reducer,
+  applyMiddleware(thunk)
+)
+export default store
