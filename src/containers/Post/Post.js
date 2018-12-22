@@ -1,18 +1,21 @@
 import React, { Component } from 'react'
-import { View } from 'react-native'
+import { View, Text } from 'react-native'
 import { bindActionCreators } from 'redux'
 import { getData, setFilter } from '../../actions'
 import { connect } from 'react-redux'
 import PostScreen from '../../screens/PostScreen/PostScreen'
+import _ from 'lodash'
 
 class Post extends Component{
   render(){
     const {
-      ...props
+      current,
+      products
     } = this.props
+    const item = _.find(products, (item) => item.id === current) || { title: 'Не найдено'}
     return(
       <View>
-
+        <PostScreen {...item} />
       </View>
     )
   }

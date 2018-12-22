@@ -1,11 +1,12 @@
 import React from 'react'
 import { View, Image } from 'react-native'
 import { RkButton, RkCard, RkText, } from 'react-native-ui-kitten'
-// import { Actions } from 'react-native-router-flux'
+import { Actions } from 'react-native-router-flux'
 
 class ForumCard extends React.Component {
   render () {
     const {
+      id,
       title,
       description
     } = this.props
@@ -21,7 +22,12 @@ class ForumCard extends React.Component {
           </RkText>
         </View>
         <View rkCardFooter>
-          <RkButton rkType='small outline'>
+          <RkButton rkType='small outline'
+                    onPress={() => {
+                      Actions.pop()
+                      Actions.post({current: id})
+                    }}
+          >
             Подробнее
           </RkButton>
           <RkButton rkType='small'>Button</RkButton>
@@ -29,6 +35,7 @@ class ForumCard extends React.Component {
       </RkCard>
     )
   }
+
   static defaultProps = {
     title: 'Не пришло',
     description: 'пусто'

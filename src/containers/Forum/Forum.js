@@ -11,7 +11,6 @@ class Forum extends Component{
         products
       }
     } = this
-    console.log(products)
     return(
       <ForumScreen {...{products}} />
     )

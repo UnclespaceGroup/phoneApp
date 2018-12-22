@@ -3,6 +3,7 @@ import * as types from '../constants/index'
 export const initialState = {
   products: [
     {
+      id: 0,
       title: 'Что-то крутое',
       description: 'Из казахстана',
       date: 'Сегодня',
@@ -10,6 +11,7 @@ export const initialState = {
       country: 'Россия'
     },
     {
+      id: 1,
       title: 'Макарошки',
       description: 'С пьюрешкой, ароматно пиздец',
       date: 'Сегодня',
@@ -17,6 +19,7 @@ export const initialState = {
       country: 'Китай'
     },
     {
+      id: 2,
       title: 'Гречка',
       description: 'Без ничего, ещё и соленая капец',
       date: 'Сегодня',
@@ -24,6 +27,7 @@ export const initialState = {
       country: 'Япония'
     },
     {
+      id: 3,
       title: 'Что-то крутое',
       description: 'Из казахстана',
       date: 'Сегодня',
@@ -31,6 +35,7 @@ export const initialState = {
       country: 'Сша'
     },
     {
+      id: 4,
       title: 'Макарошки',
       description: 'С пьюрешкой, ароматно пиздец',
       date: 'Сегодня',
@@ -38,6 +43,7 @@ export const initialState = {
       country: 'Англия'
     },
     {
+      id: 5,
       title: 'Гречка',
       description: 'Без ничего, ещё и соленая капец',
       date: 'Сегодня',

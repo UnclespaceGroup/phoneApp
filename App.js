@@ -12,16 +12,14 @@ class App extends React.Component {
     return (
       <Provider store={store}>
         <Router>
-          <Scene key={'root'}>
+          <Scene key="root">
             <Scene
-              hideNavBar tabs={true} key={'tabs'}>
+              hideNavBar tabs={true} key="tabs">
               <Scene key="authorization" component={Authorization} title="Вход" />
               <Scene key="forum" component={Forum} title="Главная" />
               <Scene key="country" component={Country} title="Категории" />
             </Scene>
-            <Scene>
-              <Scene key="post" component={Post} title={'post'} hideTabBar />
-            </Scene>
+            <Scene key="post" component={Post} title={'post'} hideTabBar />
           </Scene>
         </Router>
       </Provider>
