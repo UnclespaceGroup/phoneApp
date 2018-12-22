@@ -1,21 +1,23 @@
-import React from 'react';
-import {ScrollView} from 'react-native';
-import {store} from '../../store/store'
+import React from 'react'
+import { ScrollView } from 'react-native'
 import ForumCard from '../../components/ForumCard/ForumCard'
-export default class ForumScreen extends React.Component {
+import _ from 'lodash'
 
-    render() {
-        const {
-            forum
-        } = store
-        return (
-            <ScrollView>
-                {
-                    forum.map((item, key) =>
-                        <ForumCard key={key} {...item} />
-                    )
-                }
-            </ScrollView>
-        );
-    }
+class ForumScreen extends React.Component {
+  render () {
+    const {
+      forum
+    } = this.store
+    return (
+      <ScrollView>
+        {
+          _.map(forum, (item, key) =>
+            <ForumCard key={key} {...item} />
+          )
+        }
+      </ScrollView>
+    )
+  }
 }
+
+export default ForumScreen
