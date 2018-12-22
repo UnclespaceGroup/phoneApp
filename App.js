@@ -4,8 +4,8 @@ import Post from './src/containers/Post'
 import { Router, Scene } from 'react-native-router-flux'
 import store from './src/store/store'
 import { Provider } from 'react-redux'
-import Forum from './src/containers/Forum'
 import Country from './src/containers/Country'
+import Forum from './src/containers/Forum'
 
 class App extends React.Component {
   render () {

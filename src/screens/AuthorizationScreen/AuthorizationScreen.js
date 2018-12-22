@@ -7,6 +7,9 @@ import { Actions } from 'react-native-router-flux'
 
 class AuthorizationScreen extends React.Component {
   render () {
+    const {
+      product
+    } = this.props
     return (
       <View>
         <Text style={styles.title}>Регистрация</Text>

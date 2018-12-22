@@ -2,14 +2,18 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { getData, setFilter } from '../../actions'
 import { connect } from 'react-redux'
+import ForumScreen from '../../screens/ForumScreen/ForumScreen'
 
 class Forum extends Component{
   render(){
     const {
-      ...props
-    } = this.props
+      props: {
+        products
+      }
+    } = this
+    console.log(products)
     return(
-      <Forum {...props}/>
+      <ForumScreen {...{products}} />
     )
   }
 }
