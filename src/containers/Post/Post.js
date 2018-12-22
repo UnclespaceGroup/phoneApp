@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { View } from 'react-native'
 import { bindActionCreators } from 'redux'
 import { getData, setFilter } from '../../actions'
-import connect from 'react-redux/es/connect/connect'
+import { connect } from 'react-redux'
 import PostScreen from '../../screens/PostScreen/PostScreen'
 
 class Post extends Component{

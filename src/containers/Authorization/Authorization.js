@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import AuthorizationScreen from '../../screens/AuthorizationScreen/AuthorizationScreen'
 import { bindActionCreators } from 'redux'
 import { getData, setFilter } from '../../actions'
-import connect from 'react-redux/es/connect/connect'
+import { connect } from 'react-redux'
 
 class Authorization extends Component {
   render() {

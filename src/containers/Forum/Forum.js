@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { getData, setFilter } from '../../actions'
-import connect from 'react-redux/es/connect/connect'
+import { connect } from 'react-redux'
 
 class Forum extends Component{
   render(){
