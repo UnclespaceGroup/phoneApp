@@ -61,6 +61,13 @@ export default (state = initialState, action) => {
         ...state,
         filter: action.data
       }
+    case types.CLEAR_FILTER:
+      return {
+        ...state,
+        filter: {
+          country: true
+        }
+      }
     default:
       return state
   }

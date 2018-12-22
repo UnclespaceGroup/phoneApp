@@ -1,5 +1,5 @@
 import React from 'react'
-import { ScrollView, Text } from 'react-native'
+import { ScrollView } from 'react-native'
 import { connect } from 'react-redux'
 import _ from 'lodash'
 import ForumCard from '../../components/ForumCard'
@@ -24,10 +24,9 @@ class PostScreen extends React.Component {
       change,
       click
     } = this
-    console.log(this.props.products)
     const current = products.filter(x =>
     {
-      return x.country === filter.country
+      return filter.country === true || ( x.country === filter.country)
     }
     )
     return (
