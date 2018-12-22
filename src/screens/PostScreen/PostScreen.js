@@ -1,12 +1,9 @@
 import React from 'react'
-import { ScrollView, Text } from 'react-native'
-import { connect } from 'react-redux'
+import { ScrollView } from 'react-native'
 import _ from 'lodash'
 import ForumCard from '../../components/ForumCard'
 import { TextInput } from 'react-native';
 import { RkButton } from 'react-native-ui-kitten'
-import { bindActionCreators } from 'redux'
-import { getData, setFilter } from '../../actions'
 
 class PostScreen extends React.Component {
   state = {
@@ -24,10 +21,9 @@ class PostScreen extends React.Component {
       change,
       click
     } = this
-    console.log(this.props.products)
     const current = products.filter(x =>
     {
-      return x.country === filter.country
+      return filter.country === true || ( x.country === filter.country)
     }
     )
     return (
@@ -60,16 +56,4 @@ class PostScreen extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    products: state.products,
-    filter: state.filter
-  }
-}
-const mapDispatchToProps = (dispatch) => {
-  return {
-    getData: bindActionCreators(getData, dispatch),
-    setFilter: bindActionCreators(setFilter, dispatch)
-  }
-}
-export default connect(mapStateToProps, mapDispatchToProps)(PostScreen)
+export default PostScreen

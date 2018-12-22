@@ -15,3 +15,10 @@ export const setFilter = (data) => {
     })
   }
 }
+export const clearFilter = () => {
+  return dispatch => {
+    dispatch({
+      type: types.CLEAR_FILTER
+    })
+  }
+}
