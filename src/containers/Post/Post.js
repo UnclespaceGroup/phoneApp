@@ -12,6 +12,7 @@ class Post extends Component{
       current,
       products
     } = this.props
+    console.log(current)
     const item = _.find(products, (item) => item.id === current) || { title: 'Не найдено'}
     return(
       <View>
