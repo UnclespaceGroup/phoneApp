@@ -24,8 +24,7 @@ class ForumCard extends React.Component {
         <View rkCardFooter>
           <RkButton rkType='small outline'
                     onPress={() => {
-                      Actions.pop()
-                      Actions.post({current: id})
+                      Actions.push('post', {current: id})
                     }}
           >
             Подробнее

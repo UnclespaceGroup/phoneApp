@@ -1,18 +1,19 @@
 import React from 'react'
-import { RkButton } from 'react-native-ui-kitten'
 import { View } from 'react-native'
 import styles from './scss/style.scss'
+import CountryList from '../../components/CountryList/CountryList'
 
 class CountryScreen extends React.Component {
   render () {
+    const {
+      props: {
+        products
+      }
+    } = this
     return (
       <View style={styles.wrap}>
-        <RkButton>Japan</RkButton>
-        <RkButton> Tai </RkButton>
-        <RkButton>Koreja</RkButton>
-        <RkButton> other </RkButton>
+        <CountryList {...{products}} />
       </View>
-
     )
   }
 }

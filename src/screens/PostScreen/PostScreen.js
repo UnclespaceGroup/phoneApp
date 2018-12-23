@@ -1,6 +1,6 @@
 import React from 'react'
 import { ScrollView } from 'react-native'
-import { Text } from 'react-native'
+import { Text, Image } from 'react-native'
 
 class PostScreen extends React.Component {
   render () {
@@ -8,14 +8,19 @@ class PostScreen extends React.Component {
       props: {
         id,
         title,
-        description
+        description,
+        image,
+        country
       }
     } = this
     return (
       <ScrollView>
-        <Text>{id}</Text>
+        <Image source={image} />
+        <Text>id = {id}</Text>
         <Text>{title}</Text>
+        <Text>Страна: {country}</Text>
         <Text>{description}</Text>
+        <Text>{'Зарегестрируйтесь, чтобы оставлять комментарии'}</Text>
       </ScrollView>
     )
   }
