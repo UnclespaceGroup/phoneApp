@@ -8,11 +8,12 @@ class Forum extends Component{
   render(){
     const {
       props: {
-        products
+        products,
+        filter
       }
     } = this
     return(
-      <ForumScreen {...{products}} />
+      <ForumScreen {...{products, filter}} />
     )
   }
 }

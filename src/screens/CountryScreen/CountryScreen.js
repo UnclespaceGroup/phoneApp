@@ -7,12 +7,13 @@ class CountryScreen extends React.Component {
   render () {
     const {
       props: {
-        products
+        products,
+        setFilter
       }
     } = this
     return (
       <View style={styles.wrap}>
-        <CountryList {...{products}} />
+        <CountryList {...{products, setFilter}} />
       </View>
     )
   }

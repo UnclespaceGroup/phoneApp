@@ -1,31 +1,32 @@
 import React from 'react'
 import { View, Text } from 'react-native'
 import { Card, ListItem } from 'react-native-elements'
+import { Actions } from 'react-native-router-flux'
 import _ from 'lodash'
 
 class CountryList extends React.Component {
   render () {
     const {
-      products
-    } = this.props
+      props: {
+        products
+      },
+      click
+    } = this
     const allCountry = _.map(products, (item, key) => {
       return item.country
     })
     let country = _.uniq(allCountry)
-    console.log(country)
     return (
       <View>
         <Card containerStyle={{padding: 0}}>
           {
             _.map(country, (u, i) => {
-              console.log(u)
               return (
                 <ListItem
                   key={i}
                   roundAvatar
                   title={u}
-                  leftAvatar={products[0].image}
-                  subtitle={'ПОАВА'}
+                  onPress={() => { click(u)}}
                 />
               )
             })
@@ -33,6 +34,13 @@ class CountryList extends React.Component {
         </Card>
       </View>
     )
+  }
+  click = (country) => {
+    const { setFilter } = this.props
+    setFilter({
+      country: country
+    })
+    Actions.forum()
   }
 }
 

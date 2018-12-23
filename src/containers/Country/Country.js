@@ -7,10 +7,11 @@ import { connect } from 'react-redux'
 class Country extends Component{
   render(){
     const {
-      products
+      products,
+      setFilter
     } = this.props
     return(
-      <CountryScreen {...{products}}/>
+      <CountryScreen {...{products, setFilter}}/>
     )
   }
 }

@@ -6,12 +6,16 @@ import _ from 'lodash'
 class ForumScreen extends React.Component {
   render () {
     const {
-      products
+      products,
+      filter
     } = this.props
+    const current = _.filter(products, ({country}) => {
+      return (filter.country === true) ? true : (country === filter.country)
+    })
     return (
       <ScrollView>
         {
-          _.map(products, (item, key) =>
+          _.map(current, (item, key) =>
             <ForumCard key={key} {...item} />
           )
         }
