@@ -7,10 +7,11 @@ class ForumScreen extends React.Component {
   render () {
     const {
       products,
-      filter
+      filter,
+      currentCountry
     } = this.props
     const current = _.filter(products, ({country}) => {
-      return (filter.country === true) ? true : (country === filter.country)
+      return currentCountry ? (country === currentCountry) : true
     })
     return (
       <ScrollView>

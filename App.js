@@ -20,6 +20,7 @@ class App extends React.Component {
               <Scene key="country" component={Country} title="Категории" />
             </Scene>
             <Scene key="post" component={Post} title={'Постик'} hideTabBar />
+            <Scene key="catalog" component={Forum} title="Каталог" />
           </Scene>
         </Router>
       </Provider>

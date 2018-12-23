@@ -9,11 +9,13 @@ class Forum extends Component{
     const {
       props: {
         products,
-        filter
+        filter,
+        currentCountry
       }
     } = this
+    console.log(this.props)
     return(
-      <ForumScreen {...{products, filter}} />
+      <ForumScreen {...{products, filter, currentCountry}} />
     )
   }
 }

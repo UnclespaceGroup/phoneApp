@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { View } from 'react-native'
 import { Card, ListItem } from 'react-native-elements'
 import { Actions } from 'react-native-router-flux'
 import _ from 'lodash'
@@ -36,11 +36,11 @@ class CountryList extends React.Component {
     )
   }
   click = (country) => {
-    const { setFilter } = this.props
-    setFilter({
-      country: country
-    })
-    Actions.forum()
+    // const { setFilter } = this.props
+    // setFilter({
+    //   country: country
+    // })
+    Actions.push('catalog', {currentCountry: country})
   }
 }
 
