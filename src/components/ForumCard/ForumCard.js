@@ -4,12 +4,21 @@ import { RkButton, RkCard, RkText, } from 'react-native-ui-kitten'
 import { Actions } from 'react-native-router-flux'
 
 class ForumCard extends React.Component {
+  state = {
+    star: false
+  }
   render () {
     const {
-      id,
-      title,
-      description
-    } = this.props
+      props:{
+        id,
+        title,
+        description
+      },
+      state: {
+        star
+      },
+      starClick
+    } = this
     return (
       <RkCard rkType='rounded '>
         <Image source={{uri: 'https://material.io/tools/icons/static/ic_icons_192px_light.svg'}} />
@@ -29,12 +38,15 @@ class ForumCard extends React.Component {
           >
             Подробнее
           </RkButton>
-          <RkButton rkType='small'>Button</RkButton>
+          <RkButton onPress={starClick} rkType={!star ? 'small' : 'small outline'}>{!star ? 'Добавить': 'Убрать'}</RkButton>
         </View>
       </RkCard>
     )
   }
-
+  starClick = () => {
+    const { star } = this.state
+    this.setState({star: !star})
+  }
   static defaultProps = {
     title: 'Не пришло',
     description: 'пусто'
