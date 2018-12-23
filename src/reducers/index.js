@@ -34,6 +34,26 @@ export const initialState = {
       likes: '5 Лукасов',
       country: 'Россия',
       image: horek
+    },
+    {
+      id: '3',
+      title: 'Милая Собачка',
+      category: 'Собака',
+      description: 'Пока тут собачка, но потом будут соответственные данные',
+      date: 'Сегодня',
+      likes: '5 Лукасов',
+      country: 'Корея',
+      image: dog
+    },
+    {
+      id: '4',
+      title: 'Злой хорек',
+      category: 'Хорек',
+      description: 'Просто хорек',
+      date: 'Сегодня',
+      likes: '5 Лукасов',
+      country: 'Израиль',
+      image: horek
     }
   ],
   filter: {

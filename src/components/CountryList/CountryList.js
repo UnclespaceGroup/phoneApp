@@ -25,7 +25,7 @@ class CountryList extends React.Component {
                   roundAvatar
                   title={u}
                   leftAvatar={products[0].image}
-                  subtitle={'ПОАВА'}
+                  subtitle={'country'}
                 />
               )
             })
