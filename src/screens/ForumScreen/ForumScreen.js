@@ -10,7 +10,6 @@ class ForumScreen extends React.Component {
     } = this.props
     return (
       <ScrollView>
-        <Text>Форум</Text>
         {
           _.map(products, (item, key) =>
             <ForumCard key={key} {...item} />

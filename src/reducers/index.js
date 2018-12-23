@@ -1,54 +1,39 @@
 import * as types from '../constants/index'
+import dog from '../static/dog_test.jpg'
+import cat from '../static/cat.jpg'
+import horek from '../static/horek.jpg'
 
 export const initialState = {
   products: [
     {
       id: '0',
-      title: 'Что-то крутое',
-      description: 'Из казахстана',
+      title: 'Милая Собачка',
+      category: 'Собака',
+      description: 'Пока тут собачка, но потом будут соответственные данные',
       date: 'Сегодня',
       likes: '5 Лукасов',
-      country: 'Россия'
+      country: 'Россия',
+      image: dog
     },
     {
       id: '1',
-      title: 'Макарошки',
-      description: 'С пьюрешкой, ароматно пиздец',
+      title: 'Маленькая Кошечка',
+      category: 'Кошка',
+      description: 'Маленькая кошечка в качестве демки',
       date: 'Сегодня',
       likes: '5 Лукасов',
-      country: 'Китай'
+      country: 'Китай',
+      image: cat
     },
     {
       id: '2',
-      title: 'Гречка',
-      description: 'Без ничего, ещё и соленая капец',
+      title: 'Хорек',
+      category: 'Хорек',
+      description: 'Просто хорек',
       date: 'Сегодня',
       likes: '5 Лукасов',
-      country: 'Япония'
-    },
-    {
-      id: '3',
-      title: 'Что-то крутое',
-      description: 'Из казахстана',
-      date: 'Сегодня',
-      likes: '5 Лукасов',
-      country: 'Сша'
-    },
-    {
-      id: '4',
-      title: 'Макарошки',
-      description: 'С пьюрешкой, ароматно пиздец',
-      date: 'Сегодня',
-      likes: '5 Лукасов',
-      country: 'Англия'
-    },
-    {
-      id: '5',
-      title: 'Гречка',
-      description: 'Без ничего, ещё и соленая капец',
-      date: 'Сегодня',
-      likes: '5 Лукасов',
-      country: 'Россия'
+      country: 'Россия',
+      image: horek
     }
   ],
   filter: {
