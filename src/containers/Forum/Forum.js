@@ -10,19 +10,20 @@ class Forum extends Component{
       props: {
         products,
         filter,
+        reviews,
         currentCountry
       }
     } = this
-    console.log(this.props)
     return(
-      <ForumScreen {...{products, filter, currentCountry}} />
+      <ForumScreen {...{products, filter, currentCountry, reviews}} />
     )
   }
 }
 const mapStateToProps = (state) => {
   return {
     products: state.products,
-    filter: state.filter
+    filter: state.filter,
+    reviews: state.reviews
   }
 }
 const mapDispatchToProps = (dispatch) => {

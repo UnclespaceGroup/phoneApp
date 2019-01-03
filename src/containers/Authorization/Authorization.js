@@ -1,10 +1,18 @@
 import React, { Component } from 'react'
 import AuthorizationScreen from '../../screens/AuthorizationScreen/AuthorizationScreen'
 import { bindActionCreators } from 'redux'
-import { getData, setFilter } from '../../actions'
+import { downloadCountry, downloadReview, getData, setFilter } from '../../actions'
 import { connect } from 'react-redux'
 
 class Authorization extends Component {
+  componentDidMount(){
+    const {
+      downloadCountry,
+      downloadReview
+    } = this.props
+    downloadCountry()
+    downloadReview()
+  }
   render() {
     const {
       ...props
@@ -24,7 +32,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     getData: bindActionCreators(getData, dispatch),
-    setFilter: bindActionCreators(setFilter, dispatch)
+    setFilter: bindActionCreators(setFilter, dispatch),
+    downloadCountry: bindActionCreators(downloadCountry, dispatch),
+    downloadReview: bindActionCreators(downloadReview, dispatch)
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Authorization)

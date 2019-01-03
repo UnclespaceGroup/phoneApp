@@ -1,22 +1,21 @@
 import React from 'react'
 import { View } from 'react-native'
 import styles from './scss/style.scss'
-import CountryList from '../../components/CountryList/CountryList'
+import AddReviewForm from '../../components/AddReviewForm/AddReviewForm'
 
-class CountryScreen extends React.Component {
+class AddReviewScreen extends React.Component {
   render () {
     const {
       props: {
-        setFilter,
-        country
+        addReview
       }
     } = this
     return (
       <View style={styles.wrap}>
-        <CountryList {...{setFilter,country}} />
+        <AddReviewForm {...{addReview}} />
       </View>
     )
   }
 }
 
-export default CountryScreen
+export default AddReviewScreen

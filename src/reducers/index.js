@@ -1,61 +1,10 @@
 import * as types from '../constants/index'
-import dog from '../static/dog_test.jpg'
-import cat from '../static/cat.jpg'
-import horek from '../static/horek.jpg'
+// import dog from '../static/dog_test.jpg'
+// import cat from '../static/cat.jpg'
+// import horek from '../static/horek.jpg'
 
 export const initialState = {
-  products: [
-    {
-      id: '0',
-      title: 'Милая Собачка',
-      category: 'Собака',
-      description: 'Пока тут собачка, но потом будут соответственные данные',
-      date: 'Сегодня',
-      likes: '5 Лукасов',
-      country: 'Россия',
-      image: dog
-    },
-    {
-      id: '1',
-      title: 'Маленькая Кошечка',
-      category: 'Кошка',
-      description: 'Маленькая кошечка в качестве демки',
-      date: 'Сегодня',
-      likes: '5 Лукасов',
-      country: 'Китай',
-      image: cat
-    },
-    {
-      id: '2',
-      title: 'Хорек',
-      category: 'Хорек',
-      description: 'Просто хорек',
-      date: 'Сегодня',
-      likes: '5 Лукасов',
-      country: 'Россия',
-      image: horek
-    },
-    {
-      id: '3',
-      title: 'Милая Собачка',
-      category: 'Собака',
-      description: 'Пока тут собачка, но потом будут соответственные данные',
-      date: 'Сегодня',
-      likes: '5 Лукасов',
-      country: 'Корея',
-      image: dog
-    },
-    {
-      id: '4',
-      title: 'Злой хорек',
-      category: 'Хорек',
-      description: 'Просто хорек',
-      date: 'Сегодня',
-      likes: '5 Лукасов',
-      country: 'Израиль',
-      image: horek
-    }
-  ],
+  country: [],
   filter: {
     country: true
   }
@@ -78,6 +27,16 @@ export default (state = initialState, action) => {
         filter: {
           country: true
         }
+      }
+    case types.DOWNLOAD_COUNTRY:
+      return {
+        ...state,
+        country: action.payload
+      }
+    case types.DOWNLOAD_REVIEW:
+      return {
+        ...state,
+        reviews: action.payload
       }
     default:
       return state

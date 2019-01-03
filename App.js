@@ -6,6 +6,7 @@ import store from './src/store/store'
 import { Provider } from 'react-redux'
 import Country from './src/containers/Country'
 import Forum from './src/containers/Forum'
+import AddReview from './src/containers/AddReview/AddReview'
 
 class App extends React.Component {
   render () {
@@ -21,6 +22,7 @@ class App extends React.Component {
             </Scene>
             <Scene key="post" component={Post} title={'Постик'} hideTabBar />
             <Scene key="catalog" component={Forum} title="Каталог" />
+            <Scene key="addReview" component={AddReview} title="Добавить отзыв" />
           </Scene>
         </Router>
       </Provider>

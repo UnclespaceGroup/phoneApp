@@ -7,18 +7,18 @@ import { connect } from 'react-redux'
 class Country extends Component{
   render(){
     const {
-      products,
-      setFilter
+      setFilter,
+      country
     } = this.props
     return(
-      <CountryScreen {...{products, setFilter}}/>
+      <CountryScreen {...{country,setFilter}}/>
     )
   }
 }
 const mapStateToProps = (state) => {
   return {
-    products: state.products,
-    filter: state.filter
+    filter: state.filter,
+    country: state.country
   }
 }
 const mapDispatchToProps = (dispatch) => {

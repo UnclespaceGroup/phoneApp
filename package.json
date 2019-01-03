@@ -7,12 +7,14 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "expo": "^31.0.2",
     "lodash": "^4.17.11",
     "react": "16.5.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-31.0.0.tar.gz",
     "react-native-elements": "^0.19.1",
     "react-native-router-flux": "^4.0.6",
+    "react-native-simple-auth": "^2.4.0",
     "react-native-ui-kitten": "^3.1.2",
     "react-redux": "^6.0.0",
     "redux": "^4.0.1",

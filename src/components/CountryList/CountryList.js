@@ -8,25 +8,27 @@ class CountryList extends React.Component {
   render () {
     const {
       props: {
-        products
+        //products,
+        country
       },
       click
     } = this
-    const allCountry = _.map(products, (item, key) => {
-      return item.country
-    })
-    let country = _.uniq(allCountry)
+    console.log(country)
+    // const allCountry = _.map(products, (item, key) => {
+    //   return item.country
+    // })
+    // let country = _.uniq(allCountry)
     return (
       <View>
         <Card containerStyle={{padding: 0}}>
           {
-            _.map(country, (u, i) => {
+            _.map(country, ({Name, Id}, i) => {
               return (
                 <ListItem
                   key={i}
                   roundAvatar
-                  title={u}
-                  onPress={() => { click(u)}}
+                  title={Name}
+                  onPress={() => { click(Id)}}
                 />
               )
             })
