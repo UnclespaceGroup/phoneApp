@@ -4,11 +4,11 @@ import { Card, ListItem } from 'react-native-elements'
 import { Actions } from 'react-native-router-flux'
 import _ from 'lodash'
 
-class CountryList extends React.Component {
+class BrandList extends React.Component {
   render () {
     const {
       props: {
-        country
+        brands
       },
       click
     } = this
@@ -16,7 +16,7 @@ class CountryList extends React.Component {
       <View>
         <Card containerStyle={{padding: 0}}>
           {
-            _.map(country, ({Name, Id}, i) => {
+            _.map(brands, ({Name, Id}, i) => {
               return (
                 <ListItem
                   key={i}
@@ -29,7 +29,7 @@ class CountryList extends React.Component {
           }
           <ListItem
             roundAvatar
-            title={'Другие страны'}
+            title={'Другие бренды'}
             onPress={() => { click(0)}}
           />
         </Card>
@@ -37,8 +37,8 @@ class CountryList extends React.Component {
     )
   }
   click = (Id) => {
-    Actions.push('catalog', {currentCountry: Id})
+    Actions.push('catalog', {currentBrand: Id})
   }
 }
 
-export default CountryList
+export default BrandList

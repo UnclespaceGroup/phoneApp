@@ -10,20 +10,23 @@ class Post extends Component{
   render(){
     const {
       current,
-      products
+      reviews,
+      country
     } = this.props
-    const item = _.find(products, (item) => item.id === current) || { title: 'Не найдено'}
+    const item = ( current != null && _.find(reviews, (item) => item.Id === current)) || { title: 'Не найдено'}
     return(
       <View>
-        <PostScreen {...item} />
+        <Text>Пост</Text>
+        <PostScreen {...{ item, country}} />
       </View>
     )
   }
 }
 const mapStateToProps = (state) => {
   return {
-    products: state.products,
-    filter: state.filter
+    reviews: state.reviews,
+    filter: state.filter,
+    country: state.country
   }
 }
 const mapDispatchToProps = (dispatch) => {

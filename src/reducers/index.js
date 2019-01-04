@@ -7,6 +7,11 @@ export const initialState = {
   country: [],
   filter: {
     country: true
+  },
+  ready: {
+    brand: false,
+    country: false,
+    review: false
   }
 }
 
@@ -31,12 +36,29 @@ export default (state = initialState, action) => {
     case types.DOWNLOAD_COUNTRY:
       return {
         ...state,
-        country: action.payload
+        country: action.payload,
+        ready: {
+          ...state.ready,
+          country: true
+        }
       }
     case types.DOWNLOAD_REVIEW:
       return {
         ...state,
-        reviews: action.payload
+        reviews: action.payload,
+        ready: {
+          ...state.ready,
+          review: true
+        }
+      }
+    case types.DOWNLOAD_BRAND:
+      return {
+        ...state,
+        brands: action.payload,
+        ready: {
+          ...state.ready,
+          brand: true
+        }
       }
     default:
       return state

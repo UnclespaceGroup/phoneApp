@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import AuthorizationScreen from '../../screens/AuthorizationScreen/AuthorizationScreen'
 import { bindActionCreators } from 'redux'
-import { downloadCountry, downloadReview, getData, setFilter, downloadBrand } from '../../actions'
+import { getData } from '../../actions'
 import { connect } from 'react-redux'
+import SearchScreen from '../../screens/SearchScreen/SearchScreen'
 
-class Authorization extends Component {
+class Search extends Component {
   render () {
     const {
       props: {
@@ -12,7 +12,7 @@ class Authorization extends Component {
       }
     } = this
     return (
-      <AuthorizationScreen {...props} />
+      <SearchScreen {...props} />
     )
   }
 }
@@ -27,4 +27,4 @@ const mapDispatchToProps = (dispatch) => {
     getData: bindActionCreators(getData, dispatch)
   }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Authorization)
+export default connect(mapStateToProps, mapDispatchToProps)(Search)

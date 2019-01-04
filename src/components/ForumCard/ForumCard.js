@@ -1,7 +1,8 @@
 import React from 'react'
-import { View, Image } from 'react-native'
+import { View, Image, TouchableOpacity } from 'react-native'
 import { RkButton, RkCard, RkText, } from 'react-native-ui-kitten'
 import { Actions } from 'react-native-router-flux'
+import TabIcon from '../TabIcons/TabIcon'
 
 class ForumCard extends React.Component {
   state = {
@@ -38,11 +39,9 @@ class ForumCard extends React.Component {
           >
             Подробнее
           </RkButton>
-          <RkButton onPress={starClick} rkType={!star ? 'small' : 'small outline'}>
-            {
-              !star ? 'Добавить': 'Убрать'
-            }
-          </RkButton>
+          <TouchableOpacity onPress={starClick} >
+            <TabIcon iconName={!star ? 'star-o' : 'star'} />
+          </TouchableOpacity>
         </View>
       </RkCard>
     )

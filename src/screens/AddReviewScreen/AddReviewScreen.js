@@ -7,12 +7,14 @@ class AddReviewScreen extends React.Component {
   render () {
     const {
       props: {
-        addReview
+        addReview,
+        brands,
+        country
       }
     } = this
     return (
       <View style={styles.wrap}>
-        <AddReviewForm {...{addReview}} />
+        <AddReviewForm {...{addReview, brands,country}} />
       </View>
     )
   }

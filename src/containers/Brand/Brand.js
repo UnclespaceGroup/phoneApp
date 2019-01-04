@@ -2,27 +2,23 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { getData, setFilter } from '../../actions'
 import { connect } from 'react-redux'
-import ForumScreen from '../../screens/ForumScreen/ForumScreen'
+import BrandScreen from '../../screens/BrandScreen/BrandScreen'
 
-class Forum extends Component{
+class Brand extends Component{
   render(){
     const {
-      props: {
-        filter,
-        reviews,
-        currentCountry,
-        currentBrand
-      }
-    } = this
+      setFilter,
+      brands
+    } = this.props
     return(
-      <ForumScreen {...{ filter, currentCountry, currentBrand, reviews}} />
+      <BrandScreen {...{brands,setFilter}}/>
     )
   }
 }
 const mapStateToProps = (state) => {
   return {
     filter: state.filter,
-    reviews: state.reviews
+    brands: state.brands
   }
 }
 const mapDispatchToProps = (dispatch) => {
@@ -31,4 +27,4 @@ const mapDispatchToProps = (dispatch) => {
     setFilter: bindActionCreators(setFilter, dispatch)
   }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Forum)
+export default connect(mapStateToProps, mapDispatchToProps)(Brand)
