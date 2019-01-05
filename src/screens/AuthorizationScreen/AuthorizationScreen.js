@@ -1,10 +1,8 @@
 import React from 'react'
 import {View, Text, ImageBackground} from 'react-native'
 import styles from './scss/style.scss'
-import {RkButton, RkTextInput} from 'react-native-ui-kitten'
 import {SocialIcon} from 'react-native-elements'
 import {Actions} from 'react-native-router-flux'
-import CommentAdd from "../../components/Comment/CommentAdd";
 import background from '../../static/backgroundAuto.jpg'
 
 class AuthorizationScreen extends React.Component {
