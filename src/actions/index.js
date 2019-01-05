@@ -27,7 +27,7 @@ export const clearFilter = () => {
 }
 export const addReview = (data) => {
   return () => {
-    axios.post(addr.API_REVIEW, data)
+    axios.post(addr.API_REVIEW, data.data)
       .then(() => {
         Alert.alert('Успешно отправлено', 'Будет опубликовано после модерации')
       })
@@ -35,6 +35,27 @@ export const addReview = (data) => {
         console.log(e)
         Alert.alert('Произошла ошибка', addr.API_REVIEW)
       })
+    // let localUri = data.image.uri
+
+    // let filename = localUri.split('/').pop()
+
+    // let match = /\.(\w+)$/.exec(filename)
+    // let type = match ? `image/${match[1]}` : `image`
+
+    let formData = new FormData()
+    // formData.append('photo', {uri: localUri, name: filename, type})
+    formData.append('file0', data.image)
+
+    fetch(addr.API_IMAGES, {
+      method: 'POST',
+      header: {
+        'content-type': false,
+        'process-data': false
+      },
+      body: formData
+    })
+      .then(res => { console.log(res)})
+      .catch(e => {console.log(e)})
   }
 }
 export const downloadCountry = () => {
