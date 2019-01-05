@@ -20,7 +20,8 @@ class App extends React.Component {
       <Provider store={store}>
         <Router>
           <Scene key="root">
-            <Scene key="entry" component={Entry}  />
+            <Scene key="entry" component={Entry}
+            hideNavBar/>
             <Scene
               hideNavBar
               tabs={true}
@@ -79,6 +80,7 @@ class App extends React.Component {
                    component={Authorization}
                    title="Поиск"
                    iconName={'search'}
+
                    icon={TabIcon}
             />
           </Scene>
