@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import AuthorizationScreen from '../../screens/AuthorizationScreen/AuthorizationScreen'
 import { bindActionCreators } from 'redux'
 import { downloadCountry, downloadReview, getData, setFilter, downloadBrand } from '../../actions'
 import { connect } from 'react-redux'
 import Preloader from '../../components/Preloader/Preloader'
+import Authorization from '../Authorization'
 
 class Entry extends Component {
   componentDidMount () {
@@ -25,9 +25,8 @@ class Entry extends Component {
       }
     } = this
     const allReady = ready.review && ready.country && ready.brand
-    console.log(allReady)
     return (
-      allReady ? <AuthorizationScreen {...props} />
+      allReady ? <Authorization />
         : <Preloader />
     )
   }
@@ -37,7 +36,8 @@ const mapStateToProps = (state) => {
   return {
     products: state.products,
     filter: state.filter,
-    ready: state.ready
+    ready: state.ready,
+    profile: state.profile
   }
 }
 const mapDispatchToProps = (dispatch) => {

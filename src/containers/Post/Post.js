@@ -26,7 +26,8 @@ const mapStateToProps = (state) => {
   return {
     reviews: state.reviews,
     filter: state.filter,
-    country: state.country
+    country: state.country,
+    profile: state.profile
   }
 }
 const mapDispatchToProps = (dispatch) => {

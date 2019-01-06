@@ -1,30 +1,31 @@
 import React, { Component } from 'react'
 import AuthorizationScreen from '../../screens/AuthorizationScreen/AuthorizationScreen'
 import { bindActionCreators } from 'redux'
-import { downloadCountry, downloadReview, getData, setFilter, downloadBrand } from '../../actions'
+import { logIn, logOut } from '../../actions'
 import { connect } from 'react-redux'
 
 class Authorization extends Component {
   render () {
     const {
-      props: {
-        ...props
-      }
-    } = this
+      logIn,
+      logOut,
+      profile
+    } = this.props
     return (
-      <AuthorizationScreen {...props} />
+      <AuthorizationScreen {...{logIn, logOut, profile}} />
     )
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    filter: state.filter
+    profile: state.profile
   }
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    getData: bindActionCreators(getData, dispatch)
+    logIn: bindActionCreators(logIn, dispatch),
+    logOut: bindActionCreators(logOut, dispatch)
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Authorization)

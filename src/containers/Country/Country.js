@@ -18,7 +18,8 @@ class Country extends Component{
 const mapStateToProps = (state) => {
   return {
     filter: state.filter,
-    country: state.country
+    country: state.country,
+    profile: state.profile
   }
 }
 const mapDispatchToProps = (dispatch) => {

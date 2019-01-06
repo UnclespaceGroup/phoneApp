@@ -3,8 +3,9 @@ import { bindActionCreators } from 'redux'
 import { getData } from '../../actions'
 import { connect } from 'react-redux'
 import SearchScreen from '../../screens/SearchScreen/SearchScreen'
+import TopLoginButton from '../../components/TabIcons/TopLoginButton'
 
-class Search extends Component {
+class LoginButton extends Component {
   render () {
     const {
       props: {
@@ -12,14 +13,13 @@ class Search extends Component {
       }
     } = this
     return (
-      <SearchScreen {...props} />
+      <TopLoginButton {...props} />
     )
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    filter: state.filter,
     profile: state.profile
   }
 }
@@ -28,4 +28,4 @@ const mapDispatchToProps = (dispatch) => {
     getData: bindActionCreators(getData, dispatch)
   }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Search)
+export default connect(mapStateToProps, mapDispatchToProps)(LoginButton)

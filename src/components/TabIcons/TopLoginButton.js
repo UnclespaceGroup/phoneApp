@@ -1,5 +1,5 @@
 import { Component } from 'react'
-import { TouchableOpacity, View } from 'react-native'
+import { TouchableOpacity, View, Image } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import { Text } from 'react-native-elements'
 import React from 'react'
@@ -9,6 +9,9 @@ class TopLoginButton extends Component {
   render () {
     const color = this.props.selected ? '#00f240' : '#301c2a'
     const {
+      props: {
+        profile
+      },
       click
     } = this
     return (
@@ -21,7 +24,18 @@ class TopLoginButton extends Component {
           alignSelf: 'center',
           justifyContent: 'center'
         }}>
-          <Icon style={{color: color}} name={'user'} size={25} />
+          {
+            profile ?
+              <Image
+                source={{uri: profile.photoUrl}}
+                style={{
+                  width: 40,
+                  height: 40,
+                  borderRadius: 20
+                }}
+              />
+            : <Icon style={{color: color}} name={'user'} size={25} />
+          }
         </View>
       </TouchableOpacity>
     )

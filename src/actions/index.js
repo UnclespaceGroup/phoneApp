@@ -35,26 +35,25 @@ export const addReview = (data) => {
         console.log(e)
         Alert.alert('Произошла ошибка', addr.API_REVIEW)
       })
-    // let localUri = data.image.uri
+    let localUri = data.image.uri
 
-    // let filename = localUri.split('/').pop()
+    let filename = localUri.split('/').pop()
 
-    // let match = /\.(\w+)$/.exec(filename)
-    // let type = match ? `image/${match[1]}` : `image`
+    let match = /\.(\w+)$/.exec(filename)
+    let type = match ? `image/${match[1]}` : `image`
 
     let formData = new FormData()
-    // formData.append('photo', {uri: localUri, name: filename, type})
-    formData.append('file0', data.image)
+    formData.append('photo', {uri: localUri, name: filename, type})
 
     fetch(addr.API_IMAGES, {
       method: 'POST',
-      header: {
-        'content-type': false,
-        'process-data': false
-      },
-      body: formData
+      body: formData,
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'multipart/form-data'
+      }
     })
-      .then(res => { console.log(res)})
+      .then(res => {console.log(res)})
       .catch(e => {console.log(e)})
   }
 }
@@ -101,5 +100,20 @@ export const downloadBrand = () => {
         console.log(e)
         Alert.alert('Произошла ошибка', addr.API_BRAND)
       })
+  }
+}
+export const logIn = (data) => {
+  return dispatch => {
+    dispatch({
+      type: types.LOGIN,
+      payload: data
+    })
+  }
+}
+export const logOut = () => {
+  return dispatch => {
+    dispatch({
+      type: types.LOGOUT
+    })
   }
 }

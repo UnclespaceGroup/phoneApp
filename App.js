@@ -11,8 +11,8 @@ import { StyleSheet } from 'react-native'
 import TabIcon from './src/components/TabIcons/TabIcon'
 import Entry from './src/containers/Entry/Entry'
 import Brand from './src/containers/Brand'
-import TopLoginButton from './src/components/TabIcons/TopLoginButton'
 import Search from './src/containers/Search'
+import LoginButton from './src/containers/SmartComponents/LoginButton'
 
 class App extends React.Component {
   render () {
@@ -33,7 +33,7 @@ class App extends React.Component {
                      component={Forum}
                      title="Главная"
                      iconName={'list-alt'}
-                     renderRightButton={<TopLoginButton/>}
+                     renderRightButton={<LoginButton/>}
                      icon={TabIcon}
               />
               <Scene key="search"
@@ -41,28 +41,28 @@ class App extends React.Component {
                      title="Поиск"
                      iconName={'search'}
                      icon={TabIcon}
-                     renderRightButton={<TopLoginButton/>}
+                     renderRightButton={<LoginButton/>}
               />
               <Scene key="addReview"
                      component={AddReview}
                      iconName={'plus-square'}
                      title="Добавить"
                      icon={TabIcon}
-                     renderRightButton={<TopLoginButton/>}
+                     renderRightButton={<LoginButton/>}
               />
               <Scene key="country"
                      component={Country}
                      title="Страны"
                      iconName={'globe'}
                      icon={TabIcon}
-                     renderRightButton={<TopLoginButton/>}
+                     renderRightButton={<LoginButton/>}
               />
               <Scene key="brand"
                      component={Brand}
                      title="Бренды"
                      iconName={'ticket'}
                      icon={TabIcon}
-                     renderRightButton={<TopLoginButton/>}
+                     renderRightButton={<LoginButton/>}
               />
             </Scene>
 

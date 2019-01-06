@@ -22,7 +22,8 @@ class Forum extends Component{
 const mapStateToProps = (state) => {
   return {
     filter: state.filter,
-    reviews: state.reviews
+    reviews: state.reviews,
+    profile: state.profile
   }
 }
 const mapDispatchToProps = (dispatch) => {

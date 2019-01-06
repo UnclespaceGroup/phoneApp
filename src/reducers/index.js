@@ -12,7 +12,8 @@ export const initialState = {
     brand: false,
     country: false,
     review: false
-  }
+  },
+  profile: false
 }
 
 export default (state = initialState, action) => {
@@ -59,6 +60,20 @@ export default (state = initialState, action) => {
           ...state.ready,
           brand: true
         }
+      }
+    case types.LOGIN:
+      return {
+        ...state,
+        profile: {
+          name: action.payload.name,
+          photoUrl: action.payload.photoUrl,
+          email: action.payload.email
+        }
+      }
+    case types.LOGOUT:
+      return {
+        ...state,
+        profile: false
       }
     default:
       return state

@@ -4,22 +4,25 @@ import { addReview } from '../../actions'
 import { connect } from 'react-redux'
 import AddReviewScreen from '../../screens/AddReviewScreen/AddReviewScreen'
 
-class AddReview extends Component{
-  render(){
+class AddReview extends Component {
+  render () {
     const {
       addReview,
       brands,
-      country
+      country,
+      profile
     } = this.props
-    return(
-      <AddReviewScreen {...{addReview, brands, country}}/>
+    return (
+      <AddReviewScreen {...{addReview, brands, country}} />
     )
   }
 }
+
 const mapStateToProps = (state) => {
   return {
     brands: state.brands,
-    country: state.country
+    country: state.country,
+    profile: state.profile
   }
 }
 const mapDispatchToProps = (dispatch) => {
