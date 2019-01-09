@@ -26,8 +26,7 @@ class Entry extends Component {
     } = this
     const allReady = ready.review && ready.country && ready.brand
     return (
-      allReady ? <Authorization />
-        : <Preloader />
+        <Preloader {...{allReady}} />
     )
   }
 }

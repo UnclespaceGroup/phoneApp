@@ -41,7 +41,7 @@ class TopLoginButton extends Component {
     )
   }
   click = () => {
-    Actions.push('authorization')
+    Actions.push('profile')
   }
 }
 

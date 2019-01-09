@@ -1,5 +1,4 @@
 import React from 'react'
-import Authorization from './src/containers/Authorization'
 import Post from './src/containers/Post'
 import { Router, Scene } from 'react-native-router-flux'
 import store from './src/store/store'
@@ -13,6 +12,7 @@ import Entry from './src/containers/Entry/Entry'
 import Brand from './src/containers/Brand'
 import Search from './src/containers/Search'
 import LoginButton from './src/containers/SmartComponents/LoginButton'
+import Profile from './src/containers/Profile'
 
 class App extends React.Component {
   render () {
@@ -75,12 +75,13 @@ class App extends React.Component {
             <Scene key="catalog"
                    component={Forum}
                    title="Каталог"
+                   tabs={true}
             />
-            <Scene key="authorization"
-                   component={Authorization}
-                   title="Поиск"
+            <Scene key="profile"
+                   component={Profile}
+                   title="Мой профиль"
                    iconName={'search'}
-
+                   tabs={true}
                    icon={TabIcon}
             />
           </Scene>

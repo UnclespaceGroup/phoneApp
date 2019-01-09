@@ -1,9 +1,9 @@
 import React from 'react'
-import {View, Text, ImageBackground} from 'react-native'
+import {View, Text } from 'react-native'
 import styles from './scss/style.scss'
 import {SocialIcon} from 'react-native-elements'
 import {Actions} from 'react-native-router-flux'
-import background from '../../static/backgroundAuto.jpg'
+
 import AuthGoogle from '../../components/AuthenticationComponents/AuthGoogle'
 
 class AuthorizationScreen extends React.Component {
@@ -14,17 +14,12 @@ class AuthorizationScreen extends React.Component {
           profile
         } = this.props
         return (
-            <ImageBackground
-                source={background}
-                style={{
-                    backgroundColor: '#ccc',
-                    flex: 1,
-                    position: 'absolute',
-                    width: '100%',
-                    height: '100%',
-                    justifyContent: 'center',
-                }}>
-                <Text style={styles.title}>𝓜𝓪𝓴𝓮𝓐𝓟𝓟</Text>
+            <View style={{
+              flex: 1,
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}>
+
                 <View style={styles.wrapper}>
                     <Text style={styles.hr}>Авторизуйтесь с помощью</Text>
                     <View style={styles.social}>
@@ -33,9 +28,14 @@ class AuthorizationScreen extends React.Component {
                         <SocialIcon type='facebook'/>
                     </View>
                 </View>
+              <Text
+                style={{
+                  color: 'white',
+                  marginBottom: 25
+                }}
+              >Или</Text>
               <AuthGoogle {...{logIn, logOut, profile}} />
-                <Text style={styles.bottom__text}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vitae quam quis orci convallis eleifend.</Text>
-            </ImageBackground>
+            </View>
         )
     }
 }

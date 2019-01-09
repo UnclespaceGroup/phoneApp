@@ -4,6 +4,7 @@ import { RkButton } from 'react-native-ui-kitten'
 import { Dropdown } from 'react-native-material-dropdown'
 import _ from 'lodash'
 import { ImagePicker } from 'expo'
+import AddImageButton from '../TabIcons/AddImageButton'
 
 const styles = StyleSheet.create({
   container: {
@@ -85,21 +86,48 @@ class AddReviewForm extends React.Component {
           numberOfLines={8}
           placeholder={'Ваш отзыв'}
         />
-        <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-between', marginTop: 5}}>
-          <RkButton
-            onPress={_pickImage}
-            style={{backgroundColor: 'green'}}
-          >Добавить изображени</RkButton>
-          <RkButton onPress={submit}>Отправить</RkButton>
+        <View
+          style={{flex: 1, flexDirection: 'row', justifyItems: 'center', justifyContent: 'center', marginTop: 5}}>
+          <View>
+            {
+              image ? <Image source={{uri: image.uri}} style={{width: 100, height: 100, marginLeft: 10, marginBottom: 10}} />
+              : <AddImageButton
+                click={_pickImage}
+                style={{
+                  marginBottom: 20
+                }}
+              />
+            }
+            <RkButton
+              onPress={submit}
+            >Отправить</RkButton>
+          </View>
         </View>
-        {
-          image && <Image source={{uri: image.uri}} style={{width: 200, height: 200}} />
-        }
       </ScrollView>
     )
   }
 
   submit = () => {
+    const {
+      state: {
+        image
+      },
+      _submit
+    } = this
+    if (!image){
+      Alert.alert(
+        'Может добавите фото товара?',
+        'С изображением товара будет лучше',
+        [
+          {text: 'Хорошо, сейчас добавлю', onPress: () => null},
+          {text: 'Нет, пусть будет без фото', onPress: () => { _submit()}}
+        ]
+      )
+    }
+    else _submit()
+  }
+
+  _submit = () => {
     const {
       state: {
         title,
@@ -127,25 +155,27 @@ class AddReviewForm extends React.Component {
       BrandId: brandId,
       CountryId: countryId,
       Data: new Date().toString(),
-      Active: false,
+      Active: false
     }
 
-    addReview({
+
+    addReview(
       data, image
-    })
+    )
     this.setState({
       title: '',
       text: '',
       cur_brand: 'Другой',
-      cur_country: 'Другая'
+      cur_country: 'Другая',
+      image: null
     })
   }
+
   _pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
       allowsEditing: true,
       aspect: [4, 3],
     })
-    console.log(result)
     if (!result.cancelled) {
       this.setState({image: result})
     }
