@@ -19,7 +19,7 @@ class Authorization extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    profile: state.profile
+    profile: state.interiorReducer.profile
   }
 }
 const mapDispatchToProps = (dispatch) => {

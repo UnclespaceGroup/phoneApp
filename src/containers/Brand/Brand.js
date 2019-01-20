@@ -17,9 +17,9 @@ class Brand extends Component{
 }
 const mapStateToProps = (state) => {
   return {
-    filter: state.filter,
-    brands: state.brands,
-    profile: state.profile
+    filter: state.interiorReducer.filter,
+    brands: state.downloadReducer.brands,
+    profile: state.interiorReducer.profile
   }
 }
 const mapDispatchToProps = (dispatch) => {

@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { getData } from '../../actions'
 import { connect } from 'react-redux'
-import SearchScreen from '../../screens/SearchScreen/SearchScreen'
 import TopLoginButton from '../../components/TabIcons/TopLoginButton'
 
 class LoginButton extends Component {
@@ -20,7 +19,7 @@ class LoginButton extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    profile: state.profile
+    profile: state.interiorReducer.profile
   }
 }
 const mapDispatchToProps = (dispatch) => {

@@ -3,7 +3,6 @@ import { bindActionCreators } from 'redux'
 import { downloadCountry, downloadReview, getData, setFilter, downloadBrand } from '../../actions'
 import { connect } from 'react-redux'
 import Preloader from '../../components/Preloader/Preloader'
-import Authorization from '../Authorization'
 
 class Entry extends Component {
   componentDidMount () {
@@ -33,10 +32,9 @@ class Entry extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    products: state.products,
-    filter: state.filter,
-    ready: state.ready,
-    profile: state.profile
+    filter: state.interiorReducer.filter,
+    ready: state.downloadReducer.ready,
+    profile: state.interiorReducer.profile
   }
 }
 const mapDispatchToProps = (dispatch) => {

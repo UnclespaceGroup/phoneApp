@@ -19,8 +19,8 @@ class Profile extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    filter: state.filter,
-    profile: state.profile
+    filter: state.interiorReducer.filter,
+    profile: state.interiorReducer.profile
   }
 }
 const mapDispatchToProps = (dispatch) => {

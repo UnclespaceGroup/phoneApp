@@ -24,10 +24,10 @@ class Post extends Component{
 }
 const mapStateToProps = (state) => {
   return {
-    reviews: state.reviews,
-    filter: state.filter,
-    country: state.country,
-    profile: state.profile
+    reviews: state.downloadReducer.reviews,
+    filter: state.interiorReducer.filter,
+    country: state.downloadReducer.country,
+    profile: state.interiorReducer.profile
   }
 }
 const mapDispatchToProps = (dispatch) => {
