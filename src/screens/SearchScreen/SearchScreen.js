@@ -1,6 +1,5 @@
 import React from 'react'
 import {View, Text} from 'react-native'
-import Authorization from '../../containers/Authorization'
 
 class SearchScreen extends React.Component {
     render() {

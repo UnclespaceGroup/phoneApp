@@ -17,9 +17,9 @@ class Country extends Component{
 }
 const mapStateToProps = (state) => {
   return {
-    filter: state.filter,
-    country: state.country,
-    profile: state.profile
+    filter: state.interiorReducer.filter,
+    country: state.downloadReducer.country,
+    profile: state.interiorReducer.profile
   }
 }
 const mapDispatchToProps = (dispatch) => {

@@ -21,9 +21,9 @@ class Forum extends Component{
 }
 const mapStateToProps = (state) => {
   return {
-    filter: state.filter,
-    reviews: state.reviews,
-    profile: state.profile
+    filter: state.interiorReducer.filter,
+    reviews: state.downloadReducer.reviews,
+    profile: state.interiorReducer.profile
   }
 }
 const mapDispatchToProps = (dispatch) => {

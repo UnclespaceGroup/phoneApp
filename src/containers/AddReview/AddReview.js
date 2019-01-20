@@ -20,9 +20,9 @@ class AddReview extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    brands: state.brands,
-    country: state.country,
-    profile: state.profile
+    brands: state.downloadReducer.brands,
+    country: state.downloadReducer.country,
+    profile: state.interiorReducer.profile
   }
 }
 const mapDispatchToProps = (dispatch) => {
