@@ -1,5 +1,5 @@
 import React from 'react'
-import { ScrollView } from 'react-native'
+import { ScrollView, Text } from 'react-native'
 import ForumCard from '../../components/ForumCard/ForumCard'
 import _ from 'lodash'
 import Spinner from 'react-native-loading-spinner-overlay'
@@ -28,6 +28,7 @@ class FilteredForumScreen extends React.Component {
     return (
       preloader ? <Spinner />
         : <ScrollView>
+          <Text style={{padding: 10, fontSize: 15}}>Всего найдено {current.length}</Text>
         {
           _.map(current, (item, key) =>
             <ForumCard key={key} {...item} />
@@ -42,9 +43,9 @@ class FilteredForumScreen extends React.Component {
     this.setState({
       preloader: true
     })
-
-    const countryActive = _.find(filter.country, f => f.active) ? true
-      : _.filter(reviews, item => {
+    let current = reviews.slice()
+    current = _.find(filter.country, f => f.active) ? current
+      : _.filter(current, item => {
           const {
             CountryId
           } = item
@@ -52,8 +53,8 @@ class FilteredForumScreen extends React.Component {
           return countryEnable && countryEnable.active
         }
       )
-    const brandActive = _.find(filter.brand, f => f.active) ? true
-      : _.filter(reviews, item => {
+    current = _.find(filter.brand, f => f.active) ? current
+      : _.filter(current, item => {
           const {
             BrandId
           } = item
@@ -61,15 +62,15 @@ class FilteredForumScreen extends React.Component {
           return brandEnable && brandEnable.active
         }
       )
-    const nameActive = _.filter(reviews, item => {
+    current = _.filter(current, item => {
         const {Title} = item
-        return filter.search ? Title && (Title.toLowerCase().indexOf(filter.search.toLowerCase()) !== -1) : true
+        return filter.search ? Title && (Title.toLowerCase().indexOf(filter.search.toLowerCase()) !== -1) : current
       }
     )
     this.setState({
       preloader: false
     })
-    return brandActive && countryActive && nameActive
+    return current
   }
   static defaultProps = {
     filter: []

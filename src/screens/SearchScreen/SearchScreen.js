@@ -7,13 +7,24 @@ import { RkButton, RkText, RkTextInput } from 'react-native-ui-kitten'
 import { Actions } from 'react-native-router-flux'
 
 const s = StyleSheet.create({
-  container: {},
+  container: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    flexDirection: 'column',
+    height: '100%'
+  },
   input: {
     paddingLeft: 5,
     margin: 10
   },
   block: {
-    marginBottom: 10
+    marginBottom: 30,
+  },
+  button: {
+    bottom: 10,
+    width: '80%',
+    marginLeft: '10%',
+    marginRight: '10%'
   }
 })
 
@@ -23,7 +34,8 @@ class SearchScreen extends React.PureComponent {
     country: [],
     search: ''
   }
-  componentWillReceiveProps(props){
+
+  componentWillReceiveProps (props) {
     const {
       filter
     } = props
@@ -32,6 +44,7 @@ class SearchScreen extends React.PureComponent {
       country: filter.country
     })
   }
+
   render () {
     const {
       props: {
@@ -47,7 +60,6 @@ class SearchScreen extends React.PureComponent {
     } = this
     return (
       <View style={s.container}>
-        <Text>Поиск</Text>
         <RkTextInput
           style={s.input}
           label={<Icon name={'ios-search'} />}
@@ -56,27 +68,28 @@ class SearchScreen extends React.PureComponent {
           onChangeText={(search) => this.setState({search})}
         />
 
-        <View>
-          <RkText>Выберете бренд</RkText>
+        <View style={s.block}>
           <CheckBoxBlock
-            style={s.block}
+            title={'Выбирете бренды'}
             name={'brands'}
             click={brandFilterClick}
             items={brands}
           />
         </View>
-        <View>
-          <RkText>Выберете страну</RkText>
+        <View style={s.block}>
           <CheckBoxBlock
-            style={s.block}
+            title={'Выберете страны'}
             name={'country'}
             click={brandFilterClick}
             items={country}
           />
         </View>
-        <RkButton
-          onPress={click}
-        >Применить фильтры</RkButton>
+        <View>
+          <RkButton
+            onPress={click}
+            style={s.button}
+          >Применить фильтры</RkButton>
+        </View>
       </View>
     )
   }
