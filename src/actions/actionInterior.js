@@ -8,10 +8,11 @@ export const getData = () => {
   }
 }
 export const setFilter = (data) => {
+  console.log('action')
   return dispatch => {
     dispatch({
       type: types.SET_FILTER,
-      data
+      payload: data
     })
   }
 }

@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
 import { View, ScrollView } from 'react-native'
-import { RkButton } from 'react-native-ui-kitten'
 import _ from 'lodash'
 import CheckBoxItem from './CheckBoxItem'
 
-class CheckBoxBlock extends Component{
-  render() {
+class CheckBoxBlock extends Component {
+  render () {
     const {
       props: {
         items
@@ -13,7 +12,7 @@ class CheckBoxBlock extends Component{
       inCorrectArray
     } = this
     let array = inCorrectArray(items)
-    return(
+    return (
       <View>
         <ScrollView
           horizontal
@@ -29,18 +28,19 @@ class CheckBoxBlock extends Component{
       </View>
     )
   }
+
   inCorrectArray = (items) => {
+    const {click, name} = this.props
     let array = []
-    console.log(items)
-    for (let i = 0; i < (items.length - 3); i+=3){
-      console.log(items[i])
-      console.log(items[i + 1])
-      console.log(items[i + 2])
+    for (let i = 0; i < (items.length); i += 3) {
       array.push(
         <View>
-          <CheckBoxItem>{items[i].Name}</CheckBoxItem>
-          <CheckBoxItem>{items[i + 1].Name}</CheckBoxItem>
-          <CheckBoxItem>{items[i + 2].Name}</CheckBoxItem>
+          {
+            items[i] && <CheckBoxItem {...{click, name, ...items[i]}} />}
+          {
+            items[i + 1] && <CheckBoxItem {...{click, name, ...items[i + 1]}} />
+          }
+          { items[i + 2] && <CheckBoxItem {...{click, name, ...items[i + 2]}} />}
         </View>
       )
     }
@@ -50,4 +50,5 @@ class CheckBoxBlock extends Component{
     items: []
   }
 }
+
 export default CheckBoxBlock

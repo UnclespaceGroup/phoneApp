@@ -1,35 +1,35 @@
-import React, { Component } from 'react'
+import React, { Component, PureComponent } from 'react'
 import { RkButton } from 'react-native-ui-kitten'
 import { View, StyleSheet } from 'react-native'
 
 const style = StyleSheet.create({
-  button: {
-    backgroundColor: 'white'
-  },
-  button_active: {
-    backgroundColor: 'blue'
-  },
+  button: {},
   container: {
-    padding: 2
+    padding: 4
   }
 })
 
-
-class CheckBoxItem extends Component{
+class CheckBoxItem extends PureComponent{
   render() {
     const {
       props: {
         active,
-        children
+        click,
+        Id,
+        name,
+        Name
       }
     } = this
-    console.log(children)
     return(
       <View style={style.container} >
         <RkButton
+          style={style.button}
+          onPress={() => {
+            click(name, Id)
+          }}
           rkType={active ? 'primary': 'outline'}
         >
-          {children}
+          {Name}
         </RkButton>
       </View>
     )

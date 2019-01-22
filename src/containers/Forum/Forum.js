@@ -3,22 +3,21 @@ import { bindActionCreators } from 'redux'
 import { getData, setFilter } from '../../actions'
 import { connect } from 'react-redux'
 import ForumScreen from '../../screens/ForumScreen/ForumScreen'
+import FilteredForumScreen from '../../screens/ForumScreen/FilteredForumScreen'
 
-class Forum extends Component{
-  render(){
+class Forum extends Component {
+  render () {
     const {
-      props: {
-        filter,
-        reviews,
-        currentCountry,
-        currentBrand
-      }
-    } = this
-    return(
-      <ForumScreen {...{ filter, currentCountry, currentBrand, reviews}} />
+      filtered,
+      ...props
+    } = this.props
+    return (
+      filtered ? <FilteredForumScreen {...props} />
+        : <ForumScreen {...props} />
     )
   }
 }
+
 const mapStateToProps = (state) => {
   return {
     filter: state.interiorReducer.filter,

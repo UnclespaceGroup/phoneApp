@@ -2,9 +2,6 @@ import * as types from '../constants'
 
 const initialState = {
   country: [],
-  filter: {
-    country: true
-  },
   profile: false
 }
 
@@ -15,16 +12,18 @@ export default (state = initialState, action) => {
         ...state
       }
     case types.SET_FILTER:
+      console.log('reducer')
       return {
         ...state,
-        filter: action.data
+        filter: {
+          ...state.filter,
+          ...action.payload
+        }
       }
     case types.CLEAR_FILTER:
       return {
         ...state,
-        filter: {
-          country: true
-        }
+        filter: true
       }
     case types.SHOW_PRELOADER:
       return {
