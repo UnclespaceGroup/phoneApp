@@ -20,7 +20,8 @@ const s = StyleSheet.create({
 class SearchScreen extends React.PureComponent {
   state = {
     brands: [],
-    country: []
+    country: [],
+    search: ''
   }
   componentWillReceiveProps(props){
     const {
@@ -38,14 +39,22 @@ class SearchScreen extends React.PureComponent {
       },
       state: {
         brands,
-        country
+        country,
+        search
       },
+      click,
       brandFilterClick
     } = this
     return (
       <View style={s.container}>
         <Text>Поиск</Text>
-        <RkTextInput style={s.input} label={<Icon name={'ios-search'} />} rkType='rounded' placeholder={'Поиск...'} />
+        <RkTextInput
+          style={s.input}
+          label={<Icon name={'ios-search'} />}
+          rkType='rounded' placeholder={'Поиск...'}
+          value={search}
+          onChangeText={(search) => this.setState({search})}
+        />
 
         <View>
           <RkText>Выберете бренд</RkText>
@@ -66,7 +75,7 @@ class SearchScreen extends React.PureComponent {
           />
         </View>
         <RkButton
-          onPress={() => Actions.push('catalog', {filtered: true})}
+          onPress={click}
         >Применить фильтры</RkButton>
       </View>
     )
@@ -87,16 +96,21 @@ class SearchScreen extends React.PureComponent {
     const {
       state: {
         brands,
-        country
+        country,
+        search
       },
       props: {
         setFilter
       }
     } = this
+
     setFilter({
       brands,
-      country
+      country,
+      search
     })
+    console.log('searchScreen')
+    Actions.push('catalog', {filtered: true})
   }
   static defaultProps = {
     filter: {

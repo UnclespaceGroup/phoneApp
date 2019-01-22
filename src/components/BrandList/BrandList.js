@@ -1,5 +1,5 @@
 import React from 'react'
-import { View } from 'react-native'
+import { ScrollView } from 'react-native'
 import { Card, ListItem } from 'react-native-elements'
 import { Actions } from 'react-native-router-flux'
 import _ from 'lodash'
@@ -13,7 +13,7 @@ class BrandList extends React.Component {
       click
     } = this
     return (
-      <View>
+      <ScrollView>
         <Card containerStyle={{padding: 0}}>
           {
             _.map(brands, ({Name, Id}, i) => {
@@ -33,7 +33,7 @@ class BrandList extends React.Component {
             onPress={() => { click(0)}}
           />
         </Card>
-      </View>
+      </ScrollView>
     )
   }
   click = (Id) => {

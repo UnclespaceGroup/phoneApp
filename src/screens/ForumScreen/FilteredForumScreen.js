@@ -1,12 +1,13 @@
 import React from 'react'
-import { ScrollView, Text } from 'react-native'
-import PropTypes from 'prop-types'
+import { ScrollView } from 'react-native'
 import ForumCard from '../../components/ForumCard/ForumCard'
 import _ from 'lodash'
+import Spinner from 'react-native-loading-spinner-overlay'
 
 class FilteredForumScreen extends React.Component {
   state = {
-    current: []
+    current: [],
+    preloader: false
   }
 
   componentDidMount () {
@@ -20,11 +21,13 @@ class FilteredForumScreen extends React.Component {
         reviews
       },
       state: {
-        current
+        current,
+        preloader
       }
     } = this
     return (
-      <ScrollView>
+      preloader ? <Spinner />
+        : <ScrollView>
         {
           _.map(current, (item, key) =>
             <ForumCard key={key} {...item} />
@@ -36,17 +39,37 @@ class FilteredForumScreen extends React.Component {
 
   filterArray = () => {
     const {filter, reviews} = this.props
-    return _.filter(reviews, item => {
-        const {
-          CountryId,
-          BrandId
-        } = item
-        const countryEnable = _.find(filter.country, c => c.Id === CountryId)
-        const brandEnable = _.find(filter.brands, b => b.Id === BrandId)
+    this.setState({
+      preloader: true
+    })
 
-      return countryEnable && countryEnable.active && brandEnable && brandEnable.active
+    const countryActive = _.find(filter.country, f => f.active) ? true
+      : _.filter(reviews, item => {
+          const {
+            CountryId
+          } = item
+          const countryEnable = _.find(filter.country, c => c.Id === CountryId)
+          return countryEnable && countryEnable.active
+        }
+      )
+    const brandActive = _.find(filter.brand, f => f.active) ? true
+      : _.filter(reviews, item => {
+          const {
+            BrandId
+          } = item
+          const brandEnable = _.find(filter.brands, b => b.Id === BrandId)
+          return brandEnable && brandEnable.active
+        }
+      )
+    const nameActive = _.filter(reviews, item => {
+        const {Title} = item
+        return filter.search ? Title && (Title.toLowerCase().indexOf(filter.search.toLowerCase()) !== -1) : true
       }
     )
+    this.setState({
+      preloader: false
+    })
+    return brandActive && countryActive && nameActive
   }
   static defaultProps = {
     filter: []
