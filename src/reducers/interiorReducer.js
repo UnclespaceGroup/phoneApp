@@ -26,7 +26,11 @@ export default (state = initialState, action) => {
           country: true
         }
       }
-
+    case types.SHOW_PRELOADER:
+      return {
+        ...state,
+        preloader: action.payload
+      }
     case types.LOGIN:
       return {
         ...state,

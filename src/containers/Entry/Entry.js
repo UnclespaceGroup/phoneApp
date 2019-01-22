@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { downloadCountry, downloadReview, getData, setFilter, downloadBrand } from '../../actions'
 import { connect } from 'react-redux'
-import Preloader from '../../components/Preloader/Preloader'
+import StartPreloader from '../../components/Preloader/StartPreloader'
 
 class Entry extends Component {
   componentDidMount () {
@@ -25,7 +25,7 @@ class Entry extends Component {
     } = this
     const allReady = ready.review && ready.country && ready.brand
     return (
-        <Preloader {...{allReady}} />
+        <StartPreloader {...{allReady}} />
     )
   }
 }

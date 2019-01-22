@@ -2,6 +2,7 @@
 import * as addr from '../constants/addr'
 import axios from 'axios'
 import { Alert } from 'react-native'
+import * as types from '../constants'
 
 export const addReview = (data, image) => {
   let now_filename
@@ -18,7 +19,11 @@ export const addReview = (data, image) => {
     now_filename = Math.random().toString(36).substring(7) + '_' + filename
   }
 
-  return () => {
+  return dispatch => {
+    dispatch({
+      type: types.SHOW_PRELOADER,
+      payload: true
+    })
     axios.post(addr.API_REVIEW, {
         ...data,
         Image: now_filename || 'default'
@@ -26,10 +31,18 @@ export const addReview = (data, image) => {
     )
       .then(() => {
         Alert.alert('Успешно отправлено', 'Будет опубликовано после модерации')
+        dispatch({
+          type: types.SHOW_PRELOADER,
+          payload: false
+        })
       })
       .catch(e => {
         console.log(e)
         Alert.alert('Произошла ошибка', addr.API_REVIEW)
+        dispatch({
+          type: types.SHOW_PRELOADER,
+          payload: false
+        })
       })
 
     if (image) {

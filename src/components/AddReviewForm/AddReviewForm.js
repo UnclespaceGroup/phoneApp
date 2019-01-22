@@ -28,6 +28,7 @@ class AddReviewForm extends React.Component {
     cur_brand: 'Другой',
     cur_country: 'Другая',
     image: null,
+    sending: false
   }
 
   render () {
@@ -41,7 +42,8 @@ class AddReviewForm extends React.Component {
         text,
         cur_brand,
         cur_country,
-        image
+        image,
+        sending
       },
       submit,
       _pickImage

@@ -20,7 +20,8 @@ class Search extends Component {
 const mapStateToProps = (state) => {
   return {
     filter: state.interiorReducer.filter,
-    profile: state.interiorReducer.profile
+    profile: state.interiorReducer.profile,
+    brands: state.downloadReducer.brands
   }
 }
 const mapDispatchToProps = (dispatch) => {

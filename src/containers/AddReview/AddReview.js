@@ -7,13 +7,10 @@ import AddReviewScreen from '../../screens/AddReviewScreen/AddReviewScreen'
 class AddReview extends Component {
   render () {
     const {
-      addReview,
-      brands,
-      country,
-      profile
+      ...props
     } = this.props
     return (
-      <AddReviewScreen {...{addReview, brands, country}} />
+      <AddReviewScreen {...props} />
     )
   }
 }
@@ -22,7 +19,8 @@ const mapStateToProps = (state) => {
   return {
     brands: state.downloadReducer.brands,
     country: state.downloadReducer.country,
-    profile: state.interiorReducer.profile
+    profile: state.interiorReducer.profile,
+    preloader: state.interiorReducer.preloader
   }
 }
 const mapDispatchToProps = (dispatch) => {
