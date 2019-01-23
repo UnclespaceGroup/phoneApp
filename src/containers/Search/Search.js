@@ -4,14 +4,20 @@ import { getData, setFilter } from '../../actions'
 import { connect } from 'react-redux'
 import SearchScreen from '../../screens/SearchScreen/SearchScreen'
 import _ from 'lodash'
+import TagSearchScreen from '../../screens/SearchScreen/TagSearchScreen'
+import SimpleSearchScreen from '../../screens/SearchScreen/SimpleSearchScreen'
 
 class Search extends Component {
+  state = {
+
+  }
   componentDidMount() {
     const {
       setFilter,
       brands,
       country
     } = this.props
+    console.log(brands)
     const brandsFilter = _.map(brands, brand => { return {...brand, active: false}})
     const countryFilter = _.map(country, c => { return {...c, active: false}})
     setFilter({brands: brandsFilter})
@@ -20,11 +26,14 @@ class Search extends Component {
   render () {
     const {
       props: {
-        ...props
+        searchScreen,
+        filter
       }
     } = this
     return (
-      <SearchScreen {...props} />
+      searchScreen === 'tag'
+      ? <TagSearchScreen />
+      : <SimpleSearchScreen {...{filter }} />
     )
   }
 }
@@ -34,7 +43,8 @@ const mapStateToProps = (state) => {
     filter: state.interiorReducer.filter,
     profile: state.interiorReducer.profile,
     brands: state.downloadReducer.brands,
-    country: state.downloadReducer.country
+    country: state.downloadReducer.country,
+    searchScreen: state.interiorReducer.searchScreen
   }
 }
 const mapDispatchToProps = (dispatch) => {

@@ -38,7 +38,7 @@ class CheckBoxItem extends PureComponent{
           rkType={active ? 'primary': 'outline'}
         >
           {Name}
-        <View style={{marginLeft: 10}}><Icon size={15} name={active ? 'check': ''} color={'white'} /></View>
+        <View style={{marginLeft: 10}}>{active && <Icon size={15} name={'check'} color={'white'} />}</View>
         </RkButton>
       </View>
     )
