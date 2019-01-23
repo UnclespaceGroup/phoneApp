@@ -37,3 +37,11 @@ export const logOut = () => {
     })
   }
 }
+export const changeSearchSwitch = (data) => {
+  return dispatch => {
+    dispatch({
+      type: types.SEARCH_SWITCH,
+      payload: data
+    })
+  }
+}

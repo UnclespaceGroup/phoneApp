@@ -21,6 +21,7 @@
     "react-native-loading-spinner-overlay": "^1.0.1",
     "react-native-material-dropdown": "^0.11.1",
     "react-native-modal-dropdown": "^0.6.2",
+    "react-native-popup-menu": "^0.14.2",
     "react-native-router-flux": "^4.0.6",
     "react-native-simple-auth": "^2.4.0",
     "react-native-ui-kitten": "^3.1.2",

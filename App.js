@@ -13,6 +13,7 @@ import Brand from './src/containers/Brand'
 import Search from './src/containers/Search'
 import LoginButton from './src/containers/SmartComponents/LoginButton'
 import Profile from './src/containers/Profile'
+import SearchScreenSwitcher from './src/containers/SmartComponents/SearchScreenSwitcher'
 
 class App extends React.Component {
   render () {
@@ -39,9 +40,10 @@ class App extends React.Component {
               />
               <Scene key="search"
                      component={Search}
-                     title="Поиск"
+                     // title="Поиск"
                      iconName={'search'}
                      icon={TabIcon}
+                     renderLeftButton={<SearchScreenSwitcher/>}
                      renderRightButton={<LoginButton/>}
               />
               <Scene key="addReview"

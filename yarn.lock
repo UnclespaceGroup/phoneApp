@@ -5091,6 +5091,11 @@ react-native-modal-dropdown@^0.6.2:
   dependencies:
     prop-types "^15.6.0"
 
+react-native-popup-menu@^0.14.2:
+  version "0.14.2"
+  resolved "https://registry.yarnpkg.com/react-native-popup-menu/-/react-native-popup-menu-0.14.2.tgz#c71e6d662ce143cdfd3a640fe22f2c54f2f54eda"
+  integrity sha512-hVy9z4JLj+6/ll2UXwR2O+exzx57b0gdLbUZUY2A1hXrTGOgxDpsQ+sQBHTLeUXoSQDtZxGcunmpIc1ZjdhMHg==
+
 react-native-reanimated@1.0.0-alpha.10:
   version "1.0.0-alpha.10"
   resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-1.0.0-alpha.10.tgz#e9e6fb35a2cf52fdc912b9fbc76f34f80698e530"

@@ -2,7 +2,8 @@ import * as types from '../constants'
 
 const initialState = {
   country: [],
-  profile: false
+  profile: false,
+  searchScreen: 'tag'
 }
 
 export default (state = initialState, action) => {
@@ -12,7 +13,6 @@ export default (state = initialState, action) => {
         ...state
       }
     case types.SET_FILTER:
-      console.log('reducer')
       return {
         ...state,
         filter: {
@@ -43,6 +43,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         profile: false
+      }
+    case types.SEARCH_SWITCH:
+      return {
+        ...state,
+        searchScreen: action.payload
       }
     default:
       return state
