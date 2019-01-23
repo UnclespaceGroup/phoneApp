@@ -11,11 +11,12 @@ class ForumScreen extends React.Component {
       currentCountry,
       reviews
     } = this.props
+    console.log(currentCountry);
     let current = _.filter(reviews, ({CountryId}) => {
-      return currentCountry ? (CountryId === currentCountry) : true
+      return (typeof(currentCountry) !== 'undefined' )? (CountryId === currentCountry) : true
     })
     current = _.filter(current, ({BrandId}) => {
-      return currentBrand ? (BrandId === currentBrand) : true
+      return (typeof(currentBrand) !== 'undefined' )? (BrandId === currentBrand) : true
     })
     return (
       <ScrollView>

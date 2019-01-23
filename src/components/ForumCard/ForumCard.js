@@ -21,18 +21,19 @@ class ForumCard extends React.Component {
       starClick
     } = this
     return (
-      <RkCard rkType='rounded '>
-        <Image source={{uri: 'https://material.io/tools/icons/static/ic_icons_192px_light.svg'}} />
-        <View rkCardHeader>
-          <RkText rkType='header'>{Title}</RkText>
-        </View>
+      <RkCard rkType='rounded ' style={{backgroundColor: '#F0F2EB', marginBottom: -1}}>
+        <Image source={{uri: 'https://material.io/tools/icons/static/ic_icons_192px_light.svg'}}/>
+          <RkText rkType='header' style={{fontWeight: 'bold', textAlign: 'center', paddingTop: 12}}
+                  >{Title}</RkText>
         <View rkCardContent>
-          <RkText style={{textAlign: 'center'}}>
+          <RkText style={{ overflow: 'hidden', maxHeight: 93}}>
             {Text}
           </RkText>
         </View>
         <View rkCardFooter>
           <RkButton rkType='small outline'
+                    contentStyle={{color: 'red'}}
+                    style={{borderColor: 'red'}}
                     onPress={() => {
                       Actions.push('post', {current: Id})
                     }}
@@ -40,7 +41,7 @@ class ForumCard extends React.Component {
             Подробнее
           </RkButton>
           <TouchableOpacity onPress={starClick} >
-            <TabIcon iconName={!star ? 'star-o' : 'star'} />
+            <TabIcon iconName={!star ? 'star-o' : 'star'}/>
           </TouchableOpacity>
         </View>
       </RkCard>

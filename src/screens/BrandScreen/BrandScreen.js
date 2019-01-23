@@ -1,7 +1,6 @@
 import React from 'react'
-import { View } from 'react-native'
+import {ScrollView, View} from 'react-native'
 import styles from './scss/style.scss'
-import CountryList from '../../components/CountryList/CountryList'
 import BrandList from '../../components/BrandList/BrandList'
 
 class BrandScreen extends React.Component {
@@ -13,9 +12,9 @@ class BrandScreen extends React.Component {
       }
     } = this
     return (
-      <View style={styles.wrap}>
+      <ScrollView style={styles.wrap}>
         <BrandList {...{setFilter,brands}} />
-      </View>
+      </ScrollView>
     )
   }
 }
