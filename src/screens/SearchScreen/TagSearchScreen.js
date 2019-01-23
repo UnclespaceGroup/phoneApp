@@ -9,6 +9,7 @@ import { Actions } from 'react-native-router-flux'
 const s = StyleSheet.create({
   container: {
     display: 'flex',
+    justifyContent: 'space-between',
     height: '100%'
   },
   search: {
@@ -20,6 +21,11 @@ const s = StyleSheet.create({
     paddingLeft: 5,
     margin: 10,
     width: '60%'
+  },
+  tags: {
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'wrap'
   },
   button: {
     bottom: 10,
@@ -53,27 +59,30 @@ class TagSearchScreen extends React.PureComponent {
         currentTag
       },
       click,
-      addTag
+      addTag,
+      deleteTag
     } = this
     return (
       <View style={s.container}>
         <View>
-          {
-            _.map(tags, (item, key) => <RkButton key={key} rkType={'small'}>{item}</RkButton>)
-          }
+          <View style={s.search}>
+            <RkTextInput
+              style={s.input}
+              label={<Icon name={'ios-search'} />}
+              rkType='rounded' placeholder={'#tag...'}
+              value={currentTag}
+              onChangeText={(currentTag) => this.setState({currentTag})}
+            />
+            <RkButton onPress={addTag}>Добавить</RkButton>
+          </View>
+          <View style={s.tags}>
+            {
+              _.map(tags, (item, key) => <RkButton key={key} onPress={() => {deleteTag(item)}} rkType={'small'}>{item}</RkButton>)
+            }
+          </View>
         </View>
-        <View style={s.search}>
-          <RkTextInput
-            style={s.input}
-            label={<Icon name={'ios-search'} />}
-            rkType='rounded' placeholder={'#tag...'}
-            value={currentTag}
-            onChangeText={(currentTag) => this.setState({currentTag})}
-          />
-          <RkButton onPress={addTag}>Добавить</RkButton>
-        </View>
-
         <View>
+
           <RkButton
             onPress={click}
             style={s.button}
@@ -82,7 +91,15 @@ class TagSearchScreen extends React.PureComponent {
       </View>
     )
   }
-
+  deleteTag = (item) => {
+    const {tags} = this.state
+    let current = tags.slice()
+    let a = current.indexOf(item)
+    delete current[a]
+    this.setState({
+      tags: current
+    })
+  }
   addTag = () => {
     const {tags, currentTag} = this.state
     let currentTags = tags.slice()
@@ -109,7 +126,6 @@ class TagSearchScreen extends React.PureComponent {
       country,
       search
     })
-    console.log('searchScreen')
     Actions.push('catalog', {filtered: true})
   }
   static defaultProps = {
