@@ -1,11 +1,19 @@
 import React, { Component, PureComponent } from 'react'
 import { RkButton } from 'react-native-ui-kitten'
-import { View, StyleSheet } from 'react-native'
+import { View, StyleSheet, Text } from 'react-native'
+import { Icon } from 'react-native-elements'
 
-const style = StyleSheet.create({
-  button: {},
+
+const s = StyleSheet.create({
+  button: {
+    borderRadius: 5
+  },
   container: {
     padding: 4
+  },
+  icon: {
+    width: 3,
+    height: 3
   }
 })
 
@@ -21,15 +29,16 @@ class CheckBoxItem extends PureComponent{
       }
     } = this
     return(
-      <View style={style.container} >
+      <View style={s.container} >
         <RkButton
-          style={style.button}
+          style={s.button}
           onPress={() => {
             click(name, Id)
           }}
           rkType={active ? 'primary': 'outline'}
         >
           {Name}
+        <View style={{marginLeft: 10}}><Icon size={15} name={active ? 'check': ''} color={'white'} /></View>
         </RkButton>
       </View>
     )
