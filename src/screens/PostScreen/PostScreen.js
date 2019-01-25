@@ -1,6 +1,6 @@
 import React from 'react'
-import { ScrollView, View } from 'react-native'
-import { Text, Image } from 'react-native'
+import {ScrollView, View} from 'react-native'
+import {Text, Image} from 'react-native'
 import CommentAdd from '../../components/Comment/CommentAdd'
 import styles from './scss/style.scss'
 import _ from 'lodash'
@@ -8,20 +8,20 @@ import * as arrd from '../../constants/addr'
 import { RkButton } from 'react-native-ui-kitten'
 import TagBlock from '../../components/Blocks/TagBlock'
 
+// TODO Сделать сжатие отправляемых фото
 class PostScreen extends React.Component {
-  render () {
-    const {
-      props: {
-        item,
-        country
-      }
-    } = this
-    let curCountry = _.find(country, x => x.Id === item.CountryId)
-    curCountry = curCountry ? curCountry.Name : 'Другая'
+    render() {
+        const {
+            props: {
+                item,
+                country
+            }
+        } = this
+        let curCountry = _.find(country, x => x.Id === item.CountryId)
+        curCountry = curCountry ? curCountry.Name : 'Другая'
 
     const imageAddr = arrd.IMAGES_SERVER + item.Image
 
-    console.log(item)
     const tags = item.Tags ? item.Tags.slice(1).split('#') : []
 
     return (
@@ -40,16 +40,16 @@ class PostScreen extends React.Component {
         </View>
         {/*<CommentAdd />*/}
 
-      </ScrollView>
-    )
-  }
+            </ScrollView>
+        )
+    }
 
-  static defaultProps = {
-    Id: 'Пусто',
-    Title: 'Пусто',
-    curCountry: 'Другая',
-    Text: 'Пусто'
-  }
+    static defaultProps = {
+        Id: 'Пусто',
+        Title: 'Пусто',
+        curCountry: 'Другая',
+        Text: 'Пусто'
+    }
 }
 
 export default PostScreen

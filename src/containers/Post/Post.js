@@ -16,7 +16,6 @@ class Post extends Component{
     const item = ( current != null && _.find(reviews, (item) => item.Id === current)) || { title: 'Не найдено'}
     return(
       <View>
-        <Text>Пост</Text>
         <PostScreen {...{ item, country}} />
       </View>
     )
