@@ -4,14 +4,17 @@ import { getData, setFilter } from '../../actions'
 import { connect } from 'react-redux'
 import ForumScreen from '../../screens/ForumScreen/ForumScreen'
 import FilteredForumScreen from '../../screens/ForumScreen/FilteredForumScreen'
+import FilteredByTagsForumScreen from '../../screens/ForumScreen/FilteredByTagsForumScreen'
 
 class Forum extends Component {
   render () {
     const {
       filtered,
+      tags,
       ...props
     } = this.props
     return (
+      tags ? <FilteredByTagsForumScreen {...{...props, tags}} /> :
       filtered ? <FilteredForumScreen {...props} />
         : <ForumScreen {...props} />
     )

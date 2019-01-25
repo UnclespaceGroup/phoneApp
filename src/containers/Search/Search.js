@@ -32,8 +32,8 @@ class Search extends Component {
     } = this
     return (
       searchScreen === 'tag'
-      ? <TagSearchScreen />
-      : <SimpleSearchScreen {...{filter }} />
+      ? <TagSearchScreen {...{setFilter}} />
+      : <SimpleSearchScreen {...{filter, setFilter }} />
     )
   }
 }

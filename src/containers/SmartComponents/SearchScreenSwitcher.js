@@ -10,7 +10,8 @@ const s = StyleSheet.create({
   container: {
     paddingLeft: 10,
     display: 'flex',
-    flexDirection: 'row'
+    flexDirection: 'row',
+    bottom: 0
   },
   icon: {
     marginLeft: 10,
@@ -18,14 +19,17 @@ const s = StyleSheet.create({
     justifyContent: 'center'
   },
   item: {
-    paddingRight: 10,
-    color: 'red'
+    padding: 10,
+    color: 'red',
+    bottom: 0
   },
   item_active: {
-    paddingLeft: 10,
-    paddingRight: 10,
+    padding: 10,
     color: 'red',
-    borderBottomColor: 'black'
+    height: '100%',
+    borderBottomWidth: 1,
+    borderBottomColor: 'black',
+    bottom: 0
   }
 })
 
@@ -59,7 +63,8 @@ class SearchScreenSwitcher extends Component {
             :
             <View style={{
               display: 'flex',
-              flexDirection: 'row'
+              flexDirection: 'row',
+              height: '100%'
             }}>
               <View style={searchScreen==='simple' ? s.item_active : s.item}><TouchableOpacity onPress={() => {click('simple')}}><Text>Обычный поиск</Text></TouchableOpacity></View>
               <View style={searchScreen==='tag' ? s.item_active : s.item}><TouchableOpacity onPress={() => {click('tag')}}><Text>Поиск по тегам</Text></TouchableOpacity></View>

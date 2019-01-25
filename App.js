@@ -6,7 +6,7 @@ import { Provider } from 'react-redux'
 import Country from './src/containers/Country'
 import Forum from './src/containers/Forum'
 import AddReview from './src/containers/AddReview/AddReview'
-import { StyleSheet } from 'react-native'
+import { StyleSheet, StatusBar } from 'react-native'
 import TabIcon from './src/components/TabIcons/TabIcon'
 import Entry from './src/containers/Entry/Entry'
 import Brand from './src/containers/Brand'
@@ -19,6 +19,7 @@ class App extends React.Component {
   render () {
     return (
       <Provider store={store}>
+        <StatusBar barStyle = "dark-content" hidden = {false} backgroundColor = "#00BCD4" translucent = {true}/>
         <Router>
           <Scene key="root">
             <Scene key="entry" component={Entry}

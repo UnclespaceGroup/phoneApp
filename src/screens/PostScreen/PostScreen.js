@@ -5,6 +5,8 @@ import CommentAdd from '../../components/Comment/CommentAdd'
 import styles from './scss/style.scss'
 import _ from 'lodash'
 import * as arrd from '../../constants/addr'
+import { RkButton } from 'react-native-ui-kitten'
+import TagBlock from '../../components/Blocks/TagBlock'
 
 class PostScreen extends React.Component {
   render () {
@@ -18,7 +20,10 @@ class PostScreen extends React.Component {
     curCountry = curCountry ? curCountry.Name : 'Другая'
 
     const imageAddr = arrd.IMAGES_SERVER + item.Image
-    console.log(imageAddr)
+
+    console.log(item)
+    const tags = item.Tags ? item.Tags.slice(1).split('#') : []
+
     return (
       <ScrollView>
         <View style={styles.container}>
@@ -31,6 +36,7 @@ class PostScreen extends React.Component {
           <Text>{item.Title}</Text>
           <Text>{item.Text}</Text>
           <Text>страна: {curCountry}</Text>
+          <TagBlock items={tags} />
         </View>
         {/*<CommentAdd />*/}
 

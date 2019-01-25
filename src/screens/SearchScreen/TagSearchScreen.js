@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, KeyboardAvoidingView } from 'react-native'
 import CheckBoxBlock from '../../components/CheckBoxBlock/CheckBoxBlock'
 import _ from 'lodash'
 import Icon from 'react-native-vector-icons/Ionicons'
@@ -8,37 +8,61 @@ import { Actions } from 'react-native-router-flux'
 
 const s = StyleSheet.create({
   container: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    height: '100%'
+    flex: 1,
+    justifyContent: 'space-between'
   },
   search: {
+    marginTop: 10,
+    height: 40,
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'space-around'
+    justifyContent: 'space-around',
   },
   input: {
-    paddingLeft: 5,
-    margin: 10,
-    width: '60%'
+    height: '100%',
+    width: '60%',
+    paddingLeft: 10
+  },
+  input_red: {
+    height: '100%',
+    width: '60%',
+    paddingLeft: 10,
+    borderColor: 'red'
+  },
+  buttonAdd: {
+    marginTop: 7,
+    height: '100%',
+    borderRadius: 10
+  },
+  buttonAdd_danger: {
+    marginTop: 7,
+    height: '100%',
+    borderRadius: 10,
+    backgroundColor: 'red'
   },
   tags: {
     display: 'flex',
     flexDirection: 'row',
     flexWrap: 'wrap'
   },
+  tag: {
+    margin: 5
+  },
   button: {
-    bottom: 10,
     width: '80%',
     marginLeft: '10%',
     marginRight: '10%'
   }
 })
+const colors = [
+  'success', 'danger', 'info', 'warning', 'primary'
+]
 
 class TagSearchScreen extends React.PureComponent {
   state = {
     tags: [],
-    currentTag: ''
+    currentTag: '',
+    danger: false
   }
 
   componentWillReceiveProps (props) {
@@ -56,54 +80,76 @@ class TagSearchScreen extends React.PureComponent {
       props: {},
       state: {
         tags,
-        currentTag
+        currentTag,
+        danger
       },
       click,
       addTag,
-      deleteTag
+      deleteTag,
+      change
     } = this
     return (
-      <View style={s.container}>
+      <KeyboardAvoidingView style={s.container} behavior="padding" enabled>
         <View>
           <View style={s.search}>
             <RkTextInput
-              style={s.input}
+              style={danger ? s.input_red : s.input}
               label={<Icon name={'ios-search'} />}
               rkType='rounded' placeholder={'#tag...'}
               value={currentTag}
-              onChangeText={(currentTag) => this.setState({currentTag})}
+              onChangeText={change}
             />
-            <RkButton onPress={addTag}>Добавить</RkButton>
+            <RkButton
+              style={danger ? s.buttonAdd_danger : s.buttonAdd}
+              onPress={addTag}>Добавить</RkButton>
           </View>
           <View style={s.tags}>
             {
-              _.map(tags, (item, key) => <RkButton key={key} onPress={() => {deleteTag(item)}} rkType={'small'}>{item}</RkButton>)
+              _.map(tags, (item, key) => <RkButton style={s.tag} key={key} onPress={() => {deleteTag(item.id)}}
+                                                   rkType={`small ${item.color}`}>#{item.name}<Icon name={'md-close'}
+                                                                                                    style={{marginLeft: 10}}
+                                                                                                    color={'white'} /></RkButton>)
             }
           </View>
         </View>
         <View>
-
           <RkButton
             onPress={click}
             style={s.button}
           >Применить фильтры</RkButton>
         </View>
-      </View>
+      </KeyboardAvoidingView>
     )
   }
-  deleteTag = (item) => {
+  change = (currentTag) => {
+    if (currentTag.length > 10)
+      this.setState({
+        danger: true, currentTag
+      })
+    else
+      this.setState({currentTag, danger: false})
+  }
+
+  deleteTag = (Id) => {
     const {tags} = this.state
     let current = tags.slice()
-    let a = current.indexOf(item)
-    delete current[a]
+    const index = _.find(current, ({id}) => id === Id)
+    current.splice(current.indexOf(index), 1)
     this.setState({
       tags: current
     })
   }
   addTag = () => {
-    const {tags, currentTag} = this.state
+    const {tags, currentTag, danger} = this.state
+    if (danger) return
+    if (!currentTag) return
     let currentTags = tags.slice()
-    currentTags.push(currentTag)
+    const length = currentTags.length
+    currentTags.push({
+      name: currentTag,
+      color: colors[length % colors.length],
+      id: length
+    })
     this.setState({
       tags: currentTags,
       currentTag: ''
@@ -112,21 +158,13 @@ class TagSearchScreen extends React.PureComponent {
   click = () => {
     const {
       state: {
-        brands,
-        country,
-        search
+        tags
       },
-      props: {
-        setFilter
-      }
+      props: {}
     } = this
-
-    setFilter({
-      brands,
-      country,
-      search
-    })
-    Actions.push('catalog', {filtered: true})
+    let tagsArray = _.map(tags, ({name}) => name.toLowerCase())
+    console.log(tagsArray)
+    Actions.push('catalog', {tags: tagsArray})
   }
   static defaultProps = {
     filter: {
