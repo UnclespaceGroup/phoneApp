@@ -49,6 +49,15 @@ export default (state = initialState, action) => {
         ...state,
         searchScreen: action.payload
       }
+    case types.CLEAR_DISPATCH:
+      return{
+        ...state,
+        ready: {
+          brand: false,
+          country: false,
+          review: false
+        }
+      }
     default:
       return state
   }

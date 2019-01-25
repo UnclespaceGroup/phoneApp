@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
-import { getData, setFilter } from '../../actions'
+import { changeSearchSwitch, downloadBrand, downloadCountry, downloadReview, getData, setFilter } from '../../actions'
 import { connect } from 'react-redux'
 import ForumScreen from '../../screens/ForumScreen/ForumScreen'
 import FilteredForumScreen from '../../screens/ForumScreen/FilteredForumScreen'
@@ -25,13 +25,18 @@ const mapStateToProps = (state) => {
   return {
     filter: state.interiorReducer.filter,
     reviews: state.downloadReducer.reviews,
+    ready: state.downloadReducer.ready,
     profile: state.interiorReducer.profile
   }
 }
 const mapDispatchToProps = (dispatch) => {
   return {
     getData: bindActionCreators(getData, dispatch),
-    setFilter: bindActionCreators(setFilter, dispatch)
+    setFilter: bindActionCreators(setFilter, dispatch),
+    downloadCountry: bindActionCreators(downloadCountry, dispatch),
+    downloadReview: bindActionCreators(downloadReview, dispatch),
+    downloadBrand: bindActionCreators(downloadBrand, dispatch),
+    changeSearchSwitch: bindActionCreators(changeSearchSwitch, dispatch)
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Forum)

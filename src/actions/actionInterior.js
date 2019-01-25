@@ -45,3 +45,10 @@ export const changeSearchSwitch = (data) => {
     })
   }
 }
+export const clearDownloadStatus = () => {
+  return dispatch => {
+    dispatch({
+      type: types.CLEAR_DISPATCH
+    })
+  }
+}
