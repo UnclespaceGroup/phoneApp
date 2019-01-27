@@ -59,3 +59,14 @@ export const downloadComments = () => {
       })
   }
 }
+export const downloadUsers = () => {
+  return dispatch => {
+    axios.get(addr.API_USER)
+      .then(res => {
+        dispatch({
+          type: types.DOWNLOAD_USER,
+          payload: res.data
+        })
+      })
+  }
+}

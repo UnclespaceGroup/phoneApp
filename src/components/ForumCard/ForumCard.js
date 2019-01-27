@@ -32,8 +32,8 @@ class ForumCard extends React.Component {
         </View>
         <View rkCardFooter>
           <RkButton rkType='small outline'
-                    contentStyle={{color: 'red'}}
-                    style={{borderColor: 'red'}}
+                    //
+
                     onPress={() => {
                       Actions.push('post', {current: Id})
                     }}

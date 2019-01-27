@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, ScrollView } from 'react-native'
 import CheckBoxBlock from '../../components/CheckBoxBlock/CheckBoxBlock'
 import _ from 'lodash'
 import Icon from 'react-native-vector-icons/Ionicons'
@@ -59,7 +59,7 @@ class SimpleSearchScreen extends React.PureComponent {
       brandFilterClick
     } = this
     return (
-      <View style={s.container}>
+      <ScrollView style={s.container}>
         <RkTextInput
           style={s.input}
           label={<Icon name={'ios-search'} />}
@@ -90,7 +90,7 @@ class SimpleSearchScreen extends React.PureComponent {
             style={s.button}
           >Применить фильтры</RkButton>
         </View>
-      </View>
+      </ScrollView>
     )
   }
 
@@ -122,7 +122,6 @@ class SimpleSearchScreen extends React.PureComponent {
       country,
       search
     })
-    console.log('searchScreen')
     Actions.push('catalog', {filtered: true})
   }
   static defaultProps = {

@@ -1,4 +1,6 @@
 import * as types from '../constants'
+import * as addr from '../constants/addr'
+import axios from 'axios'
 
 export const getData = () => {
   return dispatch => {

@@ -11,9 +11,11 @@ class AuthorizationScreen extends React.Component {
         const {
           logIn,
           logOut,
-          profile
+          profile,
+          Register,
+          users
         } = this.props
-        return (
+      return (
             <View style={{
               flex: 1,
               alignItems: 'center',
@@ -34,7 +36,7 @@ class AuthorizationScreen extends React.Component {
                   marginBottom: 25
                 }}
               >Или</Text>
-              <AuthGoogle {...{logIn, logOut, profile}} />
+              <AuthGoogle {...{Register,logIn, logOut, profile, users}} />
             </View>
         )
     }

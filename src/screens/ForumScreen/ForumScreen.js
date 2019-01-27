@@ -9,7 +9,6 @@ class ForumScreen extends React.Component {
   }
   componentWillReceiveProps(props){
     const { ready } = props
-    console.log(ready)
     this.setState({
       refreshing: !(ready.review && ready.country && ready.brand)
     })

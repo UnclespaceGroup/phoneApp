@@ -4,7 +4,8 @@ const initialState = {
   ready: {
     brand: false,
     country: false,
-    review: false
+    review: false,
+    users: false
   }
 }
 
@@ -40,6 +41,15 @@ export default (state = initialState, action) => {
         ready: {
           ...state.ready,
           country: true
+        }
+      }
+    case types.DOWNLOAD_USER:
+      return {
+        ...state,
+        users: action.payload,
+        ready: {
+          ...state.ready,
+          users: true
         }
       }
     default:

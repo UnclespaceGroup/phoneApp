@@ -82,7 +82,7 @@ class App extends React.Component {
             />
             <Scene key="profile"
                    component={Profile}
-                   title="Мой профиль"
+                   title="Личный профиль"
                    iconName={'search'}
                    tabs={true}
                    icon={TabIcon}

@@ -3,17 +3,20 @@ import { bindActionCreators } from 'redux'
 import { downloadCountry, downloadReview, getData, setFilter, downloadBrand } from '../../actions'
 import { connect } from 'react-redux'
 import StartPreloader from '../../components/Preloader/StartPreloader'
+import { downloadUsers } from '../../actions/actionDownload'
 
 class Entry extends Component {
   componentDidMount () {
     const {
       downloadCountry,
       downloadReview,
-      downloadBrand
+      downloadBrand,
+      downloadUsers
     } = this.props
     downloadCountry()
     downloadReview()
     downloadBrand()
+    downloadUsers()
   }
 
   render () {
@@ -23,10 +26,18 @@ class Entry extends Component {
         ...props
       }
     } = this
-    const allReady = ready.review && ready.country && ready.brand
+    const allReady = ready.review && ready.country && ready.brand && ready.users
     return (
         <StartPreloader {...{allReady}} />
     )
+  }
+  static defaultProps = {
+    ready: {
+      review: false,
+      country: false,
+      brand: false,
+      users: false
+    }
   }
 }
 
@@ -43,7 +54,8 @@ const mapDispatchToProps = (dispatch) => {
     setFilter: bindActionCreators(setFilter, dispatch),
     downloadCountry: bindActionCreators(downloadCountry, dispatch),
     downloadReview: bindActionCreators(downloadReview, dispatch),
-    downloadBrand: bindActionCreators(downloadBrand, dispatch)
+    downloadBrand: bindActionCreators(downloadBrand, dispatch),
+    downloadUsers: bindActionCreators(downloadUsers, dispatch)
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Entry)

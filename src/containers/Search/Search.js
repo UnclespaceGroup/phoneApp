@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { getData, setFilter } from '../../actions'
 import { connect } from 'react-redux'
-import SearchScreen from '../../screens/SearchScreen/SearchScreen'
 import _ from 'lodash'
 import TagSearchScreen from '../../screens/SearchScreen/TagSearchScreen'
 import SimpleSearchScreen from '../../screens/SearchScreen/SimpleSearchScreen'
@@ -17,7 +16,6 @@ class Search extends Component {
       brands,
       country
     } = this.props
-    console.log(brands)
     const brandsFilter = _.map(brands, brand => { return {...brand, active: false}})
     const countryFilter = _.map(country, c => { return {...c, active: false}})
     setFilter({brands: brandsFilter})

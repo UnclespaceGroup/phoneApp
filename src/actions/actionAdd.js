@@ -3,32 +3,15 @@ import * as addr from '../constants/addr'
 import axios from 'axios'
 import { Alert } from 'react-native'
 import * as types from '../constants'
+import _ from 'lodash'
 
-export const addReview = (data, image) => {
-  let now_filename
-  let localUri
-  let filename
-  let match
-  let type
-  if (image) {
-    localUri = image.uri
-    filename = localUri.split('/').pop()
-    match = /\.(\w+)$/.exec(filename)
-    type = match ? `image/${match[1]}` : `image`
-
-    now_filename = Math.random().toString(36).substring(7) + '_' + filename
-  }
-
+export const addReview = (data, images) => {
   return dispatch => {
     dispatch({
       type: types.SHOW_PRELOADER,
       payload: true
     })
-    axios.post(addr.API_REVIEW, {
-        ...data,
-        Image: now_filename || 'default'
-      }
-    )
+    axios.post(addr.API_REVIEW, data)
       .then(() => {
         Alert.alert('Успешно отправлено', 'Будет опубликовано после модерации')
         dispatch({
@@ -45,21 +28,41 @@ export const addReview = (data, image) => {
         })
       })
 
-    if (image) {
-      let formData = new FormData()
-      formData.append('photo', {uri: localUri, name: now_filename, type})
+    _.map(images, image => {
+      console.log(image)
+      if (image) {
+        let formData = new FormData()
+        formData.append('photo', {uri: image.uri, name: image.name, type: image.type})
 
-      fetch(addr.API_IMAGES, {
-        method: 'POST',
-        body: formData,
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'multipart/form-data'
-        }
+        fetch(addr.API_IMAGES, {
+          method: 'POST',
+          body: formData,
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'multipart/form-data'
+          }
+        })
+          .then(res => {console.log(res)})
+          .catch(e => {console.log(e)})
+      }
+    })
+  }
+}
+export const Register = (data) => {
+  return dispatch => {
+    axios.post(addr.API_USER, {
+      ...data
+    })
+      .then(() => {
+        dispatch({
+          type: types.LOGIN,
+          payload: data
+        })
       })
-        .then(res => {console.log(res)})
-        .catch(e => {console.log(e)})
-    }
+      .catch((e) => {
+        console.log(e)
+        Alert.alert('Не удалось', 'Попробуйте позже')
+      })
   }
 }
 

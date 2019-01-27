@@ -2,6 +2,7 @@ import React from 'react'
 import { View, Text, Image } from 'react-native'
 import * as Expo from 'expo'
 import { RkButton } from 'react-native-ui-kitten'
+import _ from 'lodash'
 
 const CLIENT_ID = '15528245861-ks5jqvbu4nr8d0m54o7n5rjunr063epr.apps.googleusercontent.com'
 
@@ -16,24 +17,30 @@ class AuthGoogle extends React.Component {
     const {
       props: {
         logOut,
-        profile
+        profile,
+        users
       },
       signIn
     } = this
     return (
-      <View >
+      <View>
         {
           profile ?
-            <View >
-              <Text>{profile.name}</Text>
-              <Image
-                source={{uri: profile.photoUrl}}
-                style={{
-                  width: 70,
-                  height: 70
-                }}
-              />
-              <RkButton onPress={logOut}>Выйти</RkButton>
+            <View style={{flex: 1, flexDirection: 'row'}}>
+              <View>
+                <Image
+                  source={{uri: profile.avatar}}
+                  style={{
+                    width: 70,
+                    height: 70,
+                    borderRadius: 35
+                  }}
+                />
+              </View>
+              <View>
+                <Text style={{color: 'white', fontSize: 20}}>{profile.name}</Text>
+                <RkButton onPress={logOut}>Выйти</RkButton>
+              </View>
             </View> :
             <View style={{height: 100}}>
               < RkButton
@@ -61,8 +68,13 @@ class AuthGoogle extends React.Component {
 
   signIn = async () => {
     const {
-      logIn
-    } = this.props
+      props: {
+        logIn,
+        Register,
+        users
+      },
+      enableToken
+    } = this
     try {
       const result = await Expo.Google.logInAsync({
         androidClientId: CLIENT_ID,
@@ -70,18 +82,36 @@ class AuthGoogle extends React.Component {
         scopes: ['profile', 'email'],
       })
       if (result.type === 'success') {
-        logIn({
-          name: result.user.name,
-          photoUrl: result.user.photoUrl,
-          email: result.user.email
-        })
+        if (enableToken(result.user.id)) {
+          logIn({
+            Name: result.user.name,
+            Avatar: result.user.photoUrl,
+            Email: result.user.email,
+            Token: result.user.id
+          })
+        }
+        else {
+          Register({
+            Name: result.user.name,
+            Avatar: result.user.photoUrl,
+            Email: result.user.email,
+            Token: result.user.id
+          })
+        }
         return result.accessToken
       } else {
+
         return {cancelled: true}
       }
     } catch (e) {
       return {error: true}
     }
+  }
+  enableToken = (token) => {
+    const {
+      users
+    } = this.props
+    return _.find(users, ({Token}) => Token === token)
   }
 }
 

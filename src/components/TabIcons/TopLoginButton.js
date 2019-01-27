@@ -27,7 +27,7 @@ class TopLoginButton extends Component {
           {
             profile ?
               <Image
-                source={{uri: profile.photoUrl}}
+                source={{uri: profile.Avatar}}
                 style={{
                   width: 40,
                   height: 40,

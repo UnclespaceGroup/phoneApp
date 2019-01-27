@@ -7,7 +7,8 @@ import MyProfile from './MyProfile'
 class ProfileScreen extends React.Component {
   render () {
     const {
-      profile
+      profile,
+      logOut
     } = this.props
     return (
       <ImageBackground
@@ -23,7 +24,7 @@ class ProfileScreen extends React.Component {
       >
         {
           profile ?
-            <MyProfile {...{profile}} />
+            <MyProfile {...{profile, logOut}} />
             : <Authorization />
         }
       </ImageBackground>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
-import { getData } from '../../actions'
+import { getData, logOut } from '../../actions'
 import { connect } from 'react-redux'
 import ProfileScreen from '../../screens/ProfileScreen/ProfileScreen'
 
@@ -25,7 +25,8 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    getData: bindActionCreators(getData, dispatch)
+    getData: bindActionCreators(getData, dispatch),
+    logOut: bindActionCreators(logOut, dispatch)
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Profile)

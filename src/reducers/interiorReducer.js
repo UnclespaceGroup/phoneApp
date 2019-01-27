@@ -1,4 +1,5 @@
 import * as types from '../constants'
+import {AsyncStorage} from 'react-native'
 
 const initialState = {
   country: [],
@@ -31,15 +32,15 @@ export default (state = initialState, action) => {
         preloader: action.payload
       }
     case types.LOGIN:
+      AsyncStorage.setItem(types.USER_STORAGE, action.payload.Token)
       return {
         ...state,
         profile: {
-          name: action.payload.name,
-          photoUrl: action.payload.photoUrl,
-          email: action.payload.email
+          ...action.payload
         }
       }
     case types.LOGOUT:
+      AsyncStorage.setItem(types.USER_STORAGE, '')
       return {
         ...state,
         profile: false

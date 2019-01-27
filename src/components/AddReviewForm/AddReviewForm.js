@@ -28,6 +28,8 @@ class AddReviewForm extends React.Component {
     cur_brand: 'Другой',
     cur_country: 'Другая',
     image: null,
+    image2: null,
+    image3: null,
     sending: false
   }
 
@@ -43,6 +45,8 @@ class AddReviewForm extends React.Component {
         cur_brand,
         cur_country,
         image,
+        image2,
+        image3,
         sending
       },
       submit,
@@ -90,16 +94,39 @@ class AddReviewForm extends React.Component {
         />
         <View
           style={{flex: 1, flexDirection: 'row', justifyItems: 'center', justifyContent: 'center', marginTop: 5}}>
-          <View>
-            {
-              image ? <Image source={{uri: image.uri}} style={{width: 100, height: 100, marginLeft: 10, marginBottom: 10}} />
-              : <AddImageButton
-                click={_pickImage}
-                style={{
-                  marginBottom: 20
-                }}
-              />
-            }
+          <View >
+            <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-around'}}>
+              {
+                image ? <Image source={{uri: image.uri}}
+                               style={{width: 100, height: 100, marginLeft: 10, marginBottom: 10}} />
+                  : <AddImageButton
+                    click={() => {_pickImage('image')}}
+                    style={{
+                      marginBottom: 20
+                    }}
+                  />
+              }
+              {
+                image2 ? <Image source={{uri: image2.uri}}
+                               style={{width: 100, height: 100, marginLeft: 10, marginBottom: 10}} />
+                  : <AddImageButton
+                    click={() => {_pickImage('image2')}}
+                    style={{
+                      marginBottom: 20
+                    }}
+                  />
+              }
+              {
+                image3 ? <Image source={{uri: image3.uri}}
+                               style={{width: 100, height: 100, marginLeft: 10, marginBottom: 10}} />
+                  : <AddImageButton
+                    click={() => {_pickImage('image3')}}
+                    style={{
+                      marginBottom: 20
+                    }}
+                  />
+              }
+            </View>
             <RkButton
               onPress={submit}
             >Отправить</RkButton>
@@ -116,7 +143,7 @@ class AddReviewForm extends React.Component {
       },
       _submit
     } = this
-    if (!image){
+    if (!image) {
       Alert.alert(
         'Может добавите фото товара?',
         'С изображением товара будет лучше',
@@ -136,13 +163,16 @@ class AddReviewForm extends React.Component {
         text,
         cur_brand,
         cur_country,
-        image
+        image,
+        image2,
+        image3
       },
       props: {
         addReview,
         brands,
         country
-      }
+      },
+      imageCorrect
     } = this
 
     let countryId = _.find(country, ({Id, Name}) => Name === cur_country)
@@ -151,35 +181,59 @@ class AddReviewForm extends React.Component {
     let brandId = _.find(brands, ({Id, Name}) => Name === cur_brand)
     brandId = brandId ? brandId.Id : 0
 
+    const images = [
+      image && imageCorrect(image),
+      image2 && imageCorrect(image2),
+      image3 && imageCorrect(image3)
+    ]
+
     const data = {
       Title: title,
       Text: text,
       BrandId: brandId,
       CountryId: countryId,
       Data: new Date().toString(),
-      Active: false
+      Active: false,
+      Image: images[0] && images[0].name || 'default',
+      Image2: images[1] && images[1].name || 'default',
+      Image3: images[2] && images[2].name || 'default'
     }
 
-
     addReview(
-      data, image
+      data, images
     )
     this.setState({
       title: '',
       text: '',
       cur_brand: 'Другой',
       cur_country: 'Другая',
-      image: null
+      image: null,
+      image2: null,
+      image3: null
     })
   }
 
-  _pickImage = async () => {
+  _pickImage = async (image) => {
     let result = await ImagePicker.launchImageLibraryAsync({
       allowsEditing: true,
       aspect: [4, 3],
+      quality: 0.1
     })
     if (!result.cancelled) {
-      this.setState({image: result})
+      this.setState({[image]: result})
+    }
+  }
+  imageCorrect = (image) => {
+    let localUri = image.uri
+    let filename = localUri.split('/').pop()
+    let match = /\.(\w+)$/.exec(filename)
+    let type = match ? `image/${match[1]}` : `image`
+
+    let now_filename = Math.random().toString(36).substring(7) + '_' + filename
+    return {
+      uri: localUri,
+      name: now_filename,
+      type
     }
   }
 }
