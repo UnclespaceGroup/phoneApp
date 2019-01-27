@@ -9,7 +9,6 @@ import { Actions } from 'react-native-router-flux'
 const s = StyleSheet.create({
   container: {
     display: 'flex',
-    justifyContent: 'space-between',
     flexDirection: 'column',
     height: '100%'
   },
