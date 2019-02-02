@@ -66,4 +66,28 @@ export const Register = (data) => {
   }
 }
 
-
+export const addComment = (data) => {
+  return dispatch => {
+    dispatch({
+      type: types.SHOW_PRELOADER,
+      payload: true
+    })
+    axios.post(addr.API_COMMENT, {
+      ...data
+    })
+      .then(() => {
+        dispatch({
+          type: types.SHOW_PRELOADER,
+          payload: false
+        })
+        Alert.alert("Успешно отправлено", 'Будет доступно после модерации')
+      })
+      .catch(() => {
+        dispatch({
+          type: types.SHOW_PRELOADER,
+          payload: false
+        })
+        Alert.alert('Не удолось', 'Попробуйте позже')
+      })
+  }
+}

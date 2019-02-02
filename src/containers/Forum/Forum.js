@@ -1,6 +1,14 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
-import { changeSearchSwitch, downloadBrand, downloadCountry, downloadReview, getData, setFilter } from '../../actions'
+import {
+  changeSearchSwitch,
+  downloadBrand,
+  downloadComments,
+  downloadCountry,
+  downloadReview,
+  getData,
+  setFilter
+} from '../../actions'
 import { connect } from 'react-redux'
 import ForumScreen from '../../screens/ForumScreen/ForumScreen'
 import FilteredForumScreen from '../../screens/ForumScreen/FilteredForumScreen'
@@ -36,6 +44,7 @@ const mapDispatchToProps = (dispatch) => {
     downloadCountry: bindActionCreators(downloadCountry, dispatch),
     downloadReview: bindActionCreators(downloadReview, dispatch),
     downloadBrand: bindActionCreators(downloadBrand, dispatch),
+    downloadComments: bindActionCreators(downloadComments, dispatch),
     changeSearchSwitch: bindActionCreators(changeSearchSwitch, dispatch)
   }
 }

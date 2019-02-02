@@ -5172,6 +5172,11 @@ react-native-screens@^1.0.0-alpha.11:
   resolved "https://registry.yarnpkg.com/react-native-screens/-/react-native-screens-1.0.0-alpha.18.tgz#3fce555d5be81ba3e76bd1570fa651ff50effb8f"
   integrity sha512-/lZ7XXZxMEIJ4WRW/Gb1N1wgsNu84IMPOKrO6J1TPR8RZyuScTNBzx3uoIJJHBCZ59gfssayqHOhfSf9oz0/Bw==
 
+react-native-shadow@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/react-native-shadow/-/react-native-shadow-1.2.2.tgz#08991cd14b71e32f2fc6363911c139d231949a66"
+  integrity sha512-kwTmqRKmPEML9KbJi0uvvKd+67rOJQcr3IyNp9bg+qi/H+Wnwev/Mr8sUiUZlYEJ433ii2iNwpjc1ERMjHtMWw==
+
 react-native-simple-auth@^2.4.0:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/react-native-simple-auth/-/react-native-simple-auth-2.4.0.tgz#bc3747f753c7c85a89eda88f6d1f49c691e65157"

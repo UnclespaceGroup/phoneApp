@@ -1,32 +1,91 @@
 import React from 'react'
-import { View, TextInput, StyleSheet, ScrollView } from 'react-native'
+import { View, Text, TextInput, StyleSheet, ScrollView } from 'react-native'
 import { RkButton } from 'react-native-ui-kitten'
+import _ from 'lodash'
+import { correctDate } from '../../utils'
+import _Date from '../Date/Date'
+import {custom} from '../../global'
+import Icon from 'react-native-vector-icons/Ionicons'
 
 class CommentAdd extends React.Component {
+  state = {
+    value: ''
+  }
   render () {
     const {
-      move
-    } = this.props
+      props: {
+        move,
+        comments,
+        id,
+        profile
+      },
+      state: {
+        value
+      },
+      send
+    } = this
     return (
       <ScrollView style={s.container}>
-        <TextInput
-          onFocus={() => {
-            console.log('focus')
-            move(200)
-          }}
-          multiline={true}
-          numberOfLines={3}
-          style={s.input}
-          placeholder={'Оставьте свой комментарий'}
-        />
-        <RkButton
-          rkType={'outline'}
-          onPress={() => alert('Ваш комментарий добавлен')}
-          style={s.button}
-        >Отправить</RkButton>
+        {
+          _.map(comments, (item, key) =>
+            <View key={key} style={s.comment}>
+              <_Date>{item.Date}</_Date>
+              <Text>{item.Text}</Text>
+            </View>
+          )
+        }
+        {
+          profile ?
+            <View style={s.form}>
+              <TextInput
+                onFocus={() => {
+                  move(20000)
+                }}
+                multiline={true}
+                numberOfLines={3}
+                style={s.input}
+                value={value}
+                onChangeText={(value) => { this.setState({value})}}
+                placeholder={'Оставьте свой комментарий'}
+              />
+              <RkButton
+                onPress={send}
+                style={s.button}
+              >
+                <Text style={s.buttonText}>Отправить</Text><Icon name={'ios-send'} color={custom.white} size={30} /></RkButton>
+            </View>
+            : <Text>Авторизуйтесь, чтобы оставить комментарий</Text>
+        }
+
       </ScrollView>
     )
   }
+  send = () => {
+    const {
+      props: {
+        addComment,
+        id,
+        profile
+      },
+      state: {
+        value
+      }
+    } = this
+
+    const date = new Date().toString()
+    console.log(date)
+    const data = {
+      ReviewId: id,
+      Text: value,
+      AuthorId: profile.Id,
+      Date: date
+    }
+    this.setState({value: ''})
+    addComment(
+      data
+    )
+  }
+
   static defaultProps = {
     move: () => {
       console.log('Не пришло move')
@@ -36,7 +95,14 @@ class CommentAdd extends React.Component {
 
 const s = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+  },
+  comment: {
+    marginVertical: 10
+  },
+  form : {
+    flex: 1,
+    alignItems: 'center'
   },
   input: {
     textAlignVertical: 'top',
@@ -57,7 +123,18 @@ const s = StyleSheet.create({
     paddingHorizontal: '5%',
     paddingVertical: 10
   },
-  button: {}
+  button: {
+    height: 60,
+    backgroundColor: 'red',
+    borderRadius: 30,
+    marginTop: 10,
+    width: '60%',
+    marginHorizontal: '20%'
+  },
+  buttonText: {
+    color: custom.white,
+    marginRight: 20
+  }
 })
 
 export default CommentAdd

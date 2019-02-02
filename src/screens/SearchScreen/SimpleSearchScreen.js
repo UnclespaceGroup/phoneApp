@@ -5,6 +5,7 @@ import _ from 'lodash'
 import Icon from 'react-native-vector-icons/Ionicons'
 import { RkButton, RkText, RkTextInput } from 'react-native-ui-kitten'
 import { Actions } from 'react-native-router-flux'
+import { custom } from '../../global'
 
 const s = StyleSheet.create({
   container: {
@@ -21,9 +22,11 @@ const s = StyleSheet.create({
   },
   button: {
     bottom: 10,
-    width: '80%',
+    width: 80,
+    height: 80,
     marginLeft: '10%',
-    marginRight: '10%'
+    borderRadius: 40,
+    backgroundColor: 'red'
   }
 })
 
@@ -87,7 +90,7 @@ class SimpleSearchScreen extends React.PureComponent {
           <RkButton
             onPress={click}
             style={s.button}
-          >Применить фильтры</RkButton>
+          ><Icon name={'ios-arrow-forward'} color={custom.white} size={60} /></RkButton>
         </View>
       </ScrollView>
     )
@@ -115,12 +118,12 @@ class SimpleSearchScreen extends React.PureComponent {
         setFilter
       }
     } = this
-
-    setFilter({
+    const data = {
       brands,
       country,
       search
-    })
+    }
+    setFilter(data)
     Actions.push('catalog', {filtered: true})
   }
   static defaultProps = {

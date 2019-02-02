@@ -1,10 +1,13 @@
 import React from 'react'
-import { View, ScrollView, TextInput, StyleSheet, Alert, PixelRatio, Image } from 'react-native'
+import { View, ScrollView, TextInput, StyleSheet, Alert, PixelRatio, Image, Text } from 'react-native'
 import { RkButton } from 'react-native-ui-kitten'
 import { Dropdown } from 'react-native-material-dropdown'
 import _ from 'lodash'
 import { ImagePicker } from 'expo'
 import AddImageButton from '../TabIcons/AddImageButton'
+import s from './style'
+import { custom } from '../../global'
+import Icon from 'react-native-vector-icons/Ionicons'
 
 const styles = StyleSheet.create({
   container: {
@@ -95,10 +98,10 @@ class AddReviewForm extends React.Component {
         <View
           style={{flex: 1, flexDirection: 'row', justifyItems: 'center', justifyContent: 'center', marginTop: 5}}>
           <View >
-            <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-around'}}>
+            <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-between', width: '90%'}}>
               {
                 image ? <Image source={{uri: image.uri}}
-                               style={{width: 100, height: 100, marginLeft: 10, marginBottom: 10}} />
+                               style={s.image} />
                   : <AddImageButton
                     click={() => {_pickImage('image')}}
                     style={{
@@ -108,7 +111,7 @@ class AddReviewForm extends React.Component {
               }
               {
                 image2 ? <Image source={{uri: image2.uri}}
-                               style={{width: 100, height: 100, marginLeft: 10, marginBottom: 10}} />
+                               style={s.image} />
                   : <AddImageButton
                     click={() => {_pickImage('image2')}}
                     style={{
@@ -118,7 +121,7 @@ class AddReviewForm extends React.Component {
               }
               {
                 image3 ? <Image source={{uri: image3.uri}}
-                               style={{width: 100, height: 100, marginLeft: 10, marginBottom: 10}} />
+                               style={s.image} />
                   : <AddImageButton
                     click={() => {_pickImage('image3')}}
                     style={{
@@ -129,7 +132,8 @@ class AddReviewForm extends React.Component {
             </View>
             <RkButton
               onPress={submit}
-            >Отправить</RkButton>
+              style={s.send}
+            ><Text style={s.sendText}>Отправить</Text><Icon name={'ios-send'} color={custom.white} size={30} /></RkButton>
           </View>
         </View>
       </ScrollView>
@@ -170,7 +174,8 @@ class AddReviewForm extends React.Component {
       props: {
         addReview,
         brands,
-        country
+        country,
+        profile
       },
       imageCorrect
     } = this
@@ -194,6 +199,7 @@ class AddReviewForm extends React.Component {
       CountryId: countryId,
       Data: new Date().toString(),
       Active: false,
+      UserId: profile.Id,
       Image: images[0] && images[0].name || 'default',
       Image2: images[1] && images[1].name || 'default',
       Image3: images[2] && images[2].name || 'default'

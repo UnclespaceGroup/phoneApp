@@ -5,18 +5,25 @@ import { getData, setFilter } from '../../actions'
 import { connect } from 'react-redux'
 import PostScreen from '../../screens/PostScreen/PostScreen'
 import _ from 'lodash'
+import { addComment } from '../../actions/actionAdd'
 
 class Post extends Component{
   render(){
     const {
       current,
       reviews,
-      country
+      country,
+      allComments,
+      ...props
     } = this.props
     const item = ( current != null && _.find(reviews, (item) => item.Id === current)) || { title: 'Не найдено'}
+    const _comments = allComments.filter(item => item.ReviewId === current)
+
+    
+
     return(
       <View>
-        <PostScreen {...{ item, country}} />
+        <PostScreen {...{ item, country, comments: _comments, ...props}} />
       </View>
     )
   }
@@ -26,13 +33,15 @@ const mapStateToProps = (state) => {
     reviews: state.downloadReducer.reviews,
     filter: state.interiorReducer.filter,
     country: state.downloadReducer.country,
-    profile: state.interiorReducer.profile
+    profile: state.interiorReducer.profile,
+    allComments: state.downloadReducer.comments
   }
 }
 const mapDispatchToProps = (dispatch) => {
   return {
     getData: bindActionCreators(getData, dispatch),
-    setFilter: bindActionCreators(setFilter, dispatch)
+    setFilter: bindActionCreators(setFilter, dispatch),
+    addComment: bindActionCreators(addComment, dispatch)
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Post)

@@ -14,59 +14,64 @@ import Search from './src/containers/Search'
 import LoginButton from './src/containers/SmartComponents/LoginButton'
 import Profile from './src/containers/Profile'
 import SearchScreenSwitcher from './src/containers/SmartComponents/SearchScreenSwitcher'
+import { colors as c } from './src/global'
 
 class App extends React.Component {
   render () {
     return (
       <Provider store={store}>
-        <StatusBar barStyle = "dark-content" hidden = {false} backgroundColor = "#00BCD4" translucent = {true}/>
+        <StatusBar barStyle="dark-content" hidden={false} backgroundColor="#00BCD4" translucent={true} />
         <Router>
-          <Scene key="root">
+          <Scene key="root"
+                 navigationBarStyle={styles.nav}
+                 navBarButtonColor={c.bezh}
+                 inactiveTintColor={c.red}
+                 activeTintColor={c.reda}
+          >
             <Scene key="entry" component={Entry}
-            hideNavBar/>
+                   hideNavBar />
             <Scene
               hideNavBar
               tabs={true}
               key="tabs"
               tabBarStyle={styles.tabs}
-              activeBackgroundColor={'rgba(0,0,0,0.1)'}
               activeTintColor={'black'}
             >
               <Scene key="forum"
                      component={Forum}
                      title="Главная"
                      iconName={'list-alt'}
-                     renderRightButton={<LoginButton/>}
+                     renderRightButton={<LoginButton />}
                      icon={TabIcon}
               />
               <Scene key="search"
                      component={Search}
-                     // title="Поиск"
+                // title="Поиск"
                      iconName={'search'}
                      icon={TabIcon}
-                     renderLeftButton={<SearchScreenSwitcher/>}
-                     renderRightButton={<LoginButton/>}
+                     renderLeftButton={<SearchScreenSwitcher />}
+                     renderRightButton={<LoginButton />}
               />
               <Scene key="addReview"
                      component={AddReview}
                      iconName={'plus-square'}
                      title="Добавить"
                      icon={TabIcon}
-                     renderRightButton={<LoginButton/>}
+                     renderRightButton={<LoginButton />}
               />
               <Scene key="country"
                      component={Country}
                      title="Страны"
                      iconName={'globe'}
                      icon={TabIcon}
-                     renderRightButton={<LoginButton/>}
+                     renderRightButton={<LoginButton />}
               />
               <Scene key="brand"
                      component={Brand}
                      title="Бренды"
                      iconName={'ticket'}
                      icon={TabIcon}
-                     renderRightButton={<LoginButton/>}
+                     renderRightButton={<LoginButton />}
               />
             </Scene>
 
@@ -97,6 +102,10 @@ class App extends React.Component {
 const styles = StyleSheet.create({
   tabs: {
     fontSize: 5
+  },
+  nav: {
+    backgroundColor: c.red,
+    color: c.bezh
   }
 })
 

@@ -22,8 +22,8 @@ class AddImageButton extends Component {
           justifyContent: 'center',
           marginBottom: 10
         }}>
-          <Icon style={{color: color}} name={'file-photo-o'} size={60} />
-          <Text>Добавить фото</Text>
+          <Icon style={{color: 'red'}} name={'file-photo-o'} size={40} />
+          <Text style={{color: 'red', fontSize: 12}}>Добавить фото</Text>
         </View>
       </TouchableOpacity>
     )

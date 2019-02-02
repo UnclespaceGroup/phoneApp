@@ -44,7 +44,9 @@ class FilteredForumScreen extends React.Component {
       preloader: true
     })
     let current = reviews.slice()
-    current = _.find(filter.country, f => f.active) ? current
+
+    let empty = !_.find(filter.country, f => f.active)
+    current = (empty) ? current
       : _.filter(current, item => {
           const {
             CountryId
@@ -53,7 +55,9 @@ class FilteredForumScreen extends React.Component {
           return countryEnable && countryEnable.active
         }
       )
-    current = _.find(filter.brand, f => f.active) ? current
+
+    empty = !_.find(filter.brand, f => f.active)
+    current = empty ? current
       : _.filter(current, item => {
           const {
             BrandId
@@ -62,11 +66,15 @@ class FilteredForumScreen extends React.Component {
           return brandEnable && brandEnable.active
         }
       )
-    current = _.filter(current, item => {
-        const {Title} = item
-        return filter.search ? Title && (Title.toLowerCase().indexOf(filter.search.toLowerCase()) !== -1) : current
-      }
-    )
+
+    if (filter.search) {
+      current = _.filter(current, item => {
+          const {Title} = item
+          return Title && (Title.toLowerCase().indexOf(filter.search.toLowerCase()) !== -1)
+        }
+      )
+    }
+
     this.setState({
       preloader: false
     })

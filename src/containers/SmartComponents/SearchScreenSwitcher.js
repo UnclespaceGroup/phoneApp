@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux'
 import { changeSearchSwitch } from '../../actions'
 import { connect } from 'react-redux'
 import { RkButton } from 'react-native-ui-kitten'
+import { custom } from '../../global'
 import Icon from 'react-native-vector-icons/FontAwesome'
 
 const s = StyleSheet.create({
@@ -28,8 +29,13 @@ const s = StyleSheet.create({
     color: 'red',
     height: '100%',
     borderBottomWidth: 1,
-    borderBottomColor: 'black',
+    borderBottomColor: custom.white,
     bottom: 0
+  },
+  text: {
+    bottom: 0,
+    color: custom.white,
+    fontSize: 18
   }
 })
 
@@ -58,7 +64,7 @@ class SearchScreenSwitcher extends Component {
                   display: 'flex',
                   flexDirection: 'row'
                 }}
-                onPress={() => {this.setState({open: !open})}}><Text>{(searchScreen === 'simple') ? 'Обычный поиск' : 'Поиск по тегам'}</Text></TouchableOpacity>
+                onPress={() => {this.setState({open: !open})}}><Text style={s.text}>{(searchScreen === 'simple') ? 'Простой поиск' : 'По тегам'}</Text></TouchableOpacity>
             </View>
             :
             <View style={{
@@ -66,11 +72,11 @@ class SearchScreenSwitcher extends Component {
               flexDirection: 'row',
               height: '100%'
             }}>
-              <View style={searchScreen==='simple' ? s.item_active : s.item}><TouchableOpacity onPress={() => {click('simple')}}><Text>Обычный поиск</Text></TouchableOpacity></View>
-              <View style={searchScreen==='tag' ? s.item_active : s.item}><TouchableOpacity onPress={() => {click('tag')}}><Text>Поиск по тегам</Text></TouchableOpacity></View>
+              <View style={searchScreen==='simple' ? s.item_active : s.item}><TouchableOpacity onPress={() => {click('simple')}}><Text style={s.text}>Простой поиск</Text></TouchableOpacity></View>
+              <View style={searchScreen==='tag' ? s.item_active : s.item}><TouchableOpacity onPress={() => {click('tag')}}><Text style={s.text}>По тегам</Text></TouchableOpacity></View>
             </View>
         }
-        <View style={s.icon} ><Icon name={open ? 'chevron-left' : 'chevron-right'} size={10} /></View>
+        <View style={s.icon} ><TouchableOpacity ><Icon name={open ? 'chevron-left' : 'chevron-right'} size={10} color={custom.white} /></TouchableOpacity></View>
       </View>
     )
   }

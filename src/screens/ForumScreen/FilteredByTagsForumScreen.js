@@ -41,8 +41,8 @@ class FilteredByTagsForumScreen extends React.Component {
   filterArray = () => {
     const {tags, reviews} = this.props
     return _.filter(reviews, item => {
-        let activeTags = _.filter(tags, tag => item.Tags.indexOf(tag) !== -1)
-        return activeTags.length
+        let activeTags = _.filter(tags, tag => item.Tags && item.Tags.indexOf(tag) !== -1)
+      return activeTags.length
       }
     )
   }

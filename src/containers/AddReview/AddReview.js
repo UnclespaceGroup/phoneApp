@@ -1,16 +1,23 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { addReview } from '../../actions'
+import { Text, View } from 'react-native'
 import { connect } from 'react-redux'
 import AddReviewScreen from '../../screens/AddReviewScreen/AddReviewScreen'
 
 class AddReview extends Component {
   render () {
     const {
+      profile,
       ...props
     } = this.props
     return (
+      profile ?
       <AddReviewScreen {...props} />
+        :
+        <View>
+          <Text>Авторизуйтесь, чтобы добавлять отзыв</Text>
+        </View>
     )
   }
 }

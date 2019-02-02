@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
-import { downloadCountry, downloadReview, getData, setFilter, downloadBrand } from '../../actions'
+import { downloadCountry, downloadReview, getData, setFilter, downloadBrand, downloadComments } from '../../actions'
 import { connect } from 'react-redux'
 import StartPreloader from '../../components/Preloader/StartPreloader'
 import { downloadUsers } from '../../actions/actionDownload'
@@ -11,12 +11,14 @@ class Entry extends Component {
       downloadCountry,
       downloadReview,
       downloadBrand,
-      downloadUsers
+      downloadUsers,
+      downloadComments
     } = this.props
     downloadCountry()
     downloadReview()
     downloadBrand()
     downloadUsers()
+    downloadComments()
   }
 
   render () {
@@ -55,7 +57,8 @@ const mapDispatchToProps = (dispatch) => {
     downloadCountry: bindActionCreators(downloadCountry, dispatch),
     downloadReview: bindActionCreators(downloadReview, dispatch),
     downloadBrand: bindActionCreators(downloadBrand, dispatch),
-    downloadUsers: bindActionCreators(downloadUsers, dispatch)
+    downloadUsers: bindActionCreators(downloadUsers, dispatch),
+    downloadComments: bindActionCreators(downloadComments, dispatch)
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Entry)

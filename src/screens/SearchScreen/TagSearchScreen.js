@@ -1,59 +1,12 @@
 import React from 'react'
-import { View, Text, StyleSheet, KeyboardAvoidingView } from 'react-native'
-import CheckBoxBlock from '../../components/CheckBoxBlock/CheckBoxBlock'
+import { View, Text, StyleSheet, ScrollView, KeyboardAvoidingView } from 'react-native'
 import _ from 'lodash'
 import Icon from 'react-native-vector-icons/Ionicons'
 import { RkButton, RkText, RkTextInput } from 'react-native-ui-kitten'
 import { Actions } from 'react-native-router-flux'
+import { tag as s } from './style'
+import { custom } from '../../global'
 
-const s = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'space-between'
-  },
-  search: {
-    marginTop: 10,
-    height: 40,
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-  },
-  input: {
-    height: '100%',
-    width: '60%',
-    paddingLeft: 10
-  },
-  input_red: {
-    height: '100%',
-    width: '60%',
-    paddingLeft: 10,
-    borderColor: 'red'
-  },
-  buttonAdd: {
-    marginTop: 7,
-    height: '100%',
-    borderRadius: 10
-  },
-  buttonAdd_danger: {
-    marginTop: 7,
-    height: '100%',
-    borderRadius: 10,
-    backgroundColor: 'red'
-  },
-  tags: {
-    display: 'flex',
-    flexDirection: 'row',
-    flexWrap: 'wrap'
-  },
-  tag: {
-    margin: 5
-  },
-  button: {
-    width: '80%',
-    marginLeft: '10%',
-    marginRight: '10%'
-  }
-})
 const colors = [
   'success', 'danger', 'info', 'warning', 'primary'
 ]
@@ -89,7 +42,7 @@ class TagSearchScreen extends React.PureComponent {
       change
     } = this
     return (
-      <KeyboardAvoidingView style={s.container} behavior="padding" enabled>
+      <View style={s.wrapper}>
         <View>
           <View style={s.search}>
             <RkTextInput
@@ -101,7 +54,7 @@ class TagSearchScreen extends React.PureComponent {
             />
             <RkButton
               style={danger ? s.buttonAdd_danger : s.buttonAdd}
-              onPress={addTag}>Добавить</RkButton>
+              onPress={addTag}><Icon name={'md-checkmark'} color={custom.white} size={20} /></RkButton>
           </View>
           <View style={s.tags}>
             {
@@ -116,11 +69,16 @@ class TagSearchScreen extends React.PureComponent {
           <RkButton
             onPress={click}
             style={s.button}
-          >Применить фильтры</RkButton>
+          >
+            <Text style={s.button_text}>Показать</Text>
+            <Icon name={'ios-arrow-forward'} color={custom.white} size={30} />
+          </RkButton>
+          <Text style={s.text}>*Поиск по тегам - удобный инструмент в поиске нужных Вам отзывов</Text>
         </View>
-      </KeyboardAvoidingView>
+      </View>
     )
   }
+
   change = (currentTag) => {
     if (currentTag.length > 10)
       this.setState({

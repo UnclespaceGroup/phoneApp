@@ -14,7 +14,7 @@ export default (state = initialState, action) => {
     case types.DOWNLOAD_COMMENT:
       return {
         ...state,
-        comment: action.payload
+        comments: action.payload
       }
     case types.DOWNLOAD_BRAND:
       return {

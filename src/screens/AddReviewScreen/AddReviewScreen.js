@@ -11,7 +11,8 @@ class AddReviewScreen extends React.Component {
         addReview,
         brands,
         country,
-        preloader
+        preloader,
+        ...props
       }
     } = this
     return (
@@ -19,7 +20,7 @@ class AddReviewScreen extends React.Component {
         {
           preloader && <Spinner visible />
         }
-        <AddReviewForm {...{addReview, brands,country}} />
+        <AddReviewForm {...{addReview, brands,country, ...props}} />
       </View>
     )
   }
