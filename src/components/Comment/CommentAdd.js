@@ -2,7 +2,7 @@ import React from 'react'
 import { View, Text, TextInput, StyleSheet, ScrollView } from 'react-native'
 import { RkButton } from 'react-native-ui-kitten'
 import _ from 'lodash'
-import { correctDate } from '../../utils'
+import {GetById} from '../../utils'
 import _Date from '../Date/Date'
 import {custom} from '../../global'
 import Icon from 'react-native-vector-icons/Ionicons'
@@ -17,6 +17,7 @@ class CommentAdd extends React.Component {
         move,
         comments,
         id,
+        users,
         profile
       },
       state: {
@@ -29,6 +30,7 @@ class CommentAdd extends React.Component {
         {
           _.map(comments, (item, key) =>
             <View key={key} style={s.comment}>
+              <Text>{GetById(users, item.AuthorId).Name}</Text>
               <_Date>{item.Date}</_Date>
               <Text>{item.Text}</Text>
             </View>

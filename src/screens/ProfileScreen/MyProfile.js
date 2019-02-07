@@ -25,12 +25,11 @@ class MyProfile extends React.Component {
             }}
             source={{uri: profile.Avatar}}
           />
-        </View>
-        <View >
           <Text style={s.name}>{profile.Name}</Text>
           <Text style={s.email}>{profile.Email}</Text>
-          <RkButton onPress={() => {logOut()}}>Выйти</RkButton>
+
         </View>
+          <RkButton onPress={() => {logOut()}}>Выйти</RkButton>
       </View>
     )
   }
@@ -55,11 +54,14 @@ const s = StyleSheet.create({
   },
   name: {
     color: 'white',
-    fontSize: 10
+    fontSize: 20,
+    textAlign: 'center'
   },
   email: {
     color: 'white',
-    fontSize: 8
+    fontSize: 16,
+    opacity: 0.7,
+    textAlign: 'center'
   }
 })
 

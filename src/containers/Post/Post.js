@@ -32,6 +32,7 @@ const mapStateToProps = (state) => {
   return {
     reviews: state.downloadReducer.reviews,
     filter: state.interiorReducer.filter,
+    users: state.downloadReducer.users,
     country: state.downloadReducer.country,
     profile: state.interiorReducer.profile,
     allComments: state.downloadReducer.comments

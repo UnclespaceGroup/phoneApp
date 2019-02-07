@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Image, TouchableOpacity } from 'react-native'
-import { RkButton, RkCard, RkText, } from 'react-native-ui-kitten'
+import { RkButton, RkCard, RkText } from 'react-native-ui-kitten'
 import { Actions } from 'react-native-router-flux'
 import TabIcon from '../TabIcons/TabIcon'
 import s from './style'
@@ -38,7 +38,8 @@ class ForumCard extends React.Component {
                     onPress={() => {
                       Actions.push('post', {current: Id, title: Title})
                     }}>
-            <Icon name={'ios-arrow-forward'} color={custom.white} size={40} />
+            <RkText style={s.button_text}>Перейти</RkText>
+            <Icon name={'ios-arrow-forward'} color={custom.white} size={20} />
           </RkButton>
           <TouchableOpacity onPress={starClick} >
             <TabIcon iconName={!star ? 'star-o' : 'star'}/>

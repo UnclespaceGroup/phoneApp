@@ -14,7 +14,7 @@ import Search from './src/containers/Search'
 import LoginButton from './src/containers/SmartComponents/LoginButton'
 import Profile from './src/containers/Profile'
 import SearchScreenSwitcher from './src/containers/SmartComponents/SearchScreenSwitcher'
-import { colors as c } from './src/global'
+import { colors as c, custom as a } from './src/global'
 
 class App extends React.Component {
   render () {
@@ -25,8 +25,7 @@ class App extends React.Component {
           <Scene key="root"
                  navigationBarStyle={styles.nav}
                  navBarButtonColor={c.bezh}
-                 inactiveTintColor={c.red}
-                 activeTintColor={c.reda}
+                 activeTintColor={'black'}
           >
             <Scene key="entry" component={Entry}
                    hideNavBar />
@@ -35,12 +34,11 @@ class App extends React.Component {
               tabs={true}
               key="tabs"
               tabBarStyle={styles.tabs}
-              activeTintColor={'black'}
             >
               <Scene key="forum"
                      component={Forum}
                      title="Главная"
-                     iconName={'list-alt'}
+                     iconName={'list-ul'}
                      renderRightButton={<LoginButton />}
                      icon={TabIcon}
               />
@@ -54,7 +52,7 @@ class App extends React.Component {
               />
               <Scene key="addReview"
                      component={AddReview}
-                     iconName={'plus-square'}
+                     iconName={'plus'}
                      title="Добавить"
                      icon={TabIcon}
                      renderRightButton={<LoginButton />}

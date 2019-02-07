@@ -11,5 +11,6 @@ export const custom = {
   orange: '#ec8a38',
   yellow: '#ffc785',
   white: '#e7e6eb',
-  green: '#3baf1d'
+  green: '#3baf1d',
+  gray: '#aaa190'
 }

@@ -7,19 +7,20 @@ export default {
     marginBottom: -1
   },
   title: {
-    color: a.red,
+    color: 'black',
     fontWeight: 'bold',
     textAlign: 'center',
     paddingTop: 12
   },
   button: {
-    backgroundColor: 'red',
-    width: 60,
-    height: 60,
-    borderRadius: 30
+    backgroundColor: c.reda,
+    height: 40,
+    borderRadius: 20,
+    paddingHorizontal: 10
   },
   button_text: {
-    color: a.red,
-    fontSize: 12
+    color: a.white,
+    fontSize: 12,
+    marginRight: 10
   }
 }

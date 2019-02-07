@@ -4,6 +4,7 @@ import ImageCarousel from 'react-native-image-carousel'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import _ from 'lodash'
 
+
 class Carousel extends Component {
   _imageCarousel: ImageCarousel
 
@@ -45,18 +46,18 @@ class Carousel extends Component {
     const {
       images
     } = this.props
-    const current = _.filter(images, image => image.match(/\/([^/]*)$/)[1] !== 'default')
+    let current = _.filter(images, image =>  image) //image.match(/\/([^/]*)$/)[1] !== 'default')
     return (
       <View>
-        <Text style={{
-          position: 'absolute',
-          left: 5,
-          bottom: 20,
-          zIndex: 5,
-          color: 'white',
-          fontSize: 25
-        }}
-        >Заголовок</Text>
+        {/*<Text style={{*/}
+          {/*position: 'absolute',*/}
+          {/*left: 5,*/}
+          {/*bottom: 20,*/}
+          {/*zIndex: 5,*/}
+          {/*color: 'white',*/}
+          {/*fontSize: 25*/}
+        {/*}}*/}
+        {/*>Заголовок</Text>*/}
         <ImageCarousel
           ref={(imageCarousel: ImageCarousel) => {
             this._imageCarousel = imageCarousel
@@ -68,7 +69,7 @@ class Carousel extends Component {
           {
             _.map(current, (url) =>
               <Image
-                style={{width: 300, height: 250}}
+                style={{width: 350, height: 250}}
                 key={url}
                 source={{uri: url, height: 300}}
                 resizeMode={'contain'}
