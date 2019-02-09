@@ -14,7 +14,8 @@ class AuthorizationScreen extends React.Component {
           logOut,
           profile,
           Register,
-          users
+          users,
+          downloadUsers
         } = this.props
       return (
             <View style={{
@@ -22,22 +23,7 @@ class AuthorizationScreen extends React.Component {
               alignItems: 'center',
               justifyContent: 'center'
             }}>
-
-                {/*<View style={styles.wrapper}>*/}
-                    {/*<Text style={styles.hr}>Авторизуйтесь с помощью</Text>*/}
-                    {/*<View style={styles.social}>*/}
-                        {/*<SocialIcon type='google-plus-official' />*/}
-                        {/*<SocialIcon type='instagram' onPress={() => Actions.forum()}/>*/}
-                        {/*<SocialIcon type='facebook'/>*/}
-                    {/*</View>*/}
-                {/*</View>*/}
-              {/*<Text*/}
-                {/*style={{*/}
-                  {/*color: 'white',*/}
-                  {/*marginBottom: 25*/}
-                {/*}}*/}
-              {/*>Или</Text>*/}
-              <AuthGoogle {...{Register,logIn, logOut, profile, users}} />
+              <AuthGoogle {...{Register,logIn, logOut, profile, users, downloadUsers}} />
               <TouchableOpacity onPress={() => Actions.forum()}>
                 <Text style={s.enter}>Войти без авторизации</Text>
               </TouchableOpacity>

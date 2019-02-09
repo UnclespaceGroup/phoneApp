@@ -32,9 +32,9 @@ const s = StyleSheet.create({
 
 class SimpleSearchScreen extends React.PureComponent {
   state = {
-    brands: [],
-    country: [],
-    search: ''
+    filterBrands: [],
+    filterCountry: [],
+    filterSearch: ''
   }
 
   componentDidMount () {
@@ -42,8 +42,8 @@ class SimpleSearchScreen extends React.PureComponent {
       filter
     } = this.props
     this.setState({
-      brands: filter.brands,
-      country: filter.country
+      filterBrands: filter.brands,
+      filterCountry: filter.country
     })
   }
 
@@ -53,12 +53,12 @@ class SimpleSearchScreen extends React.PureComponent {
 
       },
       state: {
-        brands,
-        country,
-        search
+        filterBrands,
+        filterCountry,
+        filterSearch
       },
       click,
-      brandFilterClick
+      filterItemClick
     } = this
     return (
       <ScrollView style={s.container}>
@@ -66,24 +66,24 @@ class SimpleSearchScreen extends React.PureComponent {
           style={s.input}
           label={<Icon name={'ios-search'} />}
           rkType='rounded' placeholder={'Поиск...'}
-          value={search}
-          onChangeText={(search) => this.setState({search})}
+          value={filterSearch}
+          onChangeText={(filterSearch) => this.setState({filterSearch})}
         />
 
         <View style={s.block}>
           <CheckBoxBlock
             title={'Выбирете бренды'}
-            name={'brands'}
-            click={brandFilterClick}
-            items={brands}
+            name={'filterBrands'}
+            click={filterItemClick}
+            items={filterBrands}
           />
         </View>
         <View style={s.block}>
           <CheckBoxBlock
             title={'Выберете страны'}
-            name={'country'}
-            click={brandFilterClick}
-            items={country}
+            name={'filterCountry'}
+            click={filterItemClick}
+            items={filterCountry}
           />
         </View>
         <View>
@@ -96,11 +96,10 @@ class SimpleSearchScreen extends React.PureComponent {
     )
   }
 
-  brandFilterClick = (name, Id) => {
-    const {filter} = this.props
-    let something = filter[name].find(item => item.Id === Id)
+  filterItemClick = (name, Id) => {
+    let something = this.state[name].find(item => item.Id === Id)
     if (something) {
-      let cur = filter[name].slice()
+      let cur = this.state[name].slice()
       cur.find(item => item.Id === Id).active = !cur.find(item => item.Id === Id).active
       this.setState({
         [name]: cur
@@ -110,21 +109,22 @@ class SimpleSearchScreen extends React.PureComponent {
   click = () => {
     const {
       state: {
-        brands,
-        country,
-        search
-      },
-      props: {
-        setFilter
+        filterBrands,
+        filterCountry,
+        filterSearch
       }
     } = this
-    const data = {
-      brands,
-      country,
-      search
+
+    const filterListBrands = _.filter(filterBrands, item => item.active === true)
+    const filterListCountries = _.filter(filterCountry, item => item.active === true)
+
+    const simpleFilter = {
+      filterBrands: _.map(filterListBrands, ({Id}) => Id),
+      filterCountry: _.map(filterListCountries, ({ Id }) => Id),
+      filterSearch
     }
-    setFilter(data)
-    Actions.push('catalog', {filtered: true})
+
+    Actions.push('catalog', {...simpleFilter, filtered: true})
   }
   static defaultProps = {
     filter: {

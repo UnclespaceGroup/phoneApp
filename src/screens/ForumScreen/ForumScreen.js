@@ -18,7 +18,8 @@ class ForumScreen extends React.Component {
       props: {
         currentBrand,
         currentCountry,
-        reviews
+        reviews,
+        ...props
       },
       state: {
         refreshing
@@ -42,7 +43,7 @@ class ForumScreen extends React.Component {
       >
         {
           _.map(current, (item, key) =>
-            <ForumCard key={key} {...item} />
+            <ForumCard key={key} {...{...item, ...props}} />
           )
         }
       </ScrollView>

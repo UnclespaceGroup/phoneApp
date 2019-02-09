@@ -6,6 +6,7 @@ import TabIcon from '../TabIcons/TabIcon'
 import s from './style'
 import { custom } from '../../global'
 import Icon from 'react-native-vector-icons/Ionicons'
+import { GetById } from '../../utils'
 
 class ForumCard extends React.Component {
   state = {
@@ -16,7 +17,11 @@ class ForumCard extends React.Component {
       props:{
         Id,
         Title,
-        Text
+        Text,
+        CountryId,
+        BrandId,
+        country,
+        brands
       },
       state: {
         star
@@ -32,6 +37,8 @@ class ForumCard extends React.Component {
           <RkText style={{ overflow: 'hidden', maxHeight: 93}}>
             {Text}
           </RkText>
+          <RkText>{GetById(country, CountryId).Name}</RkText>
+          <RkText>{GetById(brands, BrandId).Name}</RkText>
         </View>
         <View rkCardFooter>
           <RkButton style={s.button}

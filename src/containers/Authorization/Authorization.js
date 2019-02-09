@@ -7,6 +7,7 @@ import { Actions } from 'react-native-router-flux'
 import { AsyncStorage } from 'react-native'
 import { USER_STORAGE } from '../../constants/index'
 import _ from 'lodash'
+import { downloadUsers } from '../../actions/actionDownload'
 
 class Authorization extends Component {
   componentWillReceiveProps (props) {
@@ -55,7 +56,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     logIn: bindActionCreators(logIn, dispatch),
     logOut: bindActionCreators(logOut, dispatch),
-    Register: bindActionCreators(Register, dispatch)
+    Register: bindActionCreators(Register, dispatch),
+    downloadUsers: bindActionCreators(downloadUsers, dispatch)
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Authorization)

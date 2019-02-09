@@ -34,7 +34,9 @@ const mapStateToProps = (state) => {
     filter: state.interiorReducer.filter,
     reviews: state.downloadReducer.reviews,
     ready: state.downloadReducer.ready,
-    profile: state.interiorReducer.profile
+    profile: state.interiorReducer.profile,
+    country: state.downloadReducer.country,
+    brands: state.downloadReducer.brands
   }
 }
 const mapDispatchToProps = (dispatch) => {
