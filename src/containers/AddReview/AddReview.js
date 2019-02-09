@@ -13,7 +13,7 @@ class AddReview extends Component {
     } = this.props
     return (
       profile ?
-      <AddReviewScreen {...props} />
+      <AddReviewScreen {...{...props, profile}} />
         :
         <View>
           <Text>Авторизуйтесь, чтобы добавлять отзыв</Text>

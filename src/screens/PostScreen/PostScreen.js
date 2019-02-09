@@ -32,6 +32,7 @@ class PostScreen extends React.Component {
       (item.Image3 !== 'default') && arrd.IMAGES_SERVER + item.Image3
     ]
 
+    console.log(images)
     const tags = item.Tags ? item.Tags.slice(1).split('#') : []
 
     return (

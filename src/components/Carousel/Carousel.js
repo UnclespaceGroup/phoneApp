@@ -72,7 +72,7 @@ class Carousel extends Component {
                 style={{width: 350, height: 250}}
                 key={url}
                 source={{uri: url, height: 300}}
-                resizeMode={'contain'}
+                resizeMode={'cover'}
               />
             )}
         </ImageCarousel>

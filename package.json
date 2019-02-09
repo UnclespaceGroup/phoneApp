@@ -14,6 +14,7 @@
     "prop-types": "^15.6.2",
     "react": "16.5.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-31.0.0.tar.gz",
+    "react-native-classnames": "^0.1.1",
     "react-native-elements": "^0.19.1",
     "react-native-floating-label-text-input": "^0.1.5",
     "react-native-google-signin": "^1.0.2",
