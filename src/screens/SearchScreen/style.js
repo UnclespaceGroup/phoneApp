@@ -48,14 +48,12 @@ export const tag = StyleSheet.create({
     margin: 5
   },
   button: {
-    height: 60,
+    height: 45,
     width: 150,
-    justifyContent: 'center',
     marginBottom: 15,
     backgroundColor: colors.reda,
     borderRadius: 30,
     paddingHorizontal: 15,
-    marginLeft: '10%',
   },
   button_text: {
     color: 'white',

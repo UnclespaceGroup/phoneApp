@@ -37,8 +37,8 @@ class ForumCard extends React.Component {
           <RkText style={{ overflow: 'hidden', maxHeight: 93}}>
             {Text}
           </RkText>
-          <RkText>{GetById(country, CountryId).Name}</RkText>
-          <RkText>{GetById(brands, BrandId).Name}</RkText>
+          <RkText style={s.sub}>Страна: {GetById(country, CountryId).Name}</RkText>
+          <RkText style={s.sub}>Бренд: {GetById(brands, BrandId).Name}</RkText>
         </View>
         <View rkCardFooter>
           <RkButton style={s.button}

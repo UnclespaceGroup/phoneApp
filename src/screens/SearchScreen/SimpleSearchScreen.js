@@ -20,14 +20,13 @@ const s = StyleSheet.create({
   block: {
   },
   button: {
-    height: 60,
+    height: 45,
     width: 150,
     justifyContent: 'center',
     marginBottom: 15,
     backgroundColor: colors.reda,
     borderRadius: 30,
-    paddingHorizontal: 15,
-    marginLeft: '10%',
+    paddingHorizontal: 15
 
   },
   button_text: {
@@ -93,7 +92,7 @@ class SimpleSearchScreen extends React.PureComponent {
             items={filterCountry}
           />
         </View>
-        <View>
+        <View style={{alignItems: 'center'}}>
           <RkButton
             onPress={click}
             style={s.button}
