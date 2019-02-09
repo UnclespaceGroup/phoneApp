@@ -3,6 +3,7 @@ import { View, Text, Image } from 'react-native'
 import * as Expo from 'expo'
 import { RkButton } from 'react-native-ui-kitten'
 import _ from 'lodash'
+import { Log } from '../../actions/actionAdd'
 
 const CLIENT_ID = '15528245861-ks5jqvbu4nr8d0m54o7n5rjunr063epr.apps.googleusercontent.com'
 
@@ -106,6 +107,7 @@ class AuthGoogle extends React.Component {
         return {cancelled: true}
       }
     } catch (e) {
+      Log(e.toString())
       return {error: true}
     }
   }

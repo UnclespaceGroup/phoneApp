@@ -29,7 +29,6 @@ export const addReview = (data, images) => {
       })
 
     _.map(images, image => {
-      console.log(image)
       if (image) {
         let formData = new FormData()
         formData.append('photo', {uri: image.uri, name: image.name, type: image.type})
@@ -90,4 +89,8 @@ export const addComment = (data) => {
         Alert.alert('Не удолось', 'Попробуйте позже')
       })
   }
+}
+
+export const Log = (log) => {
+  axios.post(addr.LOG, log)
 }
