@@ -92,5 +92,5 @@ export const addComment = (data) => {
 }
 
 export const Log = (log) => {
-  axios.post(addr.LOG, log)
+  axios.post(addr.LOG, {log: log})
 }

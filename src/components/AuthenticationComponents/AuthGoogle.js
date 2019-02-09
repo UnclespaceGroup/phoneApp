@@ -107,6 +107,10 @@ class AuthGoogle extends React.Component {
         return {cancelled: true}
       }
     } catch (e) {
+      Alert.alert(
+        'Ошибка',
+        e.toString()
+      )
       Log(e.toString())
       return {error: true}
     }
