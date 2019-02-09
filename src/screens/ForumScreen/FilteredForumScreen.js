@@ -1,6 +1,7 @@
 import React from 'react'
 import { ScrollView, Text } from 'react-native'
 import ForumCard from '../../components/ForumCard/ForumCard'
+import { filterReviews, filterByName } from '../../utils'
 import _ from 'lodash'
 import Spinner from 'react-native-loading-spinner-overlay'
 
@@ -17,8 +18,7 @@ class FilteredForumScreen extends React.Component {
   render () {
     const {
       props: {
-        filter,
-        reviews
+        ...props
       },
       state: {
         current,
@@ -31,7 +31,7 @@ class FilteredForumScreen extends React.Component {
           <Text style={{padding: 10, fontSize: 15}}>Всего найдено {current.length}</Text>
         {
           _.map(current, (item, key) =>
-            <ForumCard key={key} {...item} />
+            <ForumCard key={key} {...{...item, ...props}} />
           )
         }
       </ScrollView>
@@ -39,41 +39,22 @@ class FilteredForumScreen extends React.Component {
   }
 
   filterArray = () => {
-    const {filter, reviews} = this.props
+    const {
+      filterBrands,
+      filterCountry,
+      filterSearch,
+      reviews
+    } = this.props
     this.setState({
       preloader: true
     })
     let current = reviews.slice()
 
-    let empty = !_.find(filter.country, f => f.active)
-    current = (empty) ? current
-      : _.filter(current, item => {
-          const {
-            CountryId
-          } = item
-          const countryEnable = _.find(filter.country, c => c.Id === CountryId)
-          return countryEnable && countryEnable.active
-        }
-      )
+    current = filterBrands.length ? filterReviews(current, filterBrands, 'BrandId') : current
 
-    empty = !_.find(filter.brand, f => f.active)
-    current = empty ? current
-      : _.filter(current, item => {
-          const {
-            BrandId
-          } = item
-          const brandEnable = _.find(filter.brands, b => b.Id === BrandId)
-          return brandEnable && brandEnable.active
-        }
-      )
+    current = filterCountry.length ? filterReviews(current, filterCountry, 'CountryId') : current
 
-    if (filter.search) {
-      current = _.filter(current, item => {
-          const {Title} = item
-          return Title && (Title.toLowerCase().indexOf(filter.search.toLowerCase()) !== -1)
-        }
-      )
-    }
+    current = filterSearch ? filterByName(current, filterSearch) : current
 
     this.setState({
       preloader: false

@@ -71,7 +71,8 @@ class AuthGoogle extends React.Component {
       props: {
         logIn,
         Register,
-        users
+        users,
+        downloadUsers
       },
       enableToken
     } = this
@@ -97,6 +98,7 @@ class AuthGoogle extends React.Component {
             Email: result.user.email,
             Token: result.user.id
           })
+          downloadUsers()
         }
         return result.accessToken
       } else {
