@@ -18,17 +18,17 @@ const s = StyleSheet.create({
     margin: 10
   },
   block: {
-    marginBottom: 10,
   },
   button: {
     height: 60,
-    width: 180,
-    marginRight: '10%',
-    marginBottom: 20,
+    width: 150,
+    justifyContent: 'center',
+    marginBottom: 15,
     backgroundColor: colors.reda,
     borderRadius: 30,
     paddingHorizontal: 15,
-    marginLeft: '10%'
+    marginLeft: '10%',
+
   },
   button_text: {
     color: 'white',

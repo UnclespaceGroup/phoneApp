@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native'
-
+import { custom, colors } from '../../global'
 export default StyleSheet.create({
   container: {
 
@@ -12,7 +12,7 @@ export default StyleSheet.create({
   },
   send: {
     height: 60,
-    backgroundColor: 'red',
+    backgroundColor: colors.reda,
     borderRadius: 30,
     marginTop: 30,
     width: '60%',
