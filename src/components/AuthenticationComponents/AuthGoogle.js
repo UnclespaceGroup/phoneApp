@@ -103,7 +103,11 @@ class AuthGoogle extends React.Component {
         }
         return result.accessToken
       } else {
-
+        Alert.alert(
+          'Ошибка',
+          result.toString()
+        )
+        Log(result.toString())
         return {cancelled: true}
       }
     } catch (e) {
