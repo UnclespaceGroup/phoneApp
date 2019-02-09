@@ -7,7 +7,7 @@ import { colors as c, custom as a } from '../../global'
 
 class TabIcon extends Component{
   render(){
-    const color = !this.props.focused ? a.gray : 'black'
+    const color = !this.props.focused ? c.reda : c.red
     const {
       rightMargin
     } = this.props

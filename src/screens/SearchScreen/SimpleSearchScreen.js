@@ -5,7 +5,7 @@ import _ from 'lodash'
 import Icon from 'react-native-vector-icons/Ionicons'
 import { RkButton, RkText, RkTextInput } from 'react-native-ui-kitten'
 import { Actions } from 'react-native-router-flux'
-import { custom } from '../../global'
+import { custom, colors } from '../../global'
 
 const s = StyleSheet.create({
   container: {
@@ -18,15 +18,22 @@ const s = StyleSheet.create({
     margin: 10
   },
   block: {
-    marginBottom: 30,
+    marginBottom: 10,
   },
   button: {
-    bottom: 10,
-    width: 80,
-    height: 80,
-    marginLeft: '10%',
-    borderRadius: 40,
-    backgroundColor: 'red'
+    height: 60,
+    width: 180,
+    marginRight: '10%',
+    marginBottom: 20,
+    backgroundColor: colors.reda,
+    borderRadius: 30,
+    paddingHorizontal: 15,
+    marginLeft: '10%'
+  },
+  button_text: {
+    color: 'white',
+    marginRight: 20,
+    fontSize: 16
   }
 })
 
@@ -90,7 +97,10 @@ class SimpleSearchScreen extends React.PureComponent {
           <RkButton
             onPress={click}
             style={s.button}
-          ><Icon name={'ios-arrow-forward'} color={custom.white} size={60} /></RkButton>
+          >
+            <Text style={s.button_text}>Показать</Text>
+            <Icon name={'ios-arrow-forward'} color={custom.white} size={30} />
+          </RkButton>
         </View>
       </ScrollView>
     )
