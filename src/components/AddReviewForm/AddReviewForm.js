@@ -251,7 +251,7 @@ class AddReviewForm extends React.Component {
     let result = await ImagePicker.launchImageLibraryAsync({
       allowsEditing: true,
       aspect: [4, 3],
-      quality: 0.1
+      quality: 0.3
     })
 
     if (!result.cancelled) {

@@ -7,7 +7,7 @@ import { custom, colors } from '../../global'
 const s = StyleSheet.create({
   button: {
     borderRadius: 20,
-    borderColor: 'red'
+    borderColor: colors.reda
   },
   button_active: {
     borderRadius: 20
@@ -21,7 +21,7 @@ const s = StyleSheet.create({
     height: 3
   },
   text: {
-    color: 'red'
+    color: colors.reda
   },
   text_active: {
     color: 'white'

@@ -1,4 +1,5 @@
-export default {
+import { custom, colors } from '../../global'
+const s =  {
   container: {
     width: '100%',
     padding: '5%'
@@ -11,7 +12,7 @@ export default {
   },
   send: {
     height: 60,
-    backgroundColor: 'red',
+    backgroundColor: colors.reda,
     borderRadius: 30,
     marginTop: 30,
     width: '60%',
@@ -31,3 +32,4 @@ export default {
     marginHorizontal: '20%'
   }
 }
+export default s

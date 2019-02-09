@@ -65,7 +65,7 @@ class TagSearchScreen extends React.PureComponent {
             }
           </View>
         </View>
-        <View>
+        <View style={{alignItems: 'center'}}>
           <RkButton
             onPress={click}
             style={s.button}

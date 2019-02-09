@@ -4,8 +4,9 @@ import { RkButton } from 'react-native-ui-kitten'
 import _ from 'lodash'
 import {GetById} from '../../utils'
 import _Date from '../Date/Date'
-import {custom} from '../../global'
+import {custom, colors} from '../../global'
 import Icon from 'react-native-vector-icons/Ionicons'
+
 
 class CommentAdd extends React.Component {
   state = {
@@ -126,11 +127,11 @@ const s = StyleSheet.create({
     paddingVertical: 10
   },
   button: {
-    height: 60,
-    backgroundColor: 'red',
-    borderRadius: 30,
+    height: 40,
+    backgroundColor: colors.reda,
+    borderRadius: 20,
     marginTop: 10,
-    width: '60%',
+    width: '40%',
     marginHorizontal: '20%'
   },
   buttonText: {

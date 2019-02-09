@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native'
-import { custom } from '../../global'
+import {colors, custom} from "../../global"
 
 export const tag = StyleSheet.create({
   wrapper: {
@@ -48,14 +48,12 @@ export const tag = StyleSheet.create({
     margin: 5
   },
   button: {
-    height: 60,
-    width: 180,
-    marginRight: '10%',
-    marginBottom: 20,
-    backgroundColor: custom.red,
+    height: 45,
+    width: 150,
+    marginBottom: 15,
+    backgroundColor: colors.reda,
     borderRadius: 30,
     paddingHorizontal: 15,
-    marginLeft: '10%'
   },
   button_text: {
     color: 'white',

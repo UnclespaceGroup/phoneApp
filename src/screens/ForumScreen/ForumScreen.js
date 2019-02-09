@@ -26,12 +26,14 @@ class ForumScreen extends React.Component {
       },
       onRefresh
     } = this
+
     let current = _.filter(reviews, ({CountryId}) => {
       return (typeof(currentCountry) !== 'undefined' )? (CountryId === currentCountry) : true
     })
     current = _.filter(current, ({BrandId}) => {
       return (typeof(currentBrand) !== 'undefined' )? (BrandId === currentBrand) : true
     })
+    current = current.reverse()
     return (
       <ScrollView
         refreshControl={
@@ -41,6 +43,9 @@ class ForumScreen extends React.Component {
           />
         }
       >
+        {
+          !current.length && <Text style={{fontSize: 20, textAlign: 'center', paddingTop: 20}}> Ничего не найдено </Text>
+        }
         {
           _.map(current, (item, key) =>
             <ForumCard key={key} {...{...item, ...props}} />

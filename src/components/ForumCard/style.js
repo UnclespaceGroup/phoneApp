@@ -21,6 +21,9 @@ export default {
   button_text: {
     color: a.white,
     fontSize: 12,
-    marginRight: 10
+    marginRight: 12
+  },
+  sub: {
+    fontSize: 10
   }
 }

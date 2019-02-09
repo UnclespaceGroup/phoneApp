@@ -1,6 +1,7 @@
 export const colors = {
   red: '#b8113f',
   reda: '#a9636e',
+  redb: '#cb8590',
   green: '#97b59d',
   haki: '#97b59d',
   bezh: '#fee4b1'
