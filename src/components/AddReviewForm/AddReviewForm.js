@@ -9,6 +9,7 @@ import s from './style'
 import { custom } from '../../global'
 import Icon from 'react-native-vector-icons/Ionicons'
 import ValidationInput from '../ValidationInput/ValidationInput'
+import { Actions } from 'react-native-router-flux'
 
 class AddReviewForm extends React.Component {
   state = {
@@ -238,13 +239,7 @@ class AddReviewForm extends React.Component {
     addReview(
       data, _images
     )
-    this.setState({
-      title: '',
-      text: '',
-      cur_brand: 'Другой',
-      cur_country: 'Другая',
-      images: [null, null, null]
-    })
+    Actions.reset('tabs')
   }
 
   _pickImage = async () => {

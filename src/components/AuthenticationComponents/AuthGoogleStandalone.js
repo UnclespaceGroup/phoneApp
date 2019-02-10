@@ -1,14 +1,13 @@
 import React from 'react'
 import { View, Text, Image, Alert } from 'react-native'
-import * as Expo from 'expo'
 import { RkButton } from 'react-native-ui-kitten'
+import { Google } from 'expo'
 import _ from 'lodash'
-import { Log } from '../../actions/actionAdd'
 
 const CLIENT_ID = '15528245861-ks5jqvbu4nr8d0m54o7n5rjunr063epr.apps.googleusercontent.com'
+const STANDALONE_KEY = '15528245861-tr09hmva4r78ntri3grr5n0g4l3qs6du.apps.googleusercontent.com'
 
-
-class AuthGoogle extends React.Component {
+class AuthGoogleStandalone extends React.Component {
   state = {
     signedIn: false,
     name: '',
@@ -22,7 +21,7 @@ class AuthGoogle extends React.Component {
         profile,
         users
       },
-      signIn
+      signInWithGoogleAsync
     } = this
     return (
       <View>
@@ -50,7 +49,7 @@ class AuthGoogle extends React.Component {
                   width: 240,
                   height: 50
                 }}
-                onPress={signIn}
+                onPress={signInWithGoogleAsync}
               >
                 <Image
                   style={{
@@ -68,7 +67,7 @@ class AuthGoogle extends React.Component {
     )
   }
 
-  signIn = async () => {
+  signInWithGoogleAsync = async () => {
     const {
       props: {
         logIn,
@@ -79,19 +78,15 @@ class AuthGoogle extends React.Component {
       enableToken
     } = this
     try {
-      Log({
-        title: 'начинаем'
-      })
-      const result = await Expo.Google.logInAsync({
+      const result = await Google.logInAsync({
         androidClientId: CLIENT_ID,
+        androidStandaloneAppClientId: STANDALONE_KEY,
         iosClientId: CLIENT_ID,
         scopes: ['profile', 'email'],
-      })
-      Log({
-        title: 'Попытка',
-        text: result.type
-      })
+      });
+
       if (result.type === 'success') {
+        console.log(result)
         if (enableToken(result.user.id)) {
           logIn({
             Name: result.user.name,
@@ -109,16 +104,15 @@ class AuthGoogle extends React.Component {
           })
           downloadUsers()
         }
-        return result.accessToken
+        return result.accessToken;
       } else {
-        Log({text: result.toString()})
-        return {cancelled: true}
+        return {cancelled: true};
       }
-    } catch (e) {
-      Log({text: e.toString()})
-      return {error: true}
+    } catch(e) {
+      return {error: true};
     }
   }
+
   enableToken = (token) => {
     const {
       users
@@ -127,4 +121,4 @@ class AuthGoogle extends React.Component {
   }
 }
 
-export default AuthGoogle
+export default AuthGoogleStandalone

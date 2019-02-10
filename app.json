@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "beta2",
+    "name": "com.cosmetic.app",
     "slug": "beta2",
     "privacy": "public",
     "sdkVersion": "31.0.0",
@@ -22,6 +22,15 @@
     "assetBundlePatterns": [
       "**/*"
     ],
+    "android": {
+      "package": "com.cosmetic.app",
+      "config": {
+        "googleSignIn": {
+          "apiKey": "AIzaSyDvL8WatjaT7tQfE1HPR7zYwXlzOJtnmQs",
+          "certificateHash": "8A8DEE9E82864B21EA8C8B8E310E6028B4EDDA26"
+        }
+      }
+    },
     "ios": {
       "supportsTablet": true
     }
