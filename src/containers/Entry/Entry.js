@@ -30,7 +30,7 @@ class Entry extends Component {
     } = this
     const allReady = ready.review && ready.country && ready.brand && ready.users
     return (
-        <StartPreloader {...{allReady}} />
+        <StartPreloader {...{...props, allReady}} />
     )
   }
   static defaultProps = {

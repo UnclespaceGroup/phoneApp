@@ -1,5 +1,6 @@
 import * as types from '../constants'
 import {AsyncStorage} from 'react-native'
+import _ from 'lodash'
 
 const initialState = {
   country: [],
@@ -33,7 +34,8 @@ export default (state = initialState, action) => {
       }
     case types.LOGIN:
       AsyncStorage.setItem(types.USER_STORAGE, action.payload.Token)
-      const favorites = action.payload.Favorites ? action.payload.Favorites.split(' ') : []
+      let favorites = action.payload.Favorites ? action.payload.Favorites.split(' ') : []
+      favorites = _.map(favorites, f => f.toString())
       return {
         ...state,
         profile: {
@@ -60,6 +62,11 @@ export default (state = initialState, action) => {
           country: false,
           review: false
         }
+      }
+    case types.SET_MARKER:
+      return{
+        ...state,
+        profile: action.payload
       }
     default:
       return state

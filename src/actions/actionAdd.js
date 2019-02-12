@@ -97,18 +97,30 @@ export const Log = (log) => {
 
 export const setMarker = (id, profile) => {
   const _addr = addr.API_USER + '/' + id
-  console.log(_addr)
   return dispatch => {
-    axios.put(_addr, profile)
+    axios.put(_addr, {
+      ...profile,
+      favorites: profile.favorites.join('')
+    })
+    dispatch({
+      type: types.SET_MARKER,
+      payload: profile
+    })
   }
+
 }
 
-export const deleteMarker = (profile, id) => {
-  let favorites = profile.favorites
-  const _favorites = _.filter(favorites, item => item !== id)
+export const deleteMarker = (id, profile) => {
 
-  axios.put(addr.API_USER, {
-    ...profile,
-    favorites: _favorites.join(' ')
-  })
+  const _addr = addr.API_USER + '/' + id
+  return dispatch => {
+    axios.put(_addr, {
+      ...profile,
+      favorites: profile.favorites.join('')
+    })
+    dispatch({
+      type: types.SET_MARKER,
+      payload: profile
+    })
+  }
 }

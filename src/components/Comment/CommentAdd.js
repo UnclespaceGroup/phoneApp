@@ -78,7 +78,7 @@ class CommentAdd extends React.Component {
     } = this
 
     const date = new Date().toString()
-    console.log(date)
+
     const data = {
       ReviewId: id,
       Text: value,

@@ -38,7 +38,7 @@ class PostScreen extends React.Component {
       move
     } = this
 
-    console.log(item)
+
 
     const images = [
       (item.Image2 !== 'default') ? arrd.IMAGES_SERVER + item.Image : arrd.IMAGES_SERVER + 'default.png',

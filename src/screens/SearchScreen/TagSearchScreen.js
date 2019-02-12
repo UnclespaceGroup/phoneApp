@@ -121,7 +121,6 @@ class TagSearchScreen extends React.PureComponent {
       props: {}
     } = this
     let tagsArray = _.map(tags, ({name}) => name.toLowerCase())
-    console.log(tagsArray)
     Actions.push('catalog', {tags: tagsArray})
   }
   static defaultProps = {

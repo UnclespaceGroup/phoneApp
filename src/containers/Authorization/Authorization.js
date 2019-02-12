@@ -12,7 +12,8 @@ import { downloadUsers } from '../../actions/actionDownload'
 class Authorization extends Component {
   componentWillReceiveProps (props) {
     if (props.profile) {
-      Actions.jump('forum')
+      console.log('gg')
+      Actions.jump('tabs')
     }
   }
 

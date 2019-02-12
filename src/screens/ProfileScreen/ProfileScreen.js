@@ -8,7 +8,9 @@ class ProfileScreen extends React.Component {
   render () {
     const {
       profile,
-      logOut
+      logOut,
+      reviews,
+      ...props
     } = this.props
     return (
       <ImageBackground
@@ -24,7 +26,7 @@ class ProfileScreen extends React.Component {
       >
         {
           profile ?
-            <MyProfile {...{profile, logOut}} />
+            <MyProfile {...{...props, profile, logOut, reviews}} />
             : <Authorization />
         }
       </ImageBackground>
