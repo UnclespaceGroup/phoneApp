@@ -34,6 +34,7 @@ class App extends React.Component {
               hideNavBar
               tabs={true}
               key="tabs"
+              showLabel={false}
               tabBarStyle={styles.tabs}
             >
               <Scene key="forum"
@@ -57,6 +58,7 @@ class App extends React.Component {
                      component={AddReview}
                      iconName={'pluscircle'}
                      title="Добавить"
+                     showLabel={false}
                      icon={TabIconPlus}
                      renderRightButton={<LoginButton />}
               />

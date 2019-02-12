@@ -94,3 +94,21 @@ export const addComment = (data) => {
 export const Log = (log) => {
   axios.post(addr.LOG, {log: log})
 }
+
+export const setMarker = (id, profile) => {
+  const _addr = addr.API_USER + '/' + id
+  console.log(_addr)
+  return dispatch => {
+    axios.put(_addr, profile)
+  }
+}
+
+export const deleteMarker = (profile, id) => {
+  let favorites = profile.favorites
+  const _favorites = _.filter(favorites, item => item !== id)
+
+  axios.put(addr.API_USER, {
+    ...profile,
+    favorites: _favorites.join(' ')
+  })
+}

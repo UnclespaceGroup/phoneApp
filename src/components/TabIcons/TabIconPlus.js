@@ -19,7 +19,7 @@ class TabIconPlus extends Component{
         alignSelf:'center',
         justifyContent: 'center'
       }}>
-        <Icon style={{color}} name={this.props.iconName || "pluscircle"} size={50}/>
+        <Icon style={{color, marginBottom: 7}} name={this.props.iconName || "pluscircle"} size={55}/>
       </View>
     )
   }

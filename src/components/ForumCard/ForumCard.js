@@ -7,11 +7,22 @@ import s from './style'
 import { custom } from '../../global'
 import Icon from 'react-native-vector-icons/Ionicons'
 import { GetById } from '../../utils'
+import _ from 'lodash'
+
 
 class ForumCard extends React.Component {
   state = {
     star: false
   }
+  componentDidMount(){
+    const { profile, Id } = this.props
+    console.log(profile.favorites)
+    console.log(Id)
+    const active = profile.favorites.indexOf(Id.toString()) !== -1
+    console.log(active)
+    this.setState({star: active})
+  }
+
   render () {
     const {
       props:{
@@ -21,7 +32,8 @@ class ForumCard extends React.Component {
         CountryId,
         BrandId,
         country,
-        brands
+        brands,
+        profile
       },
       state: {
         star
@@ -56,8 +68,27 @@ class ForumCard extends React.Component {
     )
   }
   starClick = () => {
-    const { star } = this.state
-    this.setState({star: !star})
+    const {
+      state: {
+        star
+      },
+      props: {
+        setMarker,
+        profile,
+        Id
+      }
+    } = this
+    console.log(profile)
+    if (!star) {
+      let favorites = profile.favorites
+      favorites.push(Id)
+      const _profile = {
+        ...profile,
+        favorites: favorites.join(' ')
+      }
+      setMarker(profile.Id, _profile)
+      this.setState({star: !star})
+    }
   }
   static defaultProps = {
     title: 'Не пришло',

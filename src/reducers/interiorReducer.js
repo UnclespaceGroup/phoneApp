@@ -33,10 +33,12 @@ export default (state = initialState, action) => {
       }
     case types.LOGIN:
       AsyncStorage.setItem(types.USER_STORAGE, action.payload.Token)
+      const favorites = action.payload.Favorites ? action.payload.Favorites.split(' ') : []
       return {
         ...state,
         profile: {
-          ...action.payload
+          ...action.payload,
+          favorites: favorites
         }
       }
     case types.LOGOUT:

@@ -12,5 +12,6 @@ export const LOGOUT = 'LOGOUT'
 export const DOWNLOAD_COMMENT = 'DOWNLOAD_COMMENT'
 export const SEARCH_SWITCH = 'SEARCH_SWITCH'
 export const CLEAR_DISPATCH = 'CLEAR_DISPATCH'
+export const SET_MARKER = 'SET_MARKER'
 
 export const USER_STORAGE = 'USER_STORAGE'

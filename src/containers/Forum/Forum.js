@@ -13,6 +13,7 @@ import { connect } from 'react-redux'
 import ForumScreen from '../../screens/ForumScreen/ForumScreen'
 import FilteredForumScreen from '../../screens/ForumScreen/FilteredForumScreen'
 import FilteredByTagsForumScreen from '../../screens/ForumScreen/FilteredByTagsForumScreen'
+import { deleteMarker, setMarker } from '../../actions/actionAdd'
 
 class Forum extends Component {
   render () {
@@ -47,7 +48,9 @@ const mapDispatchToProps = (dispatch) => {
     downloadReview: bindActionCreators(downloadReview, dispatch),
     downloadBrand: bindActionCreators(downloadBrand, dispatch),
     downloadComments: bindActionCreators(downloadComments, dispatch),
-    changeSearchSwitch: bindActionCreators(changeSearchSwitch, dispatch)
+    changeSearchSwitch: bindActionCreators(changeSearchSwitch, dispatch),
+    setMarker: bindActionCreators(setMarker, dispatch),
+    deleteMarker: bindActionCreators(deleteMarker, dispatch)
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Forum)
