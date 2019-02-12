@@ -3,7 +3,7 @@ import { View, Text, TextInput, StyleSheet, ScrollView } from 'react-native'
 import { RkButton } from 'react-native-ui-kitten'
 import _ from 'lodash'
 import {GetById} from '../../utils'
-import _Date from '../Date/Date'
+import DateRender from '../Date/DateRender'
 import {custom, colors} from '../../global'
 import Icon from 'react-native-vector-icons/Ionicons'
 
@@ -33,7 +33,7 @@ class CommentAdd extends React.Component {
           _.map(comments, (item, key) =>
             <View key={key} style={s.comment}>
               <Text>{GetById(users, item.AuthorId).Name}</Text>
-              <_Date>{item.Date}</_Date>
+              <DateRender>{item.Date}</DateRender>
               <Text>{item.Text}</Text>
             </View>
           )

@@ -1,7 +1,6 @@
 import { Component } from 'react'
 import { View } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
-import { Text } from 'react-native-elements'
 import React from 'react'
 import { colors as c, custom as a } from '../../global'
 

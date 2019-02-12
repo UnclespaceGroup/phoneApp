@@ -249,7 +249,7 @@ class AddReviewForm extends React.Component {
       Text: text,
       BrandId: brandId,
       CountryId: countryId,
-      Data: new Date().toString(),
+      Date: new Date().toString(),
       Active: false,
       UserId: profile.Id,
       Image: _images[0] && _images[0].name || 'default',

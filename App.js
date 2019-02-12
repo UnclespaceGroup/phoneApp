@@ -15,6 +15,7 @@ import LoginButton from './src/containers/SmartComponents/LoginButton'
 import Profile from './src/containers/Profile'
 import SearchScreenSwitcher from './src/containers/SmartComponents/SearchScreenSwitcher'
 import { colors as c, custom as a } from './src/global'
+import TabIconPlus from './src/components/TabIcons/TabIconPlus'
 
 class App extends React.Component {
   render () {
@@ -44,7 +45,9 @@ class App extends React.Component {
               />
               <Scene key="search"
                      component={Search}
-                // title="Поиск"
+                     title="Поиск"
+                     headerMode={'none'}
+                     renderTitle={''}
                      iconName={'search'}
                      icon={TabIcon}
                      renderLeftButton={<SearchScreenSwitcher />}
@@ -52,9 +55,9 @@ class App extends React.Component {
               />
               <Scene key="addReview"
                      component={AddReview}
-                     iconName={'plus'}
+                     iconName={'pluscircle'}
                      title="Добавить"
-                     icon={TabIcon}
+                     icon={TabIconPlus}
                      renderRightButton={<LoginButton />}
               />
               <Scene key="country"

@@ -1,4 +1,5 @@
 import * as types from '../constants/index'
+import _ from 'lodash'
 
 const initialState = {
   ready: {
@@ -26,9 +27,10 @@ export default (state = initialState, action) => {
         }
       }
     case types.DOWNLOAD_REVIEW:
+      const _reviews = _.filter(action.payload, item => item.Active)
       return {
         ...state,
-        reviews: action.payload,
+        reviews: _reviews,
         ready: {
           ...state.ready,
           review: true
