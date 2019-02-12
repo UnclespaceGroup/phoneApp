@@ -1,7 +1,7 @@
 import _ from 'lodash'
 
 export const correctDate = (date) => {
-  const array = date.split(' ')
+  const array = date ? date.split(' ') : [0,0,0,0,0,0,0]
   return {
     day: array[2] || 0,
     month: array[1] || 0,

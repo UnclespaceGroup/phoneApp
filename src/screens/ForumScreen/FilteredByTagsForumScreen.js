@@ -18,7 +18,8 @@ class FilteredByTagsForumScreen extends React.Component {
     const {
       props: {
         tags,
-        reviews
+        reviews,
+        ...props
       },
       state: {
         current,
@@ -31,7 +32,7 @@ class FilteredByTagsForumScreen extends React.Component {
           <Text style={{padding: 10, fontSize: 15}}>Всего найдено {current.length}</Text>
           {
             _.map(current, (item, key) =>
-              <ForumCard key={key} {...item} />
+              <ForumCard key={key} {...{...item, ...props}} />
             )
           }
         </ScrollView>

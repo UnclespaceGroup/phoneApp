@@ -97,15 +97,16 @@ export const Log = (log) => {
 
 export const setMarker = (id, profile) => {
   const _addr = addr.API_USER + '/' + id
+  console.log(profile)
   return dispatch => {
     axios.put(_addr, {
       ...profile,
-      favorites: profile.favorites.join('')
+      favorites: profile.favorites.join(' ')
     })
-    dispatch({
-      type: types.SET_MARKER,
-      payload: profile
-    })
+    // dispatch({
+    //   type: types.SET_MARKER,
+    //   payload: profile
+    // })
   }
 
 }
@@ -116,11 +117,11 @@ export const deleteMarker = (id, profile) => {
   return dispatch => {
     axios.put(_addr, {
       ...profile,
-      favorites: profile.favorites.join('')
+      favorites: profile.favorites.join(' ')
     })
-    dispatch({
-      type: types.SET_MARKER,
-      payload: profile
-    })
+    // dispatch({
+    //   type: types.SET_MARKER,
+    //   payload: profile
+    // })
   }
 }

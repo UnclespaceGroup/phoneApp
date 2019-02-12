@@ -7,9 +7,7 @@ export const s = StyleSheet.create({
   container_active: {
     paddingBottom: 250
   },
-  slider: {
-
-  },
+  slider: {},
   wrapper: {
     zIndex: 10,
     paddingHorizontal: 10,
@@ -27,17 +25,13 @@ export const s = StyleSheet.create({
     fontSize: 30
   },
   text: {
-
+    paddingTop: 20
   },
   light: {
     opacity: 0.3
   },
-  author: {
-
-  },
-  parameters: {
-
-  },
+  author: {},
+  parameters: {},
   comment: {
     marginTop: -80,
     padding: 30,

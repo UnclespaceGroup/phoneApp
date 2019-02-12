@@ -19,6 +19,9 @@ class DateRender extends Component {
       </View>
     )
   }
+  static defaultProps = {
+    children: '0 00 00'
+  }
 }
 const s = StyleSheet.create({
   container: {

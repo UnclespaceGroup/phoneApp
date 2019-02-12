@@ -47,7 +47,6 @@ class App extends React.Component {
               <Scene key="search"
                      component={Search}
                      title="Поиск"
-                     headerMode={'none'}
                      renderTitle={''}
                      iconName={'search'}
                      icon={TabIcon}

@@ -14,6 +14,7 @@ import ForumScreen from '../../screens/ForumScreen/ForumScreen'
 import FilteredForumScreen from '../../screens/ForumScreen/FilteredForumScreen'
 import FilteredByTagsForumScreen from '../../screens/ForumScreen/FilteredByTagsForumScreen'
 import { deleteMarker, setMarker } from '../../actions/actionAdd'
+import { downloadUsers } from '../../actions/actionDownload'
 
 class Forum extends Component {
   render () {
@@ -47,6 +48,7 @@ const mapDispatchToProps = (dispatch) => {
     downloadCountry: bindActionCreators(downloadCountry, dispatch),
     downloadReview: bindActionCreators(downloadReview, dispatch),
     downloadBrand: bindActionCreators(downloadBrand, dispatch),
+    downloadUsers: bindActionCreators(downloadUsers, dispatch),
     downloadComments: bindActionCreators(downloadComments, dispatch),
     changeSearchSwitch: bindActionCreators(changeSearchSwitch, dispatch),
     setMarker: bindActionCreators(setMarker, dispatch),

@@ -61,13 +61,15 @@ class ForumScreen extends React.Component {
       downloadReview,
       downloadBrand,
       changeSearchSwitch,
-      downloadComments
+      downloadComments,
+      downloadUsers
     } = this.props
     changeSearchSwitch()
     downloadCountry()
     downloadReview()
     downloadBrand()
     downloadComments()
+    downloadUsers()
   }
 }
 

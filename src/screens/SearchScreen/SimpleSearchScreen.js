@@ -45,11 +45,12 @@ class SimpleSearchScreen extends React.PureComponent {
 
   componentDidMount () {
     const {
-      filter
+      brands,
+      country
     } = this.props
     this.setState({
-      filterBrands: filter.brands,
-      filterCountry: filter.country
+      filterBrands: _.map(brands, b => { return {...b, active: false}}),
+      filterCountry: _.map(country, b => { return {...b, active: false}})
     })
   }
 
@@ -132,6 +133,7 @@ class SimpleSearchScreen extends React.PureComponent {
       filterCountry: _.map(filterListCountries, ({ Id }) => Id),
       filterSearch
     }
+    console.log(simpleFilter)
 
     Actions.push('catalog', {...simpleFilter, filtered: true})
   }

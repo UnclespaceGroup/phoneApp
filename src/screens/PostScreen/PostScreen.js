@@ -41,24 +41,28 @@ class PostScreen extends React.Component {
 
 
     const images = [
-      (item.Image2 !== 'default') ? arrd.IMAGES_SERVER + item.Image : arrd.IMAGES_SERVER + 'default.png',
+      (item.Image2 !== 'default') && arrd.IMAGES_SERVER + item.Image,
       (item.Image2 !== 'default') && arrd.IMAGES_SERVER + item.Image2,
       (item.Image3 !== 'default') && arrd.IMAGES_SERVER + item.Image3
     ]
+
+    console.log(images)
     const tags = item.Tags ? item.Tags.slice(1).split('#') : []
 
     return (
       <ScrollView ref={(cur) => {this._ref = cur}}>
         <View style={focused ? s.container_active : s.container}>
-          <View style={s.slider}>
-            <Carousel {...{images, title: item.Title}} />
-          </View>
+          {
+            images[0] ? <View style={s.slider}>
+              <Carousel {...{images, title: item.Title}} />
+            </View> : <View style={{height: 60}} />
+          }
           <View style={s.wrapper}>
             <View>
               <Text style={s.title}>{item.Title}</Text>
               <Text style={s.light}>страна: <Text>{GetById(country, item.CountryId).Name}</Text></Text>
               <Text style={s.light}>бренд: <Text>{GetById(brands, item.BrandId).Name}</Text></Text>
-              <DateRender>{item.Date}</DateRender>
+              { item.Date && <DateRender>{item.Date}</DateRender> }
             </View>
             <TagBlock items={tags} />
             <Text style={s.text}>{item.Text}</Text>

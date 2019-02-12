@@ -7,31 +7,18 @@ import TagSearchScreen from '../../screens/SearchScreen/TagSearchScreen'
 import SimpleSearchScreen from '../../screens/SearchScreen/SimpleSearchScreen'
 
 class Search extends Component {
-  state = {
-
-  }
-  componentDidMount() {
-    const {
-      setFilter,
-      brands,
-      country
-    } = this.props
-    const brandsFilter = _.map(brands, brand => { return {...brand, active: false}})
-    const countryFilter = _.map(country, c => { return {...c, active: false}})
-    setFilter({brands: brandsFilter})
-    setFilter({country: countryFilter})
-  }
   render () {
     const {
       props: {
         searchScreen,
-        filter
+        filter,
+        ...props
       }
     } = this
     return (
-      searchScreen === 'tag'
-      ? <TagSearchScreen {...{setFilter}} />
-      : <SimpleSearchScreen {...{filter, setFilter }} />
+      searchScreen !== 'tag'
+      ? <SimpleSearchScreen {...{...props, filter }} />
+      : <TagSearchScreen {...{...props }} />
     )
   }
 }

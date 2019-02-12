@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "Asian Cosmetics Review",
+    "name": "Asian Cosmetics Reviews",
     "slug": "beta2",
     "privacy": "public",
     "sdkVersion": "31.0.0",
@@ -10,7 +10,7 @@
     ],
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/logo.png",
+    "icon": "./assets/logosquare.png",
     "splash": {
       "image": "./assets/logo.png",
       "resizeMode": "contain",

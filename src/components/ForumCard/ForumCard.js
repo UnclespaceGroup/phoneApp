@@ -9,21 +9,20 @@ import Icon from 'react-native-vector-icons/Ionicons'
 import { GetById } from '../../utils'
 import _ from 'lodash'
 
-class ForumCard extends React.Component {
+class ForumCard extends React.PureComponent {
   state = {
     star: false
-  }
-  componentWillReceiveProps(props){
-    const { profile, Id } = props
-    const active = profile.favorites.indexOf(Id.toString()) !== -1
-    this.setState({star: active})
   }
 
   componentDidMount() {
     const { profile, Id } = this.props
     const active = profile.favorites.indexOf(Id.toString()) !== -1
     this.setState({star: active})
-
+  }
+  componentWillReceiveProps(props) {
+    const { profile, Id } = props
+    const active = profile.favorites.indexOf(Id.toString()) !== -1
+    this.setState({star: active})
   }
 
   render () {
@@ -70,7 +69,7 @@ class ForumCard extends React.Component {
       </RkCard>
     )
   }
-  starClick = () => {
+  starClick = async () => {
     const {
       state: {
         star
@@ -90,6 +89,9 @@ class ForumCard extends React.Component {
         favorites: favorites
       }
       setMarker(profile.Id, _profile)
+      this.setState({
+        star: true
+      })
     }
     else {
       const _fav = _.filter(favorites, item => item !== Id.toString())
@@ -98,6 +100,9 @@ class ForumCard extends React.Component {
         favorites: _fav
       }
       deleteMarker(profile.Id, _profile)
+      this.setState({
+        star: false
+      })
     }
   }
   static defaultProps = {
