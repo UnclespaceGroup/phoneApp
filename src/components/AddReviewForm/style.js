@@ -4,6 +4,12 @@ const s =  {
     width: '100%',
     padding: '5%'
   },
+  container_focus: {
+    width: '100%',
+    paddingHorizontal: '5%',
+    paddingBottom: 400,
+    paddingTop: 100
+  },
   image: {
     width: 100,
     height: 100,
@@ -30,6 +36,13 @@ const s =  {
     marginTop: 30,
     width: '60%',
     marginHorizontal: '20%'
+  },
+  text: {
+    width: 20,
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingLeft: 20
   }
 }
 export default s

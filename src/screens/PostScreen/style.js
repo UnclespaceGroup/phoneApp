@@ -2,6 +2,9 @@ import { StyleSheet } from 'react-native'
 
 export const s = StyleSheet.create({
   container: {
+    paddingBottom: 0
+  },
+  container_active: {
     paddingBottom: 250
   },
   slider: {

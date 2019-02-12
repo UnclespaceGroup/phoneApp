@@ -11,8 +11,16 @@ import { s } from './style'
 const _default = 'http://artrack.ru/uploads/no-img.jpg'
 
 class PostScreen extends React.Component {
+  state = {
+    focused: false
+  }
+
   move = (index) => {
-    this._ref.scrollTo({x: 0, y: index, animated: true})
+    this.setState({ focused: true})
+    setTimeout(
+      () => {
+        this._ref.scrollTo({x: 0, y: index, animated: true})
+      }, 100)
   }
 
   render () {
@@ -22,6 +30,9 @@ class PostScreen extends React.Component {
         country,
         brands,
         ...props
+      },
+      state: {
+        focused
       },
       move
     } = this
@@ -37,7 +48,7 @@ class PostScreen extends React.Component {
 
     return (
       <ScrollView ref={(cur) => {this._ref = cur}}>
-        <View style={s.container}>
+        <View style={focused ? s.container_active : s.container}>
           <View style={s.slider}>
             <Carousel {...{images, title: item.Title}} />
           </View>
@@ -50,8 +61,8 @@ class PostScreen extends React.Component {
             <TagBlock items={tags} />
             <Text style={s.text}>{item.Text}</Text>
           </View>
-          <View style={s.comment}>
-            <CommentAdd {...{...props, move, id: item.Id}} />
+          <View style={s.comment} ref={(cur) => {this._input = cur}}>
+            <CommentAdd {...{...props, move, id: item.Id, blur: () => {this.setState({focused: false})}}} />
           </View>
         </View>
       </ScrollView>

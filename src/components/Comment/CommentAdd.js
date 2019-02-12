@@ -17,6 +17,7 @@ class CommentAdd extends React.Component {
       props: {
         move,
         comments,
+        blur,
         id,
         users,
         profile
@@ -44,6 +45,7 @@ class CommentAdd extends React.Component {
                 onFocus={() => {
                   move(20000)
                 }}
+                onBlur={blur}
                 multiline={true}
                 numberOfLines={3}
                 style={s.input}
@@ -131,8 +133,8 @@ const s = StyleSheet.create({
     backgroundColor: colors.reda,
     borderRadius: 20,
     marginTop: 10,
-    width: '40%',
-    marginHorizontal: '20%'
+    width: '80%',
+    marginHorizontal: '10%'
   },
   buttonText: {
     color: custom.white,

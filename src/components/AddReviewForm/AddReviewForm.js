@@ -25,7 +25,8 @@ class AddReviewForm extends React.Component {
     validText: false,
     intact: true,
     item_brands: [],
-    item_country: []
+    item_country: [],
+    focus: false
   }
 
   componentDidMount () {
@@ -47,6 +48,15 @@ class AddReviewForm extends React.Component {
     })
   }
 
+  move = (index) => {
+    this.setState({focus: true})
+    setTimeout(
+      () => {
+        this._container.scrollTo({x: 0, y: 200, animated: true})
+      }, 100
+    )
+  }
+
   render () {
     const {
       state: {
@@ -60,7 +70,8 @@ class AddReviewForm extends React.Component {
         validTitle,
         intact,
         itemBrands,
-        itemCountry
+        itemCountry,
+        focus
       },
       submit,
       _pickImage,
@@ -69,79 +80,89 @@ class AddReviewForm extends React.Component {
     } = this
 
     return (
-      <ScrollView style={s.container}>
-        <ValidationInput
-          placeholder={'Заголовок'}
-          value={title}
-          name={'title'}
-          intact={intact}
-          onChange={change}
-          validation={{
-            minSize: 0,
-            maxSize: 20,
-            numbersOnly: false
-          }}
-        />
-        <Dropdown
-          label={'Выберете Бренд'}
-          data={itemBrands}
-          value={cur_brand}
-          onChangeText={(val) => this.setState({cur_brand: val})}
-        />
-        <Dropdown
-          label={'Выберете Страну'}
-          data={itemCountry}
-          value={cur_country}
-          onChangeText={(val) => this.setState({cur_country: val})}
-        />
-        <ValidationInput
-          name={'text'}
-          onChange={change}
-          value={text}
-          multiline={true}
-          intact={intact}
-          numberOfLines={8}
-          placeholder={'Ваш отзыв'}
-          validation={{
-            minSize: 0,
-            maxSize: 1000,
-            numbersOnly: false
-          }}
-        />
-        <View
-          style={{flex: 1, flexDirection: 'row', justifyItems: 'center', justifyContent: 'center', marginTop: 5}}>
-          <View>
-            <View style={{flex: 1, flexDirection: 'row', width: '90%'}}>
-              {
-                images[0] && <TouchableOpacity onPress={() => {removeImage(0)}}>
-                  <Image source={{uri: images[0].uri}} style={s.image}  />
-                </TouchableOpacity>
-              }
-              {
-                images[1] && <TouchableOpacity onPress={() => {removeImage(1)}}>
-                  <Image source={{uri: images[1].uri}} style={s.image}  />
-                </TouchableOpacity>
-              }
-              {
-                images[2] && <TouchableOpacity onPress={() => {removeImage(2)}}>
-                  <Image source={{uri: images[2].uri}} style={s.image}  />
-                </TouchableOpacity>
-              }
-              {
-                !images[2] &&
-                <AddImageButton
-                  click={() => {_pickImage()}}
-                  style={{
-                    marginBottom: 20
-                  }}
-                />
-              }
+      <ScrollView style={s.container} ref={(cur) => {this._container = cur}}>
+        <View style={focus ? {paddingBottom: 250} : {paddingBottom: 0}}>
+          <ValidationInput
+            placeholder={'Заголовок'}
+            value={title}
+            name={'title'}
+            intact={intact}
+            onChange={change}
+            validation={{
+              minSize: 0,
+              maxSize: 50,
+              numbersOnly: false
+            }}
+          />
+          <Dropdown
+            label={'Выберете Бренд'}
+            data={itemBrands}
+            value={cur_brand}
+            onChangeText={(val) => this.setState({cur_brand: val})}
+          />
+          <Dropdown
+            label={'Выберете Страну'}
+            data={itemCountry}
+            value={cur_country}
+            onChangeText={(val) => this.setState({cur_country: val})}
+          />
+          <ValidationInput
+            name={'text'}
+            onChange={change}
+            value={text}
+            multiline={true}
+            intact={intact}
+            numberOfLines={8}
+            onFocus={() => { this.move(1000)}}
+            onBlur={() => this.setState({focus: false})}
+            placeholder={'Ваш отзыв'}
+            validation={{
+              minSize: 0,
+              maxSize: 1000,
+              numbersOnly: false
+            }}
+          />
+          <View
+            style={{flex: 1, flexDirection: 'row', justifyItems: 'center', justifyContent: 'center', marginTop: 10}}>
+            <View>
+              <View style={{flex: 1, flexDirection: 'row', width: '90%'}}>
+                {
+                  images[0] && <TouchableOpacity onPress={() => {removeImage(0)}}>
+                    <Image source={{uri: images[0].uri}} style={s.image} />
+                  </TouchableOpacity>
+                }
+                {
+                  images[1] && <TouchableOpacity onPress={() => {removeImage(1)}}>
+                    <Image source={{uri: images[1].uri}} style={s.image} />
+                  </TouchableOpacity>
+                }
+                {
+                  images[2] && <TouchableOpacity onPress={() => {removeImage(2)}}>
+                    <Image source={{uri: images[2].uri}} style={s.image} />
+                  </TouchableOpacity>
+                }
+                {
+                  !images[2] &&
+                  <AddImageButton
+                    click={() => {_pickImage()}}
+                    style={{
+                      marginBottom: 20
+                    }}
+                  />
+                }
+                {
+                  !images[0] &&
+                  <View style={s.text}>
+                    <Text>До 3х фото</Text>
+                  </View>
+                }
+              </View>
+              <RkButton
+                onPress={submit}
+                style={(validText) ? s.send : s.sendDisable}
+              ><Text style={s.sendText}>Отправить</Text><Icon name={'ios-send'} color={custom.white}
+                                                              size={30} /></RkButton>
             </View>
-            <RkButton
-              onPress={submit}
-              style={(validText) ? s.send : s.sendDisable}
-            ><Text style={s.sendText}>Отправить</Text><Icon name={'ios-send'} color={custom.white}
-                                                            size={30} /></RkButton>
           </View>
         </View>
       </ScrollView>
@@ -245,7 +266,7 @@ class AddReviewForm extends React.Component {
   _pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
       allowsEditing: true,
-      aspect: [4, 3],
+      // aspect: [4, 3],
       quality: 0.3
     })
 
