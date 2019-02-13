@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
     fontSize: 5
   },
   nav: {
-    backgroundColor: c.red,
+    backgroundColor: c.reda,
     color: c.bezh
   }
 })

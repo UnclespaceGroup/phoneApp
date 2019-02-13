@@ -1,25 +1,35 @@
 import React, { Component } from 'react'
-import { StyleSheet, View } from 'react-native'
+import { StyleSheet, View, Text } from 'react-native'
 import _ from 'lodash'
 import { RkButton } from 'react-native-ui-kitten'
+import { colors } from '../../global'
 
-const colors = [
-  'success', 'danger', 'info', 'warning', 'primary'
+// const colors = [
+//   'success', 'danger', 'info', 'warning', 'primary'
+// ]
+
+const color = [
+  colors.reda, colors.redb, colors.reda, colors.redb, colors.reda
 ]
 
-
-class TagBlock extends Component{
-  render(){
+class TagBlock extends Component {
+  render () {
     const {
       props: {
         items,
         deleteTag
       }
     } = this
-    return(
+    return (
       <View style={s.container}>
         {
-          _.map(items, (item, key) => <RkButton key={key} style={s.button} rkType={`small ${colors[key % colors.length]}`}>#{item}</RkButton>)
+          _.map(items, (item, key) =>
+            <RkButton key={key}
+                      style={{
+                        backgroundColor: color[key % color.length],
+                        margin: 2
+                      }}
+                      rkType={`small ${color[key % color.length]}`}><Text style={{color: 'white'}}>#{item}</Text></RkButton>)
         }
       </View>
     )

@@ -112,7 +112,7 @@ export const setMarker = (id, profile) => {
 }
 
 export const deleteMarker = (id, profile) => {
-
+  console.log(profile)
   const _addr = addr.API_USER + '/' + id
   return dispatch => {
     axios.put(_addr, {

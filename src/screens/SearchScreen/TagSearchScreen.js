@@ -5,10 +5,14 @@ import Icon from 'react-native-vector-icons/Ionicons'
 import { RkButton, RkText, RkTextInput } from 'react-native-ui-kitten'
 import { Actions } from 'react-native-router-flux'
 import { tag as s } from './style'
-import { custom } from '../../global'
+import { custom, colors } from '../../global'
 
-const colors = [
-  'success', 'danger', 'info', 'warning', 'primary'
+// const colors = [
+//   'success', 'danger', 'info', 'warning', 'primary'
+// ]
+
+const color = [
+  colors.reda, colors.redb, colors.reda, colors.redb, colors.reda
 ]
 
 class TagSearchScreen extends React.PureComponent {
@@ -58,10 +62,15 @@ class TagSearchScreen extends React.PureComponent {
           </View>
           <View style={s.tags}>
             {
-              _.map(tags, (item, key) => <RkButton style={s.tag} key={key} onPress={() => {deleteTag(item.id)}}
-                                                   rkType={`small ${item.color}`}>#{item.name}<Icon name={'md-close'}
-                                                                                                    style={{marginLeft: 10}}
-                                                                                                    color={'white'} /></RkButton>)
+              _.map(tags, (item, key) =>
+                <RkButton style={{
+                  backgroundColor: color[key % color.length],
+                  margin: 5
+                }} key={key} onPress={() => {deleteTag(item.id)}}
+                  // rkType={`small ${item.color}`}
+                >#{item.name}<Icon name={'md-close'}
+                                   style={{marginLeft: 10}}
+                                   color={'white'} /></RkButton>)
             }
           </View>
         </View>

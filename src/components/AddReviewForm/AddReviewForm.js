@@ -90,7 +90,7 @@ class AddReviewForm extends React.Component {
             onChange={change}
             validation={{
               minSize: 0,
-              maxSize: 50,
+              maxSize: 80,
               numbersOnly: false
             }}
           />
@@ -118,7 +118,7 @@ class AddReviewForm extends React.Component {
             placeholder={'Ваш отзыв'}
             validation={{
               minSize: 0,
-              maxSize: 1000,
+              maxSize: 3000,
               numbersOnly: false
             }}
           />

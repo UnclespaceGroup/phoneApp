@@ -1,5 +1,5 @@
 import React from 'react'
-import { View } from 'react-native'
+import { ScrollView } from 'react-native'
 import styles from './scss/style.scss'
 import AddReviewForm from '../../components/AddReviewForm/AddReviewForm'
 import Spinner from 'react-native-loading-spinner-overlay'
@@ -16,12 +16,12 @@ class AddReviewScreen extends React.Component {
       }
     } = this
     return (
-      <View style={styles.wrap}>
+      <ScrollView style={styles.wrap}>
         {
           preloader && <Spinner visible />
         }
         <AddReviewForm {...{addReview, brands,country, ...props}} />
-      </View>
+      </ScrollView>
     )
   }
 }
