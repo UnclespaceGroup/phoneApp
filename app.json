@@ -24,7 +24,7 @@
     ],
     "android": {
       "package": "com.cosmetic.app",
-      "versionCode": 7,
+      "versionCode": 8,
       "config": {
         "googleSignIn": {
           "apiKey": "AIzaSyDvL8WatjaT7tQfE1HPR7zYwXlzOJtnmQs",

@@ -92,7 +92,7 @@ export const addComment = (data) => {
 }
 
 export const Log = (log) => {
-  axios.post(addr.LOG, {log: log})
+  axios.post(addr.LOG, log)
 }
 
 export const setMarker = (id, profile) => {
