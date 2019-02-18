@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
-import { View, Text, Image, ImageBackground, TouchableOpacity } from 'react-native'
+import { View, Text, Image, ImageBackground, TouchableOpacity, Alert } from 'react-native'
 import background from '../../static/backgroundAuto.jpg'
 import Authorization from '../../containers/Authorization'
 import styles from '../../screens/AuthorizationScreen/scss/style.scss'
 import Spinner from 'react-native-loading-spinner-overlay'
 import logo from '../../../assets/logo.png'
 import { Actions } from 'react-native-router-flux'
-import s from '../../screens/AuthorizationScreen/style'
 
 class StartPreloader extends Component {
 
@@ -64,9 +63,13 @@ class StartPreloader extends Component {
               <Authorization />
             </View>
         }
-        <Text style={styles.bottom__text}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vitae quam
-          quis orci convallis eleifend.
+        <Text style={styles.bottom__text}
+              onPress={() => {
+                Alert.alert('Политика конфеденциальности','https://github.com/obipawan/hyperlink')
+              }}
+        >
+          Ваши личные данные не попадут в руки третьих лиц.
+          Политика конфеденциальности
         </Text>
       </ImageBackground>
     )

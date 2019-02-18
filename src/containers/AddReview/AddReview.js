@@ -16,7 +16,11 @@ class AddReview extends Component {
       <AddReviewScreen {...{...props, profile}} />
         :
         <View>
-          <Text>Авторизуйтесь, чтобы добавлять отзыв</Text>
+          <Text style={{
+            fontSize: 15,
+            textAlign: 'center',
+            marginTop: 20
+          }}>Авторизуйтесь, чтобы добавлять отзыв</Text>
         </View>
     )
   }

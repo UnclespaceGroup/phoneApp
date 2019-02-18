@@ -4,6 +4,7 @@ import Icon from 'react-native-vector-icons/FontAwesome'
 import { Text } from 'react-native-elements'
 import React from 'react'
 import { Actions } from 'react-native-router-flux'
+import { colors, custom } from '../../global'
 
 class TopLoginButton extends Component {
   render () {
@@ -31,7 +32,9 @@ class TopLoginButton extends Component {
                 style={{
                   width: 40,
                   height: 40,
-                  borderRadius: 20
+                  borderRadius: 20,
+                  borderColor: colors.red,
+                  borderWidth: 1
                 }}
               />
             : <Icon style={{color: color}} name={'user'} size={25} />
