@@ -4,6 +4,7 @@ import { RkButton } from 'react-native-ui-kitten'
 import { Google } from 'expo'
 import _ from 'lodash'
 import { Actions } from 'react-native-router-flux'
+import { Log } from '../../actions/actionAdd'
 
 const CLIENT_ID = '15528245861-ks5jqvbu4nr8d0m54o7n5rjunr063epr.apps.googleusercontent.com'
 const STANDALONE_KEY = '15528245861-tr09hmva4r78ntri3grr5n0g4l3qs6du.apps.googleusercontent.com'
@@ -85,9 +86,15 @@ class AuthGoogleStandalone extends React.Component {
         iosClientId: CLIENT_ID,
         scopes: ['profile', 'email'],
       });
-
+      Log({
+        title: 'Попытка',
+        date: new Date().toString()
+      })
       if (result.type === 'success') {
-        console.log(result)
+        Log({
+          title: 'success',
+          date: new Date().toString()
+        })
         if (enableToken(result.user.id)) {
           logIn({
             Name: result.user.name,
@@ -109,9 +116,18 @@ class AuthGoogleStandalone extends React.Component {
         }
         return result.accessToken;
       } else {
+        Log({
+          title: 'else',
+          date: new Date().toString()
+        })
         return {cancelled: true};
       }
     } catch(e) {
+      Log({
+        title: 'Catch',
+        text: e.toString(),
+        date: new Date().toString()
+      })
       return {error: true};
     }
   }

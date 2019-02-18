@@ -24,12 +24,23 @@
     ],
     "android": {
       "package": "com.cosmetic.app",
+      "versionCode": 7,
       "config": {
         "googleSignIn": {
           "apiKey": "AIzaSyDvL8WatjaT7tQfE1HPR7zYwXlzOJtnmQs",
-          "certificateHash": "8A8DEE9E82864B21EA8C8B8E310E6028B4EDDA26"
+          "certificateHash": "4E:D7:1C:76:28:45:04:DB:DB:81:E1:7F:5B:7E:11:F5:FB:BA:98:22"
         }
-      }
+      },
+      "permissions": [
+        "MANAGE_DOCUMENTS",
+        "READ_CALENDAR",
+        "READ_EXTERNAL_STORAGE",
+        "READ_PHONE_STATE",
+        "WAKE_LOCK",
+        "WRITE_EXTERNAL_STORAGE",
+        "com.sec.android.provider.badge.permission.READ",
+        "com.sec.android.provider.badge.permission.WRITE"
+      ]
     },
     "ios": {
       "supportsTablet": true
